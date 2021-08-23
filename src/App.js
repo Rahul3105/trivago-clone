@@ -1,5 +1,10 @@
+import "./App default css/App.css";
+import { Routes } from "./components/Route component/Routes";
 function App() {
-  return <div className="App">Welcome to trivago clone</div>;
+  return (
+    <div>
+      <Routes />
+    </div>
+  );
 }
-
 export default App;
