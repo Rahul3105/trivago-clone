@@ -1,13 +1,13 @@
 import { Switch, Route } from 'react-router-dom';
-import {Auth} from '../login-signup component/Auth'
+import { AuthRoute } from '../login-signup component/AuthRoute';
 const Routes = () => {
     return <>
         <Switch>
             <Route exact path='/'>
                 <h1>This is home page</h1>
             </Route>
-            <Route exact path='/auth'>
-                <Auth/>
+            <Route path='/auth/:id'>
+                <AuthRoute/>
             </Route>
             <Route>
                 <h1>Page not found</h1>
