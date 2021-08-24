@@ -1,9 +1,16 @@
 
 import { Login } from './Login';
+
 // import { Signup } from './Signup';
+
 import styled from 'styled-components';
-// material ui imports 
+
+// material ui imports
+
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+
+//react-google component 
+import GoogleLogin from 'react-google-login';
 const Auth = () => {
     return <>
         <StyledAuth>
@@ -15,19 +22,21 @@ const Auth = () => {
             </header>
             <section className='Auth-section'>
                 <div><Login/></div>
-                <div>
+                <div className='goggle-auth'>
                     <strong>Or use trivago with another account</strong>
-                    <button>Continue with Google</button>
-                    <button>Continue with Facebook</button>
-                    <button>Continue with Apple</button>
+                    <StyledAuthBtn>Continue with Google</StyledAuthBtn>
+                    <StyledAuthBtn>Continue with Facebook</StyledAuthBtn>
+                    <StyledAuthBtn>Continue with Apple</StyledAuthBtn>
                 </div>
             </section>
             <footer>
                 <p>Reminder: by signing up, you are agreeing to our Privacy Policy and Terms of Use.</p>
             </footer>
         </StyledAuth>
-        <h4>Don't have an account yet?</h4>
-        <button>Create an account</button>
+        <CreateAccountBtnCont>
+            <h4>Don't have an account yet?</h4>
+            <button>Create an account</button>
+        </CreateAccountBtnCont>
     </>
 }
 export { Auth };
@@ -45,6 +54,9 @@ const StyledAuth = styled.div`
     margin-top:30px;
     padding:10px 20px;
     min-height: 40rem;
+    
+    
+    
     //header css
     & > header {
         display: flex;
@@ -86,5 +98,47 @@ const StyledAuth = styled.div`
         width:50%;
     }
 
+    & > section[class ='Auth-section'] > .goggle-auth {
+        height:18rem;
+        border-left: 1px solid gainsboro;
+        margin-top: 7rem;
+        padding-left: 15px
+    }
+`;
+const StyledAuthBtn = styled.div`
+    border: 1px solid #697379;
+    height: 45px;
+    margin-top:5px;
+    margin-bottom: 12px ;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+        background-color: #697379;
+        color: white;
+    }
+`
 
+const CreateAccountBtnCont = styled.footer`
+    width:77rem;
+    margin: auto;
+    margin-top:3rem;
+    padding-left: 3rem;
+    & > button {
+        border: 1px solid #697379;
+        height: 45px;
+        font-weight: 700;
+        padding: 10px;
+        cursor: pointer;
+        :hover {
+            background-color: #697379;
+            color: white;
+        }
+        background-color: white;
+
+    }
+    & > h4 {
+        font-size: 1.9rem;
+        margin-bottom:12px;
+    }
 `
