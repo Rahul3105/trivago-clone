@@ -5,40 +5,66 @@ import { Login } from './Login';
 
 import styled from 'styled-components';
 
+import { Switch, Route , useHistory, useParams} from 'react-router-dom';
+
 // material ui imports
 
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 //react-google component 
 import GoogleLogin from 'react-google-login';
-const Auth = () => {
+
+const Auth = ({ children }) => {
+    
+    const history = useHistory();
+    const {id} = useParams()
+    const handleLogin = (response) => {
+        console.log(response);
+    }
+    const handleFailure = (response) => {
+        console.log(response);
+    }
+    
     return <>
         <StyledAuth>
             <header>
-                <button className='goback-btn'><ArrowBackIosIcon /></button>
+                <button className='goback-btn' onClick={() => history.goBack()}><ArrowBackIosIcon /></button>
                 <div className="logo-cont">
-                    <img src="images/trivago.svg" width="200" ></img>
+                    <img src="/images/trivago.svg" width = '200' alt='trivago-logo' />
                 </div>
             </header>
             <section className='Auth-section'>
-                <div><Login/></div>
+                <div className="auth-route">
+                    {children}
+                </div>
                 <div className='goggle-auth'>
-                    <strong>Or use trivago with another account</strong>
-                    <StyledAuthBtn>Continue with Google</StyledAuthBtn>
-                    <StyledAuthBtn>Continue with Facebook</StyledAuthBtn>
-                    <StyledAuthBtn>Continue with Apple</StyledAuthBtn>
+                    <h2>Or use trivago with another account</h2>
+                    <GoogleLogin
+                        clientId={process.env.REACT_APP_GOOGLE_API_KEY}
+                        buttonText='Continue with Google'
+                        onSuccess={handleLogin}
+                        onFailure={handleFailure}
+                        cookiePolicy={'single_host_origin'}
+                        render={renderProps => (
+                            <StyledAuthBtn onClick={renderProps.onClick} disabled={renderProps.disabled}><img src="/images/google-icon.png" alt="" /> Continue with Google</StyledAuthBtn>
+                        )}
+                    ></GoogleLogin>
+                    <StyledAuthBtn><img src="/images/facebook-icon.png" alt="facebook-icon" />Continue with Facebook</StyledAuthBtn>
+                    <StyledAuthBtn><img src="/images/apple-icon.png" alt="apple-icon" />Continue with Apple</StyledAuthBtn>
                 </div>
             </section>
             <footer>
-                <p>Reminder: by signing up, you are agreeing to our Privacy Policy and Terms of Use.</p>
+                <p >Reminder: by signing up, you are agreeing to our Privacy Policy and Terms of Use.</p>
             </footer>
         </StyledAuth>
-        <CreateAccountBtnCont>
-            <h4>Don't have an account yet?</h4>
-            <button>Create an account</button>
-        </CreateAccountBtnCont>
+        {id === 'login' && <CreateAccountBtnCont>
+            <h1>Don't have an account yet?</h1>
+            <button onClick = {() => history.push('/auth/signup')} >Create an account</button>
+        </CreateAccountBtnCont>}
+        
     </>
 }
+
 export { Auth };
 
 
@@ -53,9 +79,12 @@ const StyledAuth = styled.div`
     margin: auto;
     margin-top:30px;
     padding:10px 20px;
+    padding-bottom: 30px;
     min-height: 40rem;
-    
-    
+    max-height: 60rem;
+    & p {
+        font-size:16px;
+    }
     
     //header css
     & > header {
@@ -90,8 +119,8 @@ const StyledAuth = styled.div`
     }
     /* Auth-section */
     section[class ='Auth-section'] {
-        height:27rem;
         display: flex;
+        margin-bottom: 20px;
 
     }
     section[class ='Auth-section'] > * {
@@ -102,7 +131,10 @@ const StyledAuth = styled.div`
         height:18rem;
         border-left: 1px solid gainsboro;
         margin-top: 7rem;
-        padding-left: 15px
+        padding-left: 30px
+    }
+    & > section[class ='Auth-section'] > .auth-route {
+        padding-right: 30px;
     }
 `;
 const StyledAuthBtn = styled.div`
@@ -113,9 +145,17 @@ const StyledAuthBtn = styled.div`
     font-weight: 700;
     padding: 10px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    /* text-align: center; */
     &:hover {
         background-color: #697379;
         color: white;
+    }
+    & > img {
+        width:24px;
+        margin-right: 50px;
     }
 `
 
@@ -128,7 +168,8 @@ const CreateAccountBtnCont = styled.footer`
         border: 1px solid #697379;
         height: 45px;
         font-weight: 700;
-        padding: 10px;
+        padding: 1px 15px;
+        font-size:16px;
         cursor: pointer;
         :hover {
             background-color: #697379;
@@ -137,7 +178,7 @@ const CreateAccountBtnCont = styled.footer`
         background-color: white;
 
     }
-    & > h4 {
+    & > h1 {
         font-size: 1.9rem;
         margin-bottom:12px;
     }
