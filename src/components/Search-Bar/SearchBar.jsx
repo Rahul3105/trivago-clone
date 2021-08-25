@@ -9,7 +9,7 @@ import { Button } from "@material-ui/core";
 import ClearIcon from "@material-ui/icons/Clear";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-
+import GuestCard from "../material-ui-components/GuestCard";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Search } from "./Search";
@@ -21,6 +21,7 @@ export function SearchBar() {
     const [border, setBorder] = useState(false);
     const [datePicker, setDatePicker] = useState(false);
     const [clickedCheckOut, setClickedCheckOut] = useState(false);
+    const [guestSelect, setGuestSelect] = useState(false);
     const [location, setLocation] = useState("");
     const [checkInDate, setCheckInDate] = useState("____/____/____");
     const [checkOutDate, setCheckOutDate] = useState("____/____/____");
@@ -68,12 +69,14 @@ export function SearchBar() {
         setClickedCheckOut(!clickedCheckOut);
         setDatePicker(false);
     };
-
+    const handleGuestSelector = () => {
+        setGuestSelect(!guestSelect)
+    }
     // console.log(checkInDate)
     return (
         <SearchBarWrapper>
             <div className="search-bar-cont">
-                <div className="category-links">
+                <CategoryLinksWrapper>
                     <div className={show ? "afterClick" : undefined} onClick={handleShow}>
                         <span className={show ? "afterClickAnchor" : undefined}>
                             All stays
@@ -95,14 +98,14 @@ export function SearchBar() {
                         }
                         onClick={handleHouseClass}
                     >
-                        <span className={houseClass ? "afterClickAnchor" : undefined} >
+                        <span className={houseClass ? "afterClickAnchor" : undefined}>
                             House/Apartment
                         </span>
                     </div>
-                </div>
-                <div className="search-bar">
-                    <div className="search-bar-main">
-                        <div className="selectLocation">
+                </CategoryLinksWrapper>
+                <SearchBoxWrapper>
+                    <SearchBarMainWrapper>
+                        <SelectLocationWrapper>
                             <div
                                 onClick={handleBorder}
                                 className={border ? "dottedBorder" : undefined}
@@ -127,8 +130,8 @@ export function SearchBar() {
                                     <ClearIcon />
                                 </Button>
                             </div>
-                        </div>
-                        <div className="pickDate">
+                        </SelectLocationWrapper>
+                        <PickDateWrapper>
                             <div>
                                 <div onClick={handleDatePicker} className="checkIndate">
                                     <img src={calender} alt="" />
@@ -153,10 +156,10 @@ export function SearchBar() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="selectGuests">
+                        </PickDateWrapper>
+                        <SelectGuestsWrapper>
                             <div>
-                                <div className="guestsnumber">
+                                <div onClick={handleGuestSelector} className="guestsnumber">
                                     <img src={addgroup} alt="" />
                                     <div className="guest-al">
                                         <span>1 Room</span>
@@ -165,9 +168,9 @@ export function SearchBar() {
                                 </div>
                                 <button>Search</button>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        </SelectGuestsWrapper>
+                    </SearchBarMainWrapper>
+                </SearchBoxWrapper>
                 {datePicker && (
                     <Search
                         setCheckInDate={setCheckInDate}
@@ -180,6 +183,8 @@ export function SearchBar() {
                         setCheckOutDate={setCheckOutDate}
                     />
                 )}
+                {guestSelect && <GuestCard />}
+
                 <BookingLogosWrapper>
                     <div className="booking-sites-text">
                         <h4>We compare multiple booking sites at once</h4>
@@ -254,219 +259,6 @@ const SearchBarWrapper = styled.div`
   .search-bar-cont {
     display: grid;
     grid-template-columns: 1fr;
-
-    .category-links {
-      display: flex;
-      .afterClick {
-        background-color: white;
-      }
-      & > div {
-        min-width: 80px;
-        max-width: auto;
-        height: 40px;
-        padding: 1rem;
-        border-top-left-radius: 1.4rem;
-        border-top-right-radius: 1.4rem;
-        background-color: rgb(229, 242, 246);
-        text-align: center;
-        .afterClickAnchor {
-          color: rgb(0, 127, 173);
-          font-weight: bold;
-        }
-        span{
-          text-decoration: none;
-          font-size: 13px;
-          letter-spacing: 1px;
-          position: relative;
-          cursor: pointer;
-          /* ::after{
-                color: rgb(0,127,173);
-                font-weight: bold;
-            } */
-          :hover {
-            color: rgb(0, 127, 173);
-            text-decoration: underline;
-          }
-        }
-      }
-      .space-left {
-        margin-left: 0.7rem;
-      }
-      .houseAPwidth {
-        width: 135px;
-      }
-    }
-    .search-bar {
-      border-radius: 0 12px 12px 12px;
-      width: 100%;
-      height: 6rem;
-
-      box-shadow: 1px 1px 4px rgb(205 208 210);
-
-      padding: 0rem 0.8rem;
-      background-color: white;
-      .search-bar-main {
-        display: flex;
-        height: 100%;
-        width: 100%;
-        & > div {
-          /* border: 1px solid black; */
-        }
-        .selectLocation {
-          width: 32%;
-          display: flex;
-          align-items: center;
-          justify-content: start;
-          border-right: 1px solid rgb(205, 208, 210);
-          img {
-            width: 18px;
-            position: relative;
-            top: 7px;
-          }
-          & > div {
-            width: 100%;
-            height: 4rem;
-            input {
-              width: 80%;
-              outline: none;
-              border: none;
-              position: relative;
-              top: 4px;
-              ::placeholder {
-                color: rgb(154, 161, 165);
-              }
-            }
-            .verticleAlign {
-              position: relative;
-              top: 0.3rem;
-            }
-          }
-        }
-        .pickDate {
-          width: 36%;
-          padding: 0rem 1rem;
-          border-right: 1px solid rgb(205, 208, 210);
-
-          & > div {
-            width: 100%;
-            display: flex;
-            height: 100%;
-            .checkIndate {
-              width: 50%;
-              display: flex;
-
-              position: relative;
-
-              align-items: center;
-              padding-left: 1px;
-
-              height: 4rem;
-              top: 10px;
-              :active {
-                border: 1px dotted;
-              }
-
-              img {
-                width: 18px;
-              }
-            }
-            .date-al-margin {
-              position: relative;
-              left: 1rem;
-              grid-gap: 0.2rem;
-            }
-            .partitionLine {
-              width: 1px;
-              height: 80%;
-              background-color: rgb(205, 208, 210);
-              margin-top: 6px;
-            }
-            .arrows-margin {
-              position: relative;
-              left: 2rem;
-            }
-            .arrows-margin2 {
-              position: relative;
-              left: 5rem;
-            }
-            .date-al {
-              display: grid;
-
-              & > span:nth-child(1) {
-                font-size: 11px;
-              }
-              & > span:nth-child(2) {
-                font-size: 12px;
-                font-weight: bold;
-              }
-            }
-            .checkOutdate {
-              width: 50%;
-              display: flex;
-              align-items: center;
-              position: relative;
-
-              height: 4rem;
-              top: 10px;
-              :active {
-                border: 1px dotted;
-              }
-            }
-          }
-        }
-        .selectGuests {
-          width: 32%;
-          /* padding: 1rem; */
-          padding-left: 1rem;
-          & > div {
-            display: flex;
-            align-items: center;
-            height: 100%;
-            img {
-              width: 18px;
-              height: 18px;
-              position: relative;
-              top: 4px;
-            }
-            .guestsnumber {
-              display: flex;
-              width: 50%;
-              :active {
-                border: 1px dotted;
-              }
-              .guest-al {
-                display: grid;
-                position: relative;
-                left: 1rem;
-
-                & > span:nth-child(1) {
-                  font-size: 11px;
-                }
-                & > span:nth-child(2) {
-                  font-size: 12px;
-                  font-weight: bold;
-                }
-              }
-            }
-            button {
-              width: 60%;
-              padding: 1rem;
-              background-color: #007fad;
-              border: 1px solid #007fad;
-              border-bottom-color: #005f81;
-              border-radius: 4rem;
-              color: white;
-              outline: none;
-              border: none;
-              :hover {
-                background-color: #005f81;
-                cursor: pointer;
-              }
-            }
-          }
-        }
-      }
-    }
   }
 `;
 const BookingLogosWrapper = styled.div`
@@ -503,9 +295,218 @@ const BookingLogosWrapper = styled.div`
     .More {
       font-size: 12px;
       justify-content: center;
-      position: relative;
+      
       color: rgb(154, 161, 165);
       top: 3px;
+    }
+  }
+`;
+const CategoryLinksWrapper = styled.div`
+  display: flex;
+  .afterClick {
+    background-color: white;
+  }
+  & > div {
+    min-width: 80px;
+    max-width: auto;
+    height: 40px;
+    padding: 1rem;
+    border-top-left-radius: 1.4rem;
+    border-top-right-radius: 1.4rem;
+    background-color: rgb(229, 242, 246);
+    text-align: center;
+    .afterClickAnchor {
+      color: rgb(0, 127, 173);
+      font-weight: bold;
+    }
+    span {
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+      position: relative;
+      cursor: pointer;
+      /* ::after{
+                color: rgb(0,127,173);
+                font-weight: bold;
+            } */
+      :hover {
+        color: rgb(0, 127, 173);
+        text-decoration: underline;
+      }
+    }
+  }
+  .space-left {
+    margin-left: 0.7rem;
+  }
+  .houseAPwidth {
+    width: 135px;
+  }
+`;
+const SearchBoxWrapper = styled.div`
+  border-radius: 0 12px 12px 12px;
+  width: 100%;
+  height: 6rem;
+
+  box-shadow: 1px 1px 4px rgb(205 208 210);
+
+  padding: 0rem 0.8rem;
+  background-color: white;
+`;
+const SearchBarMainWrapper = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+`;
+const SelectLocationWrapper = styled.div`
+  width: 32%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-right: 1px solid rgb(205, 208, 210);
+  img {
+    width: 18px;
+    position: relative;
+    top: 7px;
+  }
+  & > div {
+    width: 100%;
+    height: 4rem;
+    input {
+      width: 80%;
+      outline: none;
+      border: none;
+      position: relative;
+      top: 4px;
+      ::placeholder {
+        color: rgb(154, 161, 165);
+      }
+    }
+    .verticleAlign {
+      position: relative;
+      top: 0.3rem;
+    }
+  }
+`;
+const PickDateWrapper = styled.div`
+  width: 36%;
+  padding: 0rem 1rem;
+  border-right: 1px solid rgb(205, 208, 210);
+
+  & > div {
+    width: 100%;
+    display: flex;
+    height: 100%;
+    .checkIndate {
+      width: 50%;
+      display: flex;
+
+      position: relative;
+
+      align-items: center;
+      padding-left: 1px;
+
+      height: 4rem;
+      top: 10px;
+      :active {
+        border: 1px dotted;
+      }
+
+      img {
+        width: 18px;
+      }
+    }
+    .date-al-margin {
+      position: relative;
+      left: 1rem;
+      grid-gap: 0.2rem;
+    }
+    .partitionLine {
+      width: 1px;
+      height: 80%;
+      background-color: rgb(205, 208, 210);
+      margin-top: 6px;
+    }
+    .arrows-margin {
+      position: relative;
+      left: 2rem;
+    }
+    .arrows-margin2 {
+      position: relative;
+      left: 5rem;
+    }
+    .date-al {
+      display: grid;
+
+      & > span:nth-child(1) {
+        font-size: 11px;
+      }
+      & > span:nth-child(2) {
+        font-size: 12px;
+        font-weight: bold;
+      }
+    }
+    .checkOutdate {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      height: 4rem;
+      top: 10px;
+      :active {
+        border: 1px dotted;
+      }
+    }
+  }
+`;
+const SelectGuestsWrapper = styled.div`
+  width: 32%;
+  /* padding: 1rem; */
+  padding-left: 1rem;
+  & > div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    img {
+      width: 18px;
+      height: 18px;
+      position: relative;
+      top: 4px;
+    }
+    .guestsnumber {
+      display: flex;
+      width: 50%;
+      :active {
+        border: 1px dotted;
+      }
+      .guest-al {
+        display: grid;
+        position: relative;
+        left: 1rem;
+
+        & > span:nth-child(1) {
+          font-size: 11px;
+        }
+        & > span:nth-child(2) {
+          font-size: 12px;
+          font-weight: bold;
+        }
+      }
+    }
+    button {
+      width: 60%;
+      padding: 1rem;
+      background-color: #007fad;
+      border: 1px solid #007fad;
+      border-bottom-color: #005f81;
+      border-radius: 4rem;
+      color: white;
+      outline: none;
+      border: none;
+      :hover {
+        background-color: #005f81;
+        cursor: pointer;
+      }
     }
   }
 `;
