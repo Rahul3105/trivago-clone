@@ -1,10 +1,11 @@
 import { Switch, Route } from 'react-router-dom';
+import { RecentlyHome } from '../Recently-activity/RecentlyHome';
 import {Auth} from '../login-signup component/Auth'
 const Routes = () => {
     return <>
         <Switch>
             <Route exact path='/'>
-                <h1>This is home page</h1>
+                <RecentlyHome/>
             </Route>
             <Route exact path='/auth'>
                 <Auth/>

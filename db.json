@@ -1,0 +1,47 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "recentlyVisited": [
+    {
+      "id":1,
+      "date": "24 Aug. 2021",
+      "location": "Massourie",
+      "checkin": "25-08-21",
+      "checkout": "27-08-21",
+      "room": "2",
+      "guest": "4"
+    },
+    {
+      "id":2,
+      "date": "24 Aug. 2021",
+      "location": "Delhi",
+      "checkin": "25-08-21",
+      "checkout": "27-08-21",
+      "room": "2",
+      "guest": "4"
+    },
+    {
+      "date": "24 Aug. 2021",
+      "location": "Pakistan",
+      "checkin": "25-08-21",
+      "checkout": "27-08-21",
+      "room": "2",
+      "guest": "4"
+    }
+  ]
+}
