@@ -13,6 +13,7 @@ import { Button, Paper, Typography } from "@material-ui/core";
 import UpdateIcon from "@material-ui/icons/Update";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import PeopleIcon from "@material-ui/icons/People";
+import { Redirect, useHistory } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,8 +30,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RecentlyData({ data }) {
     const classes = useStyles();
+    const history = useHistory()
   const { date, location, checkin, checkout, room, guest } = data;
-  console.log(data);
+    // console.log(data);
+    const handleRecentlyMain = () => {
+        return <Redirect to="/recentlyMain"></Redirect>
+    }
   return (
     <Activity>
       <Timeline>
@@ -64,7 +69,7 @@ export default function RecentlyData({ data }) {
                 </Typography>
               </div>
               <div className="data-button">
-                <Button variant="outlined">Search again</Button>
+                  <Button variant="outlined" onClick={handleRecentlyMain}>Search again</Button>
               </div>
             </Paper>
           </TimelineContent>
@@ -79,15 +84,17 @@ const Activity = styled.div`
   background-color: #fff;
   /* border: 1px solid red; */
   padding-left: 0;
-  margin-left: -15%;
+  margin-left: -24%;
   /* position:absolute; */
-  width:100%;
+  min-width:700px;
 
   
   & .timeline-date{
       font-size:16px;
       position: relative;
-      right:-20%;
+      right:-15%;
+      margin-top:.7%;
+      margin-bottom:1%;
       margin-left:-30%;
   }
   & .box-data {

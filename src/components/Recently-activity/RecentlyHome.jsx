@@ -45,7 +45,8 @@ export const RecentlyHome = () => {
 }
 
 const ActivityHome = styled.div`
-  width: 50%;
+  width: 55%;
+  min-width:500px;
   & .activity-heading {
     margin: 4% 25%;
     font-size: 20px;
