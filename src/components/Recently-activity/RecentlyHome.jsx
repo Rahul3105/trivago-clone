@@ -35,14 +35,25 @@ export const RecentlyHome = () => {
     }
     return (
       <ActivityHome>
+        <h2 className="activity-heading">Your recent activity</h2>
         {data.map((item) => (
           <RecentlyData data={item} key={item.id} />
         ))}
+            <Typography className="activity-seeAll">See all</Typography>
       </ActivityHome>
     );
 }
 
 const ActivityHome = styled.div`
-width:50%;
-border:1px solid green;
-`
+  width: 50%;
+  & .activity-heading {
+    margin: 4% 25%;
+    font-size: 20px;
+  }
+  & .activity-seeAll {
+    margin: 2% 25%;
+    font-size: 14px;
+    color:blue;
+    cursor: pointer;
+  }
+`;
