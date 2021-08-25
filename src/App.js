@@ -1,11 +1,11 @@
 import "./App default css/App.css";
 import { Routes } from "./components/Route component/Routes";
-import MuiCarousel from "./components/material-ui-components/MuiCarousel";
+import { HomeCarousel } from "./components/home-page-carousel component/HomeCarousel";
 function App() {
   return (
     <div>
       <Routes />
-      <MuiCarousel />
+      <HomeCarousel />
     </div>
   );
 }

@@ -7,9 +7,15 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 400,
-    flexGrow: 1,
-  },
+        maxWidth: 200,
+        flexGrow: 1,
+        margin: 'auto',
+        marginTop: '20px',
+        backgroundColor: 'white',
+        '&  svg': {
+           fontSize:'30px' 
+        }
+    }
 });
 
 export default function MuiCarousel() {
@@ -24,24 +30,21 @@ export default function MuiCarousel() {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-
   return (
     <MobileStepper
       variant="dots"
-      steps={6}
+      steps={3}
       position="static"
       activeStep={activeStep}
       className={classes.root}
       nextButton={
-        <Button size="small" onClick={handleNext} disabled={activeStep === 5}>
-          Next
+        <Button size="small" onClick={handleNext} disabled={activeStep === 2}>
           {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
         </Button>
       }
       backButton={
         <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
           {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-          Back
         </Button>
       }
     />
