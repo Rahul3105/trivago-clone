@@ -15,12 +15,13 @@ export function Search({ setCheckOutDate, setCheckInDate }) {
     function handleSelect(ranges) {
         setStartDate(ranges.selection.startDate)
         // console.log(ranges.selection.startDate)
+
         setCheckInDate(ranges.selection.startDate.toString().slice(0, 15))
         setEndDate(ranges.selection.endDate)
         setCheckOutDate(ranges.selection.endDate.toString().slice(0, 15))
         // console.log(ranges.selection.endDate)
     }
     return <div className="search">
-        <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
+        <DateRangePicker minDate={new Date()} ranges={[selectionRange]} onChange={handleSelect} />
     </div>
 }

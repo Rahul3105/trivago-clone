@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import calender from "../../Logos/calendar.png";
 import placeholder from "../../Logos/placeholder.png";
-import calendar from "../../Logos/calendar.png";
+
 import addgroup from "../../Logos/addgroup.png";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
-import { Input, Button } from "@material-ui/core";
-import TodayIcon from "@material-ui/icons/Today";
+
+import { Button } from "@material-ui/core";
+
 import ClearIcon from "@material-ui/icons/Clear";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
+
 import { useState } from "react";
 import { useEffect } from "react";
 import { Search } from "./Search";
@@ -20,14 +20,18 @@ export function SearchBar() {
     const [houseClass, setHouseClass] = useState(false);
     const [border, setBorder] = useState(false);
     const [datePicker, setDatePicker] = useState(false);
+    const [clickedCheckOut, setClickedCheckOut] = useState(false);
     const [location, setLocation] = useState("");
-    const [checkInDate, setCheckInDate] = useState("")
-    const [checkOutDate, setCheckOutDate] = useState("")
+    const [checkInDate, setCheckInDate] = useState("____/____/____");
+    const [checkOutDate, setCheckOutDate] = useState("____/____/____");
+
     useEffect(() => {
         setShow(true);
     }, []);
     const handleBorder = () => {
         setBorder(true);
+        setDatePicker(false);
+        setClickedCheckOut(false);
     };
 
     const handleShow = () => {
@@ -57,25 +61,31 @@ export function SearchBar() {
         setLocation("");
     };
     const handleDatePicker = () => {
-        setDatePicker(!datePicker)
-    }
-    console.log(checkInDate)
+        setDatePicker(!datePicker);
+        setClickedCheckOut(false);
+    };
+    const handleClickedCheckOut = () => {
+        setClickedCheckOut(!clickedCheckOut);
+        setDatePicker(false);
+    };
+
+    // console.log(checkInDate)
     return (
         <SearchBarWrapper>
             <div className="search-bar-cont">
                 <div className="category-links">
-                    <div className={show && "afterClick"} onClick={handleShow}>
-                        <a href="#" className={show && "afterClickAnchor"}>
+                    <div className={show ? "afterClick" : undefined} onClick={handleShow}>
+                        <span className={show ? "afterClickAnchor" : undefined}>
                             All stays
-                        </a>
+                        </span>
                     </div>
                     <div
                         className={hotelClass ? "afterClick space-left" : "space-left"}
                         onClick={handleHotelClass}
                     >
-                        <a href="#" className={hotelClass && "afterClickAnchor"}>
+                        <span className={hotelClass ? "afterClickAnchor" : undefined}>
                             Hotel
-                        </a>
+                        </span>
                     </div>
                     <div
                         className={
@@ -85,15 +95,18 @@ export function SearchBar() {
                         }
                         onClick={handleHouseClass}
                     >
-                        <a className={houseClass && "afterClickAnchor"} href="#">
+                        <span className={houseClass ? "afterClickAnchor" : undefined} >
                             House/Apartment
-                        </a>
+                        </span>
                     </div>
                 </div>
                 <div className="search-bar">
                     <div className="search-bar-main">
                         <div className="selectLocation">
-                            <div onClick={handleDatePicker} className={border && "dottedBorder"}>
+                            <div
+                                onClick={handleBorder}
+                                className={border ? "dottedBorder" : undefined}
+                            >
                                 <img src={placeholder} alt="" />{" "}
                                 <input
                                     placeholder="Enter a hotel name or destination"
@@ -129,7 +142,7 @@ export function SearchBar() {
                                     </div>
                                 </div>
                                 <span className="partitionLine"></span>
-                                <div onClick={handleBorder} className="checkOutdate">
+                                <div onClick={handleClickedCheckOut} className="checkOutdate">
                                     <div className="date-al date-al-margin">
                                         <span>Check in</span>
                                         <span>{checkOutDate}</span>
@@ -155,7 +168,18 @@ export function SearchBar() {
                         </div>
                     </div>
                 </div>
-                <Search setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} />
+                {datePicker && (
+                    <Search
+                        setCheckInDate={setCheckInDate}
+                        setCheckOutDate={setCheckOutDate}
+                    />
+                )}
+                {clickedCheckOut && (
+                    <Search
+                        setCheckInDate={setCheckInDate}
+                        setCheckOutDate={setCheckOutDate}
+                    />
+                )}
                 <BookingLogosWrapper>
                     <div className="booking-sites-text">
                         <h4>We compare multiple booking sites at once</h4>
@@ -249,11 +273,12 @@ const SearchBarWrapper = styled.div`
           color: rgb(0, 127, 173);
           font-weight: bold;
         }
-        a {
+        span{
           text-decoration: none;
           font-size: 13px;
           letter-spacing: 1px;
           position: relative;
+          cursor: pointer;
           /* ::after{
                 color: rgb(0,127,173);
                 font-weight: bold;
@@ -475,12 +500,12 @@ const BookingLogosWrapper = styled.div`
       width: 42%;
       max-height: 25px;
     }
-    .More{
-        font-size: 12px;
-    justify-content: center;
-    position: relative;
-    color: rgb(154,161,165);
-    top: 3px;
+    .More {
+      font-size: 12px;
+      justify-content: center;
+      position: relative;
+      color: rgb(154, 161, 165);
+      top: 3px;
     }
   }
 `;

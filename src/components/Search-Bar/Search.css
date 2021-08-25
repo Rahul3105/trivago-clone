@@ -1,7 +1,9 @@
+@import url("https://cdn.syncfusion.com/ej2/material.css");
 .search {
   left: 25%;
-  width: 45vw;
-  border: 1px solid red;
+  width: 46vw;
+  background-color: white;
   position: absolute;
-  top: 1rem;
+  top: 19rem;
+  box-shadow: 1px 7px 27px -3px black;
 }
