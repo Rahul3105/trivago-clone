@@ -22,6 +22,9 @@ const useStyles = makeStyles({
     padding: "10px 25px",
     outline: "none",
     margin: "20px auto",
+    color: "white !important",
+  },
+  whiteText: {
     color: "white",
   },
 });
@@ -33,10 +36,10 @@ const Footer = () => {
       <MainFoot>
         <Grid container className={classes.align}>
           <Grid item xs={12} md={6}>
-            <p>
+            <h2 className={classes.whiteText}>
               Want to receive exclusive hotel offers? Subscribe to our
               newsletter!
-            </p>
+            </h2>
           </Grid>
           <Grid item container xs={12} md={6}>
             <Grid item xs={8} sm={10}>
@@ -49,7 +52,9 @@ const Footer = () => {
         </Grid>
         <Grid container className={classes.align}>
           <Grid item xs={12} md={9}>
-            trivago N.V., Kesselstraße 5 – 7, 40221 Düsseldorf, Germany
+            <h2 className={classes.whiteText}>
+              trivago N.V., Kesselstraße 5 – 7, 40221 Düsseldorf, Germany
+            </h2>
           </Grid>
           <Grid item xs={12} md={3}>
             <Select
@@ -58,6 +63,7 @@ const Footer = () => {
               value={"INDIA"}
               label="Country"
               className={classes.sel}
+              style={{ fontSize: "14px", backgroundColor: "white" }}
             >
               <MenuItem value="INDIA">
                 <em>INDIA</em>
@@ -215,7 +221,7 @@ const MainFoot = styled.div`
   max-width: 1100px;
   margin: auto;
   padding: 30px;
-  color: white;
+  color: white !important;
 `;
 const Onput = styled.input`
   width: 95%;
@@ -240,9 +246,11 @@ const Click = styled.button`
 const Bot1 = styled.div`
   padding: 25px;
   margin: auto;
-  color: white;
+  color: white !important;
   * {
     padding: 5px;
+    font-size: 12px;
+    color: white !important;
   }
   *:hover {
     text-decoration: underline;
@@ -250,6 +258,7 @@ const Bot1 = styled.div`
 `;
 const BotLogo = styled.div`
   text-align: center;
+  color: white !important;
   p {
     padding: 10px 0 25px;
   }
