@@ -19,13 +19,17 @@ const Routes = () => {
           <Route exact path="/">
             <RecentlyHome />
           </Route>
+          
           <Route exact path="/auth">
             <Auth />
           </Route>
           <Route exact path="/recentlyMain">
             <RecentlyMain />
           </Route>
-         
+          <Route>
+            <h1>Page not found</h1>
+          </Route>
+
         </Switch>
       </>
     );
