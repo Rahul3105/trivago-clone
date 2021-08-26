@@ -18,6 +18,10 @@ import ArrowBackOutlinedIcon from "@material-ui/icons/ArrowBackOutlined";
 
 import { useHistory } from 'react-router-dom';
 
+import { useSelector } from 'react-redux';
+
+
+import { ShowProfile } from './ShowProfile';
 
 const useStyles = makeStyles({
   pad: {
@@ -52,15 +56,15 @@ const NavBar = () => {
   const med = useMediaQuery(theme.breakpoints.up(880));
   const tri = useMediaQuery(theme.breakpoints.up(980));
   const big = useMediaQuery(theme.breakpoints.up(1280));
+  const loginInfo = useSelector((state) => state.login);
   const classes = useStyles();
-  
   
   //this function is to redirect to auth component for login and signup purpose
   const handleAuth = () => {
     history.push('/auth/login')    
   }
 
-  console.log(theme, mob, pad, med, tri, big);
+  // console.log(theme, mob, pad, med, tri, big);
   return (
     <>
       <Top>
@@ -90,10 +94,10 @@ const NavBar = () => {
           </First>
         )}
         <Log>
-          <button onClick = { handleAuth }>
+          { loginInfo.isAuth  ? <ShowProfile loginInfo={loginInfo.userInfo}/> : <button onClick={handleAuth}>
             <PersonOutlineOutlinedIcon className={classes.logoWidth} />
             {!mob ? "Log-In" : ""}
-          </button>
+          </button> }
           {!med ? (
             <>
               <button onClick={() => setDraw(true)}>

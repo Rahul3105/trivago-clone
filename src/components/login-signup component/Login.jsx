@@ -1,7 +1,18 @@
 import styled from 'styled-components';
-
+import { useState } from 'react';
 
 const Login = () => {
+    const [loginInfo, setLoginInfo] = useState({});
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        let payload = {
+            ...loginInfo,
+            [name]: value
+        }
+        setLoginInfo(payload);
+    }
+    
     return (
         <StyledLogin>
 
@@ -10,7 +21,12 @@ const Login = () => {
             <form>
                 <label>
                     <p>Email address</p> 
-                    <input type="text" name="email-address" placeholder="Email address" />
+                    <input onChange = {handleChange} type="text" name="email-address" placeholder="Email address" />
+                </label>
+
+                <label>
+                    <p>Password</p> 
+                    <input onChange = {handleChange} type="password" name="password" placeholder="Password" />
                 </label>
                 <button>Next</button>
             </form>
@@ -22,6 +38,14 @@ const Login = () => {
 
 
 const StyledLogin = styled.div`
+    animation: 0.8s AnimateRight 0s forwards;
+    transform: translateX(30%);
+    @keyframes AnimateRight {
+        to {
+            transform: translateX(0);
+        }
+    }
+
     & > h1 {
         font-size: 20px;
         margin: 8px 0;
