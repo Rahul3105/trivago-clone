@@ -16,6 +16,9 @@ import Drawer from "@material-ui/core/Drawer";
 import NavigateNextOutlinedIcon from "@material-ui/icons/NavigateNextOutlined";
 import ArrowBackOutlinedIcon from "@material-ui/icons/ArrowBackOutlined";
 
+import { useHistory } from 'react-router-dom';
+
+
 const useStyles = makeStyles({
   pad: {
     borderBottom: "none",
@@ -43,12 +46,20 @@ const useStyles = makeStyles({
 const NavBar = () => {
   const [draw, setDraw] = useState(false);
   const theme = useTheme();
+  const history = useHistory();
   const mob = useMediaQuery(theme.breakpoints.down(700));
   const pad = useMediaQuery(theme.breakpoints.up(700));
   const med = useMediaQuery(theme.breakpoints.up(880));
   const tri = useMediaQuery(theme.breakpoints.up(980));
   const big = useMediaQuery(theme.breakpoints.up(1280));
   const classes = useStyles();
+  
+  
+  //this function is to redirect to auth component for login and signup purpose
+  const handleAuth = () => {
+    history.push('/auth/login')    
+  }
+
   console.log(theme, mob, pad, med, tri, big);
   return (
     <>
@@ -79,7 +90,7 @@ const NavBar = () => {
           </First>
         )}
         <Log>
-          <button>
+          <button onClick = { handleAuth }>
             <PersonOutlineOutlinedIcon className={classes.logoWidth} />
             {!mob ? "Log-In" : ""}
           </button>

@@ -13,16 +13,30 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+<<<<<<< HEAD
+=======
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-google-login": "^5.2.2",
+    "@material-ui/styles": "^4.11.4",
+    "@syncfusion/ej2-react-calendars": "^19.2.55",
+>>>>>>> b4e79af2f4eb10cef185f2290938a621c2088e5b
     "bootstrap-daterangepicker": "^3.1.0",
     "date-fns": "^2.23.0",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
+<<<<<<< HEAD
     "react": "^17.0.2",
     "react-bootstrap-daterangepicker": "^7.0.0",
     "react-date-range": "^1.3.0",
     "react-dates": "^21.8.0",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
+=======
+    "react-bootstrap-daterangepicker": "^7.0.0",
+    "react-date-range": "^1.3.0",
+    "react-dates": "^21.8.0",
+>>>>>>> b4e79af2f4eb10cef185f2290938a621c2088e5b
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
