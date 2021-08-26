@@ -5,7 +5,7 @@ import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
     activities: RecentlyReducer,
-    login :LoginReducer,
+    login :LoginReducer
 })
 
 const composedEnhancer =

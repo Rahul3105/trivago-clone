@@ -8,12 +8,13 @@ import { RecentlyHome } from '../Recently-activity/RecentlyHome';
 import { useSelector } from 'react-redux';
 
 //loading animation
+
 import Loading from '../material-ui-components/LoadingAnimation'
 export const Home = () => {
     const loginInfo = useSelector((state) => state.login);
     return (
         <>
-            {loginInfo.isLoading && <Loading/>}
+            { loginInfo.isLoading && <Loading/> }
             <NavBar />
             <SearchBar />
             <RecentlyHome/>
