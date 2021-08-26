@@ -35,7 +35,7 @@ export const RecentlyMain = () => {
                 Clear recently viewed
               </Typography>
             </ButtonPart>
-            <hr className="line-length"/>
+            <hr style={{width:"70%"}}/>
             <AccountSetting />
           </Grid>
         </Grid>
@@ -50,18 +50,19 @@ border:1px solid red;
 `
 const ButtonPart = styled.div`
   width: 60%;
-  margin:4% 2%;
-    display:flex;
+  margin: 4% 2%;
+  display: flex;
 
-    & .clear-link{
-        margin-left:50%;
-        margin-top:1%;
-        color:#808080;
-        font-size:14px;
-        
-        &:hover{
-            text-decoration:underline;
-            cursor: pointer;
-        }
+  & .clear-link {
+    margin-left: 50%;
+    margin-top: 1%;
+    color: #808080;
+    font-size: 14px;
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
     }
+    
+  }
 `;

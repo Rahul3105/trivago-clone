@@ -10,9 +10,7 @@ function App() {
     <div>
 
       <NavBar />
-      <Footer />
-      <Routes />
-      <SearchBar />
+      <Routes/>
     </div>
   );
 }

@@ -34,13 +34,14 @@ const useStyles = makeStyles((theme) => ({
   },
   
     reviewBox: {
-        width: "3rem",
-        height: "2.5vh",
-        textAlign:"center",
+        width: "3.2rem",
+        height: "2.7vh",
         borderRadius: "40%",
         color: "white",
         fontWeight: "600",
-        display: "flex",
+      display: "flex",
+      textAlign: "center"
+      
   }
 }));
 
@@ -85,7 +86,7 @@ const {checkin,checkout,date,guest,id,img,location,name,rating,reviews,room,star
                     }}
                     className={classes.reviewBox}
                   >
-                    <p variant="h5" subtitle2="h2">
+                    <p className="rating-style" >
                       {rating}
                     </p>
                   </Box>
@@ -130,7 +131,9 @@ const RecentlyCard = styled.div`
     margin: 1%;
   }
   & .reviewText {
-    margin-left: 1.5rem;
+    text-align:center;
+    font-size:14px;
+    margin:1%;
     font-weight: 700;
   }
   & .reviews-data {
@@ -143,8 +146,11 @@ const RecentlyCard = styled.div`
     font-size: 12px;
     color: #999;
   }
-  & .data-icon{
-      /* margin-top:-1%; */
+  & .rating-style{
+    text-align:center;
+    justify-content:center;
+    font-size:14px;
+    margin:auto;
   }
   & .arrow-handle {
     margin:13vh;
@@ -154,6 +160,12 @@ const RecentlyCard = styled.div`
     background-color: #f5f5f5;
     margin-left:10%;
     width:5%;
+  }
+  & .box-data{
+    margin:-10% 0 0 0;
+  }
+  & .data-icon{
+    margin-top:1%;
   }
 `;
 
