@@ -9,9 +9,10 @@ import { Rating } from "@material-ui/lab";
 import { Box } from "@material-ui/core";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 const useStyles = makeStyles((theme) => ({
   root: {
-        display: "flex",
+    display: "flex",
   },
   details: {
     display: "flex",
@@ -37,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
         width: "3.2rem",
         height: "2.7vh",
         borderRadius: "40%",
-        color: "white",
         fontWeight: "600",
       display: "flex",
       textAlign: "center"
@@ -86,9 +86,7 @@ const {checkin,checkout,date,guest,id,img,location,name,rating,reviews,room,star
                     }}
                     className={classes.reviewBox}
                   >
-                    <p className="rating-style" >
-                      {rating}
-                    </p>
+                    <p className="rating-style">{rating}</p>
                   </Box>
                   <p className="reviewText" style={{ color: "black" }}>{`${
                     rating > 8.5 ? "Excellent" : "Good"
@@ -104,13 +102,17 @@ const {checkin,checkout,date,guest,id,img,location,name,rating,reviews,room,star
               <Typography className="box-data">
                 <p>
                   <CalendarTodayIcon className="data-icon" />
-                  {`${checkin}-${checkout}`}
                 </p>
+                <p className="icon-value">{`${checkin}-${checkout}`}</p>
+                <p>
+                  <PermIdentityIcon className="data-icon" />
+                </p>
+                <p className="icon-value">{`${guest}`}</p>
               </Typography>
             </div>
           </div>
-                <div className="side-arrow">
-                    < ArrowForwardIosIcon className="arrow-handle"/>
+          <div className="side-arrow">
+            <ArrowForwardIosIcon className="arrow-handle" />
           </div>
         </Card>
       </RecentlyCard>
@@ -120,6 +122,7 @@ const {checkin,checkout,date,guest,id,img,location,name,rating,reviews,room,star
 const RecentlyCard = styled.div`
   width: 60%;
   margin: 2%;
+  height: 27vh;
   &:hover {
     border: 0.2px solid #999;
   }
@@ -131,14 +134,14 @@ const RecentlyCard = styled.div`
     margin: 1%;
   }
   & .reviewText {
-    text-align:center;
-    font-size:14px;
-    margin:1%;
+    text-align: center;
+    font-size: 14px;
+    margin: 1%;
     font-weight: 700;
   }
   & .reviews-data {
-    color: black;
-    font-size: 13px;
+    color: #757575;
+    font-size: 14px;
     padding-left: 0.5rem;
   }
   & .viewed-date {
@@ -146,26 +149,36 @@ const RecentlyCard = styled.div`
     font-size: 12px;
     color: #999;
   }
-  & .rating-style{
-    text-align:center;
-    justify-content:center;
-    font-size:14px;
-    margin:auto;
+  & .rating-style {
+    text-align: center;
+    justify-content: center;
+    font-size: 14px;
+    margin: auto;
+    color: white;
   }
   & .arrow-handle {
-    margin:13vh;
-    margin-left:1rem;
+    margin: 13vh;
+    margin-left: 1rem;
   }
   & .side-arrow {
     background-color: #f5f5f5;
-    margin-left:10%;
-    width:5%;
+    margin-left:auto;
+    justify-content:space-around;
+    width: 5%;
   }
-  & .box-data{
-    margin:-10% 0 0 0;
+  & .box-data {
+    width: 100%;
+    margin-top: -10%;
+    display: flex;
+    color: #6d6d6d;
   }
-  & .data-icon{
-    margin-top:1%;
+  & .data-icon {
+    margin: 2% 4%;
+  }
+  & .icon-value {
+    margin-left: 1%;
+    margin-top: 0.5%;
+    font-size: 12px;
   }
 `;
 
