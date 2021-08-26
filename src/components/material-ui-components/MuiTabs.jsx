@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
         backgroundColor: theme.palette.background.paper,
-        width: '80%',
+        width: '100%',
         margin: 'auto',
         '& > .MuiAppBar-colorPrimary': {
             backgroundColor: 'white !important',
@@ -57,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
   tab: {
     fontSize: '11px',
     fontWeight: '800',
+    color: '#697379'
   },
   tabPanel: {
     '& > .MuiBox-root': {
