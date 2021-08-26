@@ -54,12 +54,17 @@ const useStyles = makeStyles((theme) => ({
             boxShadow: 'none',
         },
   },
+  tab: {
+    fontSize: '11px',
+    fontWeight: '800',
+  },
   tabPanel: {
     '& > .MuiBox-root': {
       padding: 0,
       paddingTop: '20px',
     },
-  }
+  },
+
 }));
 
 export default function MuiTabs() {
@@ -69,21 +74,19 @@ export default function MuiTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-
   return (
     <div className={classes.root}>
       <AppBar position="static" >
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label='Top Cities' {...a11yProps(0)} />
-          <Tab label="Top Destinations" {...a11yProps(1)} />
+          <Tab className={ classes.tab } label='Top Cities' {...a11yProps(0)} />
+          <Tab className={ classes.tab } label="Top Destinations" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} className={classes.tabPanel}>
         <TopCities/>
       </TabPanel>
       <TabPanel value={value} index={1} className={classes.tabPanel}>
-        Item Two
+        <TopCities/>
       </TabPanel>
     </div>
   );
