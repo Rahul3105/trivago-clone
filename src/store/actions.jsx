@@ -31,3 +31,17 @@ export const getDetails = (dispatch) => {
             dispatch(failureAction)
     })
 }
+export const getAllDetails = (dispatch) => {
+  const requestAction = getDataRequest();
+  dispatch(requestAction);
+  axios
+    .get("http://localhost:8000/recentlyViewed")
+    .then((res) => {
+      const successAction = getDataSuccess(res.data);
+      dispatch(successAction);
+    })
+    .catch((err) => {
+      const failureAction = getDataFailure();
+      dispatch(failureAction);
+    });
+};

@@ -18,7 +18,7 @@
   },
   "recentlyVisited": [
     {
-      "id":1,
+      "id": 1,
       "date": "24 Aug. 2021",
       "location": "Massourie",
       "checkin": "25-08-21",
@@ -27,7 +27,7 @@
       "guest": "4"
     },
     {
-      "id":2,
+      "id": 2,
       "date": "24 Aug. 2021",
       "location": "Delhi",
       "checkin": "25-08-21",
@@ -43,5 +43,91 @@
       "room": "2",
       "guest": "4"
     }
+  ],
+  "recentlyViewed": [
+    {
+      "id": 1,
+      "name":"The Claridges Nabha Residence",
+      "img":"https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/27/03/270392342.jpeg",
+      "date": "24 Aug. 2021",
+      "star":"4",
+      "rating":"9.4",
+      "reviews":"2492",
+      "location": "Massourie",
+      "checkin": "25-08-21",
+      "checkout": "27-08-21",
+      "room": "2",
+      "guest": "4"
+    },
+    {
+      "id": 2,
+      "name": "The Claridges Nabha Residence",
+      "img": "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/27/03/270392342.jpeg",
+      "date": "24 Aug. 2021",
+      "star": "4",
+      "rating": "9.4",
+      "reviews": "2492",
+      "location": "Massourie",
+      "checkin": "25-08-21",
+      "checkout": "27-08-21",
+      "room": "2",
+      "guest": "4"
+    },
+    {
+      "id": 3,
+      "name": "The Claridges Nabha Residence",
+      "img": "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/27/03/270392342.jpeg",
+      "date": "24 Aug. 2021",
+      "star": "4",
+      "rating": "9.4",
+      "reviews": "2492",
+      "location": "Massourie",
+      "checkin": "25-08-21",
+      "checkout": "27-08-21",
+      "room": "2",
+      "guest": "4"
+    },
+     {
+       "id": 4,
+       "name": "The Claridges Nabha Residence",
+       "img": "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/27/03/270392342.jpeg",
+       "date": "24 Aug. 2021",
+       "star": "4",
+       "rating": "7.0",
+       "reviews": "2492",
+       "location": "Massourie",
+       "checkin": "25-08-21",
+       "checkout": "27-08-21",
+       "room": "2",
+       "guest": "4"
+     },
+      {
+        "id": 5,
+        "name": "The Claridges Nabha Residence",
+        "img": "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/27/03/270392342.jpeg",
+        "date": "24 Aug. 2021",
+        "star": "4",
+        "rating": "9.4",
+        "reviews": "2492",
+        "location": "Massourie",
+        "checkin": "25-08-21",
+        "checkout": "27-08-21",
+        "room": "2",
+        "guest": "4"
+      },
+       {
+         "id": 6,
+         "name": "The Claridges Nabha Residence",
+         "img": "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/27/03/270392342.jpeg",
+         "date": "24 Aug. 2021",
+         "star": "4",
+         "rating": "7.4",
+         "reviews": "2492",
+         "location": "Massourie",
+         "checkin": "25-08-21",
+         "checkout": "27-08-21",
+         "room": "2",
+         "guest": "4"
+       }
   ]
 }
