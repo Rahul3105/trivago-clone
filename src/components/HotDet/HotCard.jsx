@@ -6,6 +6,9 @@ import StarRateOutlinedIcon from "@material-ui/icons/StarRateOutlined";
 import { makeStyles, withStyles } from "@material-ui/core";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Slider from "@material-ui/core/Slider";
+import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
+import Clean from "./clean";
+import Amenity from "./Amenity";
 
 const useStyle = makeStyles({
   logoWidth: {
@@ -22,6 +25,20 @@ const PrettoSlider = withStyles({
   root: {
     alignItems: "center",
     padding: "12px 0",
+  },
+  thumb: {
+    height: 8,
+    width: 24,
+    backgroundColor: "transparent",
+    marginTop: 8,
+    marginLeft: 12,
+    "&:focus, &:hover, &$active": {
+      boxShadow: "inherit",
+    },
+  },
+  active: {},
+  valueLabel: {
+    left: "calc(-50% + 4px)",
   },
   track: {
     height: 8,
@@ -44,6 +61,35 @@ const hotImg = [
   "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/59/00/590027688.jpeg",
   "https://tse3.mm.bing.net/th?id=OIP.Dcxhjsri6r0YALxfeXqXOgHaEK&pid=Api&P=0&w=287&h=162",
 ];
+const a = [0, 1, 1, 1, 1, 0, 0, 1, 1.0];
+const me = {
+  hotel: [
+    "a",
+    "b",
+    "c",
+    "d",
+    "a",
+    "b",
+    "c",
+    "d",
+    "a",
+    "b",
+    "c",
+    "d",
+    "a",
+    "b",
+    "c",
+    "d",
+    "a",
+    "b",
+    "c",
+    "d",
+  ],
+  room: ["b", "c", "d", "a", "b", "c", "d", "a", "b", "c", "d", "a", "b"],
+  spa: ["a", "b", "c", "d", "a"],
+  accessability: ["a", "b", "c"],
+  children: ["a", "b", "c"],
+};
 const HotCard = () => {
   const [map, setMap] = useState(false);
   const [det, SetDet] = useState(false);
@@ -108,7 +154,11 @@ const HotCard = () => {
               src="https://imgcy.trivago.com/c_lfill,d_dummy.jpeg,e_sharpen:60,f_auto,h_450,q_auto,w_450/itemimages/75/66/7566748_v1.jpeg"
               alt=""
             />
+            <Fav>
+              <FavoriteBorderOutlinedIcon className={cls.logoWidth} />
+            </Fav>
           </Imag>
+
           <Mid>
             <div>
               <h2>Conrad hotel</h2>
@@ -164,7 +214,7 @@ const HotCard = () => {
           </Last>
         </Cont>
       )}
-      {det && (
+      {map && det && (
         <Bar>
           <div>
             <button
@@ -215,16 +265,28 @@ const HotCard = () => {
           </div>
         </Bar>
       )}
-      {over && <div>OverView</div>}
-      {info && <div>Info</div>}
-      {pic && (
+      {map && over && <div>OverView</div>}
+      {map && info && (
+        <>
+          <Amenity
+            a={a}
+            name={"Conrad"}
+            about={
+              "Located in Andheri East, The Leela Mumbai is a perfect starting point from which to explore Mumbai. The hotel offers guests a range of services and amenities designed to provide comfort and convenience. To be found at the hotel are 24-hour room service, 24-hour security, daily housekeeping, portable wi-fi rental, postal service. Guestrooms are designed to provide an optimal level of comfort with welcoming decor and some offering convenient amenities like locker, closet, towels, carpeting,clothes rack. Access to the hotel's hot tub, fitness center, sauna, outdoor pool, spa will further enhance your satisfying stay. Discover all Mumbai has to offer by making The Leela Mumbai your base."
+            }
+            me={me}
+          />
+          <Clean />
+        </>
+      )}
+      {map && pic && (
         <Pics>
           {hotImg.map((it) => {
             return <img src={it} alt="" />;
           })}
         </Pics>
       )}
-      {review && (
+      {map && review && (
         <div className={cls.colo}>
           <Tag>Rating Overview</Tag>
           <Review>
@@ -261,7 +323,7 @@ const HotCard = () => {
           </Review>
         </div>
       )}
-      {deal && <div>Deal</div>}
+      {map && deal && <div>Deal</div>}
     </div>
   );
 };
@@ -452,8 +514,10 @@ const Pics = styled.div`
     width: 24%;
     height: auto;
     margin: 0.5%;
+    border-radius: 10px;
   }
 `;
+
 const Review = styled.div`
   width: 980px;
   margin: 10px;
@@ -508,4 +572,14 @@ const Tag = styled.h2`
   padding: 20px 15px 10px;
   font-size: 18px;
   font-weight: 600;
+`;
+const Fav = styled.button`
+  position: relative;
+  left: -210px;
+  top: -165px;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border: none;
+  border-radius: 25%;
 `;
