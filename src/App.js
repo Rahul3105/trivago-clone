@@ -8,8 +8,9 @@ function App() {
     <div>
 
       <Routes />
-      <SearchBar />
+      {/* <SearchBar /> */}
     </div>
   );
 }
+
 export default App;
