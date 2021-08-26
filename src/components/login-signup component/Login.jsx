@@ -19,25 +19,24 @@ const Login = () => {
     )
 
 }
-export { Login };
 
 
-const StyledLogin = styled.div `
+const StyledLogin = styled.div`
     & > h1 {
         font-size: 20px;
         margin: 8px 0;
     }
-    /* form css */
-    & > form {
-        padding-right:10px;
+    & h1 + p {
+        font-size:16px;
     }
+    /* form css */
     & > form > label ,form > input, .form > button{
         display: block;
-
+        
     }
     & > form >label {
         margin:22px 0;
-
+        
     }
     & > form >label > p {
         font-weight: 700;
@@ -49,7 +48,8 @@ const StyledLogin = styled.div `
         height: 44px;
         border: 1px solid #9ba2a6; 
         width:100%;
-
+        font-size: 16px;
+        
     }
     & > form > button {
         width:100%;
@@ -59,6 +59,9 @@ const StyledLogin = styled.div `
         border:none;
         border-radius: 2px;
         font-weight: 700;
+        font-size: 16px;
     }
+    
+`;
 
-`
+export { Login, StyledLogin };
