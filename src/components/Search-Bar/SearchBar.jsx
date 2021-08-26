@@ -15,236 +15,243 @@ import { useEffect } from "react";
 import { Search } from "./Search";
 
 export function SearchBar() {
-    const [show, setShow] = useState(false);
-    const [hotelClass, setHotelClass] = useState(false);
-    const [houseClass, setHouseClass] = useState(false);
-    const [border, setBorder] = useState(false);
-    const [datePicker, setDatePicker] = useState(false);
-    const [clickedCheckOut, setClickedCheckOut] = useState(false);
-    const [guestSelect, setGuestSelect] = useState(false);
-    const [location, setLocation] = useState("");
-    const [checkInDate, setCheckInDate] = useState("____/____/____");
-    const [checkOutDate, setCheckOutDate] = useState("____/____/____");
+  const [show, setShow] = useState(false);
+  const [hotelClass, setHotelClass] = useState(false);
+  const [houseClass, setHouseClass] = useState(false);
+  const [border, setBorder] = useState(false);
+  const [datePicker, setDatePicker] = useState(false);
+  const [clickedCheckOut, setClickedCheckOut] = useState(false);
+  const [guestSelect, setGuestSelect] = useState(false);
+  const [location, setLocation] = useState("");
+  const [checkInDate, setCheckInDate] = useState("____/____/____");
+  const [checkOutDate, setCheckOutDate] = useState("____/____/____");
+  const [guestNumber, setGuestNumber] = useState(2)
+  const [roomsNumber, setRoomsNumber] = useState(1)
 
-    useEffect(() => {
-        setShow(true);
-    }, []);
-    const handleBorder = () => {
-        setBorder(true);
-        setDatePicker(false);
-        setClickedCheckOut(false);
-    };
+  useEffect(() => {
+    setShow(true);
+  }, []);
+  const handleBorder = () => {
+    setBorder(true);
+    setDatePicker(false);
+    setClickedCheckOut(false);
+  };
 
-    const handleShow = () => {
-        setShow(true);
-        setHotelClass(false);
-        setHouseClass(false);
-        setBorder(false);
-    };
-    const handleHotelClass = () => {
-        setHotelClass(true);
-        setShow(false);
-        setHouseClass(false);
-        setBorder(false);
-    };
-    const handleHouseClass = () => {
-        setHouseClass(true);
-        setShow(false);
-        setHotelClass(false);
-        setBorder(false);
-    };
-    const handleLocationInput = (e) => {
-        e.preventDefault();
-        console.log(location);
-        setLocation(e.target.value);
-    };
-    const handleClear = () => {
-        setLocation("");
-    };
-    const handleDatePicker = () => {
-        setDatePicker(!datePicker);
-        setClickedCheckOut(false);
-    };
-    const handleClickedCheckOut = () => {
-        setClickedCheckOut(!clickedCheckOut);
-        setDatePicker(false);
-    };
-    const handleGuestSelector = () => {
-        setGuestSelect(!guestSelect)
-    }
-    // console.log(checkInDate)
-    return (
-        <SearchBarWrapper>
-            <div className="search-bar-cont">
-                <CategoryLinksWrapper>
-                    <div className={show ? "afterClick" : undefined} onClick={handleShow}>
-                        <span className={show ? "afterClickAnchor" : undefined}>
-                            All stays
-                        </span>
-                    </div>
-                    <div
-                        className={hotelClass ? "afterClick space-left" : "space-left"}
-                        onClick={handleHotelClass}
-                    >
-                        <span className={hotelClass ? "afterClickAnchor" : undefined}>
-                            Hotel
-                        </span>
-                    </div>
-                    <div
-                        className={
-                            houseClass
-                                ? "afterClick space-left houseAPwidth"
-                                : "space-left houseAPwidth"
-                        }
-                        onClick={handleHouseClass}
-                    >
-                        <span className={houseClass ? "afterClickAnchor" : undefined}>
-                            House/Apartment
-                        </span>
-                    </div>
-                </CategoryLinksWrapper>
-                <SearchBoxWrapper>
-                    <SearchBarMainWrapper>
-                        <SelectLocationWrapper>
-                            <div
-                                onClick={handleBorder}
-                                className={border ? "dottedBorder" : undefined}
-                            >
-                                <img src={placeholder} alt="" />{" "}
-                                <input
-                                    placeholder="Enter a hotel name or destination"
-                                    type="text"
-                                    value={location}
-                                    onChange={handleLocationInput}
-                                />
-                                <Button
-                                    onClick={handleClear}
-                                    style={{
-                                        maxWidth: "30px",
-                                        maxHeight: "30px",
-                                        minWidth: "30px",
-                                        minHeight: "30px",
-                                        top: "4px",
-                                    }}
-                                >
-                                    <ClearIcon />
-                                </Button>
-                            </div>
-                        </SelectLocationWrapper>
-                        <PickDateWrapper>
-                            <div>
-                                <div onClick={handleDatePicker} className="checkIndate">
-                                    <img src={calender} alt="" />
-                                    <div className="date-al date-al-margin">
-                                        <span>Check in</span>
-                                        <span>{checkInDate}</span>
-                                    </div>
-                                    <div className="arrows-margin">
-                                        <ArrowBackIosIcon style={{ cursor: "pointer" }} />
-                                        <ArrowForwardIosIcon style={{ cursor: "pointer" }} />
-                                    </div>
-                                </div>
-                                <span className="partitionLine"></span>
-                                <div onClick={handleClickedCheckOut} className="checkOutdate">
-                                    <div className="date-al date-al-margin">
-                                        <span>Check in</span>
-                                        <span>{checkOutDate}</span>
-                                    </div>
-                                    <div className="arrows-margin2">
-                                        <ArrowBackIosIcon style={{ cursor: "pointer" }} />
-                                        <ArrowForwardIosIcon style={{ cursor: "pointer" }} />
-                                    </div>
-                                </div>
-                            </div>
-                        </PickDateWrapper>
-                        <SelectGuestsWrapper>
-                            <div>
-                                <div onClick={handleGuestSelector} className="guestsnumber">
-                                    <img src={addgroup} alt="" />
-                                    <div className="guest-al">
-                                        <span>1 Room</span>
-                                        <span>2 Guests</span>
-                                    </div>
-                                </div>
-                                <button>Search</button>
-                            </div>
-                        </SelectGuestsWrapper>
-                    </SearchBarMainWrapper>
-                </SearchBoxWrapper>
-                {datePicker && (
-                    <Search
-                        setCheckInDate={setCheckInDate}
-                        setCheckOutDate={setCheckOutDate}
-                    />
-                )}
-                {clickedCheckOut && (
-                    <Search
-                        setCheckInDate={setCheckInDate}
-                        setCheckOutDate={setCheckOutDate}
-                    />
-                )}
-                {guestSelect && <GuestCard />}
+  const handleShow = () => {
+    setShow(true);
+    setHotelClass(false);
+    setHouseClass(false);
+    setBorder(false);
+  };
+  const handleHotelClass = () => {
+    setHotelClass(true);
+    setShow(false);
+    setHouseClass(false);
+    setBorder(false);
+  };
+  const handleHouseClass = () => {
+    setHouseClass(true);
+    setShow(false);
+    setHotelClass(false);
+    setBorder(false);
+  };
+  const handleLocationInput = (e) => {
+    e.preventDefault();
+    console.log(location);
+    setLocation(e.target.value);
+  };
+  const handleClear = () => {
+    setLocation("");
+  };
+  const handleDatePicker = () => {
+    setDatePicker(!datePicker);
+    setClickedCheckOut(false);
+    setGuestSelect(false)
+  };
+  const handleClickedCheckOut = () => {
+    setClickedCheckOut(!clickedCheckOut);
+    setDatePicker(false);
+    setGuestSelect(false)
+  };
+  const handleGuestSelector = () => {
+    setDatePicker(false);
+    setClickedCheckOut(false);
+    setGuestSelect(!guestSelect)
 
-                <BookingLogosWrapper>
-                    <div className="booking-sites-text">
-                        <h4>We compare multiple booking sites at once</h4>
-                    </div>
-                    <div className="booking-sites-logo">
-                        <div>
-                            <img
-                                className="partner_logo agodaLogo"
-                                src="https://imgcy.trivago.com/image/upload/hardcodedimages/mpm-localised-logos/395.png"
-                                alt=""
-                            />
-                        </div>
-                        <div>
-                            <img
-                                className="partner_logo logo-width"
-                                src="https://imgcy.trivago.com/image/upload/hardcodedimages/mpm-localised-logos/452.png"
-                                alt=""
-                            />
-                        </div>
-                        <div>
-                            <img
-                                className="partner_logo logo-width booking.comLogo"
-                                src="https://imgcy.trivago.com/image/upload/hardcodedimages/mpm-localised-logos/626.png"
-                                alt=""
-                            />
-                        </div>
-                        <div>
-                            <img
-                                className="partner_logo"
-                                src="	https://imgcy.trivago.com/image/upload/hardcodedimages/mpm-localised-logos/2564.png"
-                                alt=""
-                            />
-                        </div>
-                        <div>
-                            <img
-                                className="partner_logo "
-                                src="	https://imgcy.trivago.com/image/upload/hardcodedimages/mpm-localised-logos/14.png"
-                                alt=""
-                            />
-                        </div>
-                        <div>
-                            <img
-                                className="partner_logo logo-width"
-                                src="https://imgcy.trivago.com/image/upload/hardcodedimages/mpm-localised-logos/634.png"
-                                alt=""
-                            />
-                        </div>
-                        <div>
-                            <img
-                                className="partner_logo"
-                                src="	https://imgcy.trivago.com/image/upload/hardcodedimages/mpm-localised-logos/2452.png"
-                                alt=""
-                            />
-                        </div>
-                        <div className="More">+100 more</div>
-                    </div>
-                </BookingLogosWrapper>
+  }
+  // console.log(checkInDate)
+  return (
+    <SearchBarWrapper>
+      <div className="search-bar-cont">
+        <CategoryLinksWrapper>
+          <div className={show ? "afterClick" : undefined} onClick={handleShow}>
+            <span className={show ? "afterClickAnchor" : undefined}>
+              All stays
+            </span>
+          </div>
+          <div
+            className={hotelClass ? "afterClick space-left" : "space-left"}
+            onClick={handleHotelClass}
+          >
+            <span className={hotelClass ? "afterClickAnchor" : undefined}>
+              Hotel
+            </span>
+          </div>
+          <div
+            className={
+              houseClass
+                ? "afterClick space-left houseAPwidth"
+                : "space-left houseAPwidth"
+            }
+            onClick={handleHouseClass}
+          >
+            <span className={houseClass ? "afterClickAnchor" : undefined}>
+              House/Apartment
+            </span>
+          </div>
+        </CategoryLinksWrapper>
+        <SearchBoxWrapper>
+          <SearchBarMainWrapper>
+            <SelectLocationWrapper>
+              <div
+                onClick={handleBorder}
+                className={border ? "dottedBorder" : undefined}
+              >
+                <img src={placeholder} alt="" />{" "}
+                <input
+                  placeholder="Enter a hotel name or destination"
+                  type="text"
+                  value={location}
+                  onChange={handleLocationInput}
+                />
+                <Button
+                  onClick={handleClear}
+                  style={{
+                    maxWidth: "30px",
+                    maxHeight: "30px",
+                    minWidth: "30px",
+                    minHeight: "30px",
+                    top: "4px",
+                  }}
+                >
+                  <ClearIcon />
+                </Button>
+              </div>
+            </SelectLocationWrapper>
+            <PickDateWrapper>
+              <div>
+                <div onClick={handleDatePicker} className="checkIndate">
+                  <img src={calender} alt="" />
+                  <div className="date-al date-al-margin">
+                    <span>Check in</span>
+                    <span>{checkInDate}</span>
+                  </div>
+                  <div className="arrows-margin">
+                    <ArrowBackIosIcon style={{ cursor: "pointer" }} />
+                    <ArrowForwardIosIcon style={{ cursor: "pointer" }} />
+                  </div>
+                </div>
+                <span className="partitionLine"></span>
+                <div onClick={handleClickedCheckOut} className="checkOutdate">
+                  <div className="date-al date-al-margin">
+                    <span>Check out</span>
+                    <span>{checkOutDate}</span>
+                  </div>
+                  <div className="arrows-margin2">
+                    <ArrowBackIosIcon style={{ cursor: "pointer" }} />
+                    <ArrowForwardIosIcon style={{ cursor: "pointer" }} />
+                  </div>
+                </div>
+              </div>
+            </PickDateWrapper>
+            <SelectGuestsWrapper>
+              <div>
+                <div onClick={handleGuestSelector} className="guestsnumber">
+                  <img src={addgroup} alt="" />
+                  <div className="guest-al">
+                    <span>{roomsNumber} Room</span>
+                    <span>{guestNumber} Guests</span>
+                  </div>
+                </div>
+                <button>Search</button>
+              </div>
+            </SelectGuestsWrapper>
+          </SearchBarMainWrapper>
+        </SearchBoxWrapper>
+        {datePicker && (
+          <Search
+            setCheckInDate={setCheckInDate}
+            setCheckOutDate={setCheckOutDate}
+          />
+        )}
+        {clickedCheckOut && (
+          <Search
+            setCheckInDate={setCheckInDate}
+            setCheckOutDate={setCheckOutDate}
+          />
+        )}
+        {guestSelect && <GuestCard setGuestNumber={setGuestNumber} setRoomsNumber={setRoomsNumber} />}
+
+        <BookingLogosWrapper>
+          <div className="booking-sites-text">
+            <h4>We compare multiple booking sites at once</h4>
+          </div>
+          <div className="booking-sites-logo">
+            <div>
+              <img
+                className="partner_logo agodaLogo"
+                src="https://imgcy.trivago.com/image/upload/hardcodedimages/mpm-localised-logos/395.png"
+                alt=""
+              />
             </div>
-        </SearchBarWrapper>
-    );
+            <div>
+              <img
+                className="partner_logo logo-width"
+                src="https://imgcy.trivago.com/image/upload/hardcodedimages/mpm-localised-logos/452.png"
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                className="partner_logo logo-width booking.comLogo"
+                src="https://imgcy.trivago.com/image/upload/hardcodedimages/mpm-localised-logos/626.png"
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                className="partner_logo"
+                src="	https://imgcy.trivago.com/image/upload/hardcodedimages/mpm-localised-logos/2564.png"
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                className="partner_logo "
+                src="	https://imgcy.trivago.com/image/upload/hardcodedimages/mpm-localised-logos/14.png"
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                className="partner_logo logo-width"
+                src="https://imgcy.trivago.com/image/upload/hardcodedimages/mpm-localised-logos/634.png"
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                className="partner_logo"
+                src="	https://imgcy.trivago.com/image/upload/hardcodedimages/mpm-localised-logos/2452.png"
+                alt=""
+              />
+            </div>
+            <div className="More">+100 more</div>
+          </div>
+        </BookingLogosWrapper>
+      </div>
+    </SearchBarWrapper>
+  );
 }
 
 const SearchBarWrapper = styled.div`

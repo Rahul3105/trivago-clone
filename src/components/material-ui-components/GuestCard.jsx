@@ -3,22 +3,22 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
-
+import './GuestCardAnimate.css'
 import styled from "styled-components";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 
-import { white } from "@material-ui/core/colors";
-import { useState, useRef, useEffect } from "react";
-import { Select } from "@material-ui/core";
+import { useState, useEffect } from "react";
+
 const useStyles = makeStyles({
     root: {
         position: "absolute",
         minWidth: "300px",
-        maxWidth: "350px",
+        maxWidth: "300px",
         maxHeight: "auto",
         top: "19rem",
         right: "31rem",
+        boxShadow: "0px 0px 17px -2px black",
     },
     content: {
         display: "grid",
@@ -45,7 +45,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function GuestCard() {
+export default function GuestCard({ setGuestNumber, setRoomsNumber }) {
     const classes = useStyles();
     const [adults, setAdults] = useState(2);
     const [children, setChildren] = useState(0);
@@ -53,7 +53,8 @@ export default function GuestCard() {
     const [state, setState] = useState({});
     const [childrenValues, setChildrenValues] = useState([]);
     const [childrenArr, setChildrenArr] = useState([]);
-    const reference = useRef(state);
+
+
     const handleAdultsChange = (e) => {
         setAdults(e.target.value);
     };
@@ -74,21 +75,26 @@ export default function GuestCard() {
     };
     const handleChildrenReduce = () => {
         setChildren(Number(children) - 1);
+
         setChildrenArr(new Array(children - 1).fill(0));
     };
     const handleRoomsChange = (e) => {
         setRooms(e.target.value);
+
     };
     const handleRoomsAdd = () => {
         setRooms(Number(rooms) + 1);
+
     };
     const handleRoomsReduce = () => {
         setRooms(Number(rooms) - 1);
+
     };
     const handleReset = () => {
         setAdults(2);
         setRooms(1);
         setChildren(0);
+
         setChildrenArr(new Array(0).fill(0));
     };
     const handleChildrenAge = (event) => {
@@ -105,8 +111,12 @@ export default function GuestCard() {
     }, [state]);
     // console.log(childrenValues)
     // console.log(childrenArr)
+    const handleApply = () => {
+        setGuestNumber(children + adults)
+        setRoomsNumber(rooms)
+    }
     return (
-        <Card className={classes.root}>
+        <Card className={`AnimateRight ${classes.root}`}>
             <CardContent className={classes.content}>
                 <PeoplesWrapper>
                     <div className="peoplesSpan">
@@ -241,8 +251,18 @@ export default function GuestCard() {
                     </div>
                 </PeoplesWrapper>
             </CardContent>
-            <CardContent className={classes.content2}>
-                <ChildrenWrapper>
+            {rooms >= 6 && (
+                <HotelPlanWrapper rooms={rooms}>
+                    <p>Big group? Try Hotelplanner.com for 6+ rooms</p>
+                </HotelPlanWrapper>
+            )}
+            <CardContent>
+                {childrenArr.length >= 1 && (
+                    <ReqTextWrapper children={children}>
+                        <span>Children's age (required)</span>
+                    </ReqTextWrapper>
+                )}
+                <ChildrenWrapper children={children}>
                     {childrenArr.map((el, index) => {
                         console.log(index);
                         return (
@@ -273,17 +293,21 @@ export default function GuestCard() {
                         );
                     })}
                 </ChildrenWrapper>
-                <BtnsWrapper>
-                    <div>
-                        <button onClick={handleReset} className="muiBtn1">
-                            Reset
-                        </button>
-                    </div>
-                    <div>
-                        <button className="muiBtn2">Apply</button>
-                    </div>
-                </BtnsWrapper>
             </CardContent>
+            <BottomWrapper>
+                <CardContent className={classes.content2}>
+                    <BtnsWrapper children={children}>
+                        <div>
+                            <button onClick={handleReset} className="muiBtn1">
+                                Reset
+                            </button>
+                        </div>
+                        <div>
+                            <button onClick={handleApply} className="muiBtn2">Apply</button>
+                        </div>
+                    </BtnsWrapper>
+                </CardContent>
+            </BottomWrapper>
         </Card>
     );
 }
@@ -356,12 +380,43 @@ const BtnsWrapper = styled.div`
   }
 `;
 const ChildrenWrapper = styled.div`
+  display: ${(props) => (props.children >= 1 ? "block" : "none")};
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+
   select {
     height: 4rem;
     border-radius: 1rem;
     text-align: center;
   }
+`;
+
+const ReqTextWrapper = styled.div`
+  text-align: start;
+  span {
+    font-size: 13px;
+    font-weight: bold;
+  }
+`;
+const HotelPlanWrapper = styled.div`
+  display: ${(props) => (props.rooms >= 6 ? "block" : "none")};
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  p {
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: rgb(0, 127, 173);
+    :hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+`;
+const BottomWrapper = styled.div`
+  margin-top: ${(props) => (props.children >= 1 ? "" : "-2rem")};
 `;

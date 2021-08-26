@@ -1,0 +1,9 @@
+.AnimateRight {
+  animation: 0.8s AnimateRight 0s forwards;
+  transform: translateX(50%);
+}
+@keyframes AnimateRight {
+  to {
+    transform: translateX(0);
+  }
+}
