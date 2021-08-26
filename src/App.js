@@ -3,7 +3,8 @@ import Footer from "./components/footer/Footer";
 import NavBar from "./components/navbar/NavBar";
 
 import { Routes } from "./components/Route component/Routes";
-import { HomeCarousel } from "./components/home-page-carousel component/HomeCarousel";
+
+import { SearchBar } from "./components/Search-Bar/SearchBar";
 function App() {
   return (
     <div>
@@ -11,6 +12,7 @@ function App() {
       <NavBar />
       <Footer />
       <Routes />
+      <SearchBar />
     </div>
   );
 }

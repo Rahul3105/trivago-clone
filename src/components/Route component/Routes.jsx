@@ -5,13 +5,14 @@ import { AuthRoute } from '../login-signup component/AuthRoute';
 import { RecentlyHome } from '../Recently-activity/RecentlyHome';
 import {Auth} from '../login-signup component/Auth'
 import { RecentlyMain } from '../Recently-activity/RecentlyMain';
-
+import {Home} from '../Home page/Home'
 const Routes = () => {
     return (
       <>
         <Switch>
             <Route exact path='/'>
                 <h1>This is home page</h1>
+                <Home/>
             </Route>
             <Route path='/auth/:id'>
                 <AuthRoute/>
@@ -30,6 +31,9 @@ const Routes = () => {
             <h1>Page not found</h1>
           </Route>
 
+            <Route>
+                <h1>Page not found</h1>
+            </Route>
         </Switch>
       </>
     );
