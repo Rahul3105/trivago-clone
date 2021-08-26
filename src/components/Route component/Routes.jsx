@@ -1,6 +1,7 @@
 import { Switch, Route } from 'react-router-dom';
 
 import { AuthRoute } from '../login-signup component/AuthRoute';
+
 import {Home} from '../Home page/Home'
 const Routes = () => {
     return (

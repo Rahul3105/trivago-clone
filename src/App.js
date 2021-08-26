@@ -1,14 +1,13 @@
 import "./App default css/App.css";
 
 import { Routes } from "./components/Route component/Routes";
+import MoreFilterCard from "./components/material-ui-components/MoreFilterCard";
 
-import { SearchBar } from "./components/Search-Bar/SearchBar";
 function App() {
   return (
     <div>
-
-      <Routes />
-      {/* <SearchBar /> */}
+      {/* <Routes /> */}
+      <MoreFilterCard />
     </div>
   );
 }

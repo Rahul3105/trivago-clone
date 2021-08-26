@@ -23,8 +23,8 @@ export function SearchBar() {
   const [clickedCheckOut, setClickedCheckOut] = useState(false);
   const [guestSelect, setGuestSelect] = useState(false);
   const [location, setLocation] = useState("");
-  const [checkInDate, setCheckInDate] = useState("____/____/____");
-  const [checkOutDate, setCheckOutDate] = useState("____/____/____");
+  const [checkInDate, setCheckInDate] = useState("-- /-- /----");
+  const [checkOutDate, setCheckOutDate] = useState("-- /-- /----");
   const [guestNumber, setGuestNumber] = useState(2)
   const [roomsNumber, setRoomsNumber] = useState(1)
 
@@ -146,10 +146,12 @@ export function SearchBar() {
                     <span>Check in</span>
                     <span>{checkInDate}</span>
                   </div>
-                  <div className="arrows-margin">
-                    <ArrowBackIosIcon style={{ cursor: "pointer" }} />
-                    <ArrowForwardIosIcon style={{ cursor: "pointer" }} />
-                  </div>
+                  {checkInDate !== "-- /-- /----" &&
+                    <div className="arrows-margin">
+                      <ArrowBackIosIcon style={{ cursor: "pointer" }} />
+                      <ArrowForwardIosIcon style={{ cursor: "pointer" }} />
+                    </div>
+                  }
                 </div>
                 <span className="partitionLine"></span>
                 <div onClick={handleClickedCheckOut} className="checkOutdate">
@@ -157,10 +159,10 @@ export function SearchBar() {
                     <span>Check out</span>
                     <span>{checkOutDate}</span>
                   </div>
-                  <div className="arrows-margin2">
+                  {checkInDate !== "-- /-- /----" && <div className="arrows-margin2">
                     <ArrowBackIosIcon style={{ cursor: "pointer" }} />
                     <ArrowForwardIosIcon style={{ cursor: "pointer" }} />
-                  </div>
+                  </div>}
                 </div>
               </div>
             </PickDateWrapper>
@@ -274,6 +276,9 @@ const BookingLogosWrapper = styled.div`
   align-items: center;
   padding-top: 1rem;
   .booking-sites-text {
+    h4{
+      font-size: 14px;
+    }
   }
   .booking-sites-logo {
     display: grid;
@@ -384,8 +389,10 @@ const SelectLocationWrapper = styled.div`
       border: none;
       position: relative;
       top: 4px;
+      font-size: 15px;
       ::placeholder {
         color: rgb(154, 161, 165);
+      
       }
     }
     .verticleAlign {
@@ -501,15 +508,17 @@ const SelectGuestsWrapper = styled.div`
       }
     }
     button {
-      width: 60%;
-      padding: 1rem;
-      background-color: #007fad;
-      border: 1px solid #007fad;
-      border-bottom-color: #005f81;
-      border-radius: 4rem;
-      color: white;
-      outline: none;
-      border: none;
+    width: 60%;
+    padding: 1rem;
+    background-color: #007fad;
+    border: 1px solid #007fad;
+    border-bottom-color: #005f81;
+    border-radius: 4rem;
+    color: white;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
       :hover {
         background-color: #005f81;
         cursor: pointer;
