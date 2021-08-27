@@ -16,6 +16,13 @@ import Drawer from "@material-ui/core/Drawer";
 import NavigateNextOutlinedIcon from "@material-ui/icons/NavigateNextOutlined";
 import ArrowBackOutlinedIcon from "@material-ui/icons/ArrowBackOutlined";
 
+import { useHistory } from 'react-router-dom';
+
+import { useSelector } from 'react-redux';
+
+
+import { ShowProfile } from './ShowProfile';
+
 const useStyles = makeStyles({
   pad: {
     borderBottom: "none",
@@ -43,13 +50,19 @@ const useStyles = makeStyles({
 const NavBar = () => {
   const [draw, setDraw] = useState(false);
   const theme = useTheme();
+  const history = useHistory();
   const mob = useMediaQuery(theme.breakpoints.down(700));
   const pad = useMediaQuery(theme.breakpoints.up(700));
   const med = useMediaQuery(theme.breakpoints.up(880));
   const tri = useMediaQuery(theme.breakpoints.up(980));
   const big = useMediaQuery(theme.breakpoints.up(1280));
+  const loginInfo = useSelector((state) => state.login);
   const classes = useStyles();
-  console.log(theme, mob, pad, med, tri, big);
+  //this function is to redirect to auth component for login and signup purpose
+  const handleAuth = () => {
+    history.push('/auth/login')    
+  }
+
   return (
     <>
       <Top>
@@ -79,10 +92,10 @@ const NavBar = () => {
           </First>
         )}
         <Log>
-          <button>
+          { loginInfo.isAuth  ? <ShowProfile/> : <button onClick={handleAuth}>
             <PersonOutlineOutlinedIcon className={classes.logoWidth} />
             {!mob ? "Log-In" : ""}
-          </button>
+          </button> }
           {!med ? (
             <>
               <button onClick={() => setDraw(true)}>
