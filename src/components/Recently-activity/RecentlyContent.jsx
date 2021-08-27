@@ -3,8 +3,7 @@ import styled from 'styled-components'
 export const RecentlyContent = () => {
     return (
         <ContentBox>
-            <h1>asnjdjnaskn</h1>
-            <h4>asndbjaksdj</h4>
+            
         </ContentBox>
     )
 }

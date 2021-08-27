@@ -4,8 +4,10 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { getDetails } from '../../store/actions';
 import RecentlyData from './RecentlyData';
 import styled from 'styled-components'
+import { useHistory } from 'react-router-dom';
 
 export const RecentlyHome = () => {
+  const history = useHistory()
     const dispatch = useDispatch()
     const { data, isLoading, isError } = useSelector(
         (state) => state.activities,
@@ -17,6 +19,11 @@ export const RecentlyHome = () => {
     useEffect(() => {
         handleActivities()
     }, [])
+  
+  const handleRecentlyMain = ()=>{
+    history.push("/recentlyMain");
+  }
+    
     if (isLoading) {
         return (
             <div>
@@ -39,7 +46,7 @@ export const RecentlyHome = () => {
         {data.map((item) => (
           <RecentlyData data={item} key={item.id} />
         ))}
-            <Typography className="activity-seeAll">See all</Typography>
+            <Typography onClick={handleRecentlyMain} className="activity-seeAll">See all</Typography>
       </ActivityHome>
     );
 }

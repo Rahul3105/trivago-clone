@@ -1,9 +1,9 @@
 import React from 'react';
-import { WaveTopBottomLoading } from 'react-loadingg';
+// import { WaveTopBottomLoading } from 'react-loadingg'
 import styled from 'styled-components';
 const Loading = () => {
     return <StyledOverlay>
-        <WaveTopBottomLoading />
+        {/* <WaveTopBottomLoading /> */}
     </StyledOverlay>
 };
 const StyledOverlay = styled.div`

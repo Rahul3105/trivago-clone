@@ -1,3 +1,4 @@
+import NavBar from './components/navbar/NavBar';
 import "./App default css/App.css";
 import { useSelector } from "react-redux";
 import { Routes } from "./components/Route component/Routes";
@@ -10,13 +11,13 @@ function App() {
   const login = useSelector((state) => state.login);
   return (
     <div>
+
       {login.isLoading && <Loading />}
       <Routes />
 
+
       <NavBar />
       <HotCard />
-      <Footer />
-
     </div>
   );
 }
