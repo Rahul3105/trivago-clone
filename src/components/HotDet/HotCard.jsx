@@ -9,6 +9,7 @@ import Slider from "@material-ui/core/Slider";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import Clean from "./clean";
 import Amenity from "./Amenity";
+import Rating from "@material-ui/lab/Rating";
 
 const useStyle = makeStyles({
   logoWidth: {
@@ -164,10 +165,11 @@ const HotCard = () => {
               <h2>Conrad hotel</h2>
             </div>
             <Star>
+              {/* <StarRateOutlinedIcon className={cls.logoWidth} />
               <StarRateOutlinedIcon className={cls.logoWidth} />
               <StarRateOutlinedIcon className={cls.logoWidth} />
-              <StarRateOutlinedIcon className={cls.logoWidth} />
-              <StarRateOutlinedIcon className={cls.logoWidth} />
+              <StarRateOutlinedIcon className={cls.logoWidth} /> */}
+              <Rating value={4} readOnly />
               <p>Hotel</p>
             </Star>
             <button>
@@ -517,7 +519,6 @@ const Pics = styled.div`
     border-radius: 10px;
   }
 `;
-
 const Review = styled.div`
   width: 980px;
   margin: 10px;
