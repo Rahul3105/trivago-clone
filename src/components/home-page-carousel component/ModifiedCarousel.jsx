@@ -3,6 +3,7 @@ import  Carousel from 'react-elastic-carousel'
 
 const StyledCarousel = styled(Carousel)`
     position: relative;
+    /* border:1px solid lime; */
     & .rec-arrow {
         position: absolute;
         bottom: -5%;
@@ -20,7 +21,7 @@ export const ModifiedCarousel = ({children}) => <StyledCarousel breakPoints={bre
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
   { width: 550, itemsToShow: 2, itemsToScroll: 2 },
-  { width: 768, itemsToShow: 3 },
+  { width: 768, itemsToShow: 4 },
   { width: 1200, itemsToShow: 4 }
 ];
 

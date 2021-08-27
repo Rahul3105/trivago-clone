@@ -1,6 +1,6 @@
 import { ModifiedCarousel } from './ModifiedCarousel';
 import styled from 'styled-components';
-
+import { StyledCity } from './TopCities';
 const TopDestinations = () => {
     return <>
         <ModifiedCarousel>
@@ -17,17 +17,6 @@ const TopDestinations = () => {
     </>
 }
 export { TopDestinations  };
-const StyledCity = styled.div`
-    & > .imgCont > img {
-        border-radius: 20px; 
-    }
-    & > h1 {
-        margin: 5px 0;
-    }
-    & > p {
-        font-size: 14px;
-    }
-`;
 
 const destinations = [
     {

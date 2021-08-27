@@ -16,10 +16,12 @@ const TopCities = () => {
         </ModifiedCarousel>
     </>
 }
-export { TopCities };
-const StyledCity = styled.div`
+export {TopCities}
+export const StyledCity = styled.div`
+    width: 240px;
     & > .imgCont > img {
-        border-radius: 20px; 
+        border-radius: 20px;
+        width: 100%; 
     }
     & > h1 {
         margin: 5px 0;
@@ -34,24 +36,48 @@ const cities = [
         location: 'Delhi',
         noOfHotels: 1400,
         avgPrice: 2000,
-        img: 'https://imgcy.trivago.com/c_fill,d_dummy.jpeg,f_auto,h_258,q_auto,w_258/categoryimages/64/98/64981_v33.jpeg'
+        img:'https://imgcy.trivago.com/c_fill,d_dummy.jpeg,f_auto,h_258,q_auto,w_258/categoryimages/64/98/64981_v33.jpeg'
     },
     {
         location: 'Mumbai',
         noOfHotels: 1400,
-        avgPrice: 2000,
-        img: 'https://imgcy.trivago.com/c_fill,d_dummy.jpeg,f_auto,h_258,q_auto,w_258/categoryimages/64/98/64981_v33.jpeg'
+        avgPrice : 2000,
+        img:'https://imgcy.trivago.com/c_fill,d_dummy.jpeg,f_auto,h_258,q_auto,w_258/categoryimages/64/98/64981_v33.jpeg'
+    },
+    {
+        location: 'Delhi',
+        noOfHotels: 1400,
+        avgPrice : 2000,
+        img:'https://imgcy.trivago.com/c_fill,d_dummy.jpeg,f_auto,h_258,q_auto,w_258/categoryimages/64/98/64981_v33.jpeg'
+    },
+    {
+        location: 'Delhi',
+        noOfHotels: 1400,
+        avgPrice : 2000,
+        img:'https://imgcy.trivago.com/c_fill,d_dummy.jpeg,f_auto,h_258,q_auto,w_258/categoryimages/64/98/64981_v33.jpeg'
     },
     {
         location: 'Delhi',
         noOfHotels: 1400,
         avgPrice: 2000,
-        img: 'https://imgcy.trivago.com/c_fill,d_dummy.jpeg,f_auto,h_258,q_auto,w_258/categoryimages/64/98/64981_v33.jpeg'
+        img:'https://imgcy.trivago.com/c_fill,d_dummy.jpeg,f_auto,h_258,q_auto,w_258/categoryimages/64/98/64981_v33.jpeg'
+    },
+    {
+        location: 'Mumbai',
+        noOfHotels: 1400,
+        avgPrice : 2000,
+        img:'https://imgcy.trivago.com/c_fill,d_dummy.jpeg,f_auto,h_258,q_auto,w_258/categoryimages/64/98/64981_v33.jpeg'
     },
     {
         location: 'Delhi',
         noOfHotels: 1400,
-        avgPrice: 2000,
-        img: 'https://imgcy.trivago.com/c_fill,d_dummy.jpeg,f_auto,h_258,q_auto,w_258/categoryimages/64/98/64981_v33.jpeg'
+        avgPrice : 2000,
+        img:'https://imgcy.trivago.com/c_fill,d_dummy.jpeg,f_auto,h_258,q_auto,w_258/categoryimages/64/98/64981_v33.jpeg'
     },
-];
+    {
+        location: 'Delhi',
+        noOfHotels: 1400,
+        avgPrice : 2000,
+        img:'https://imgcy.trivago.com/c_fill,d_dummy.jpeg,f_auto,h_258,q_auto,w_258/categoryimages/64/98/64981_v33.jpeg'
+    },
+]
