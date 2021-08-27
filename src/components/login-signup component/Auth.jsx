@@ -16,10 +16,11 @@ import GoogleLogin from "react-google-login";
 const Auth = ({ children }) => {
   const history = useHistory();
   const { id } = useParams();
-  const handleLogin = (response) => {
+  const handleAuthLogin = (response) => {
+    // setLocalStorage(response);
     console.log(response);
   };
-  const handleFailure = (response) => {
+  const handleAuthFailure = (response) => {
     console.log(response);
   };
 
@@ -41,8 +42,8 @@ const Auth = ({ children }) => {
             <GoogleLogin
               clientId={process.env?.REACT_APP_GOOGLE_API_KEY}
               buttonText="Continue with Google"
-              onSuccess={handleLogin}
-              onFailure={handleFailure}
+              onSuccess={handleAuthLogin}
+              onFailure={handleAuthFailure}
               cookiePolicy={"single_host_origin"}
               render={(renderProps) => (
                 <StyledAuthBtn

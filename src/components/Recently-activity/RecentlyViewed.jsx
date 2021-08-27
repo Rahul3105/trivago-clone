@@ -38,7 +38,8 @@ const useStyles = makeStyles((theme) => ({
         width: "3.2rem",
         height: "2.7vh",
         borderRadius: "40%",
-        fontWeight: "600",
+      fontWeight: "600",
+      margin: "1%",
       display: "flex",
       textAlign: "center"
       
@@ -79,7 +80,7 @@ const {checkin,checkout,date,guest,id,img,location,name,rating,reviews,room,star
                 </div>
               </Typography>
               <Box>
-                <Typography style={{ textAlign: "center", display: "flex" }}>
+                <Typography className="rating-data-box" style={{ textAlign: "center", display: "flex" }}>
                   <Box
                     style={{
                       background: `${rating < 7.5 ? "#f2ba00" : "darkGreen"}`,
@@ -137,23 +138,27 @@ const RecentlyCard = styled.div`
     text-align: center;
     font-size: 14px;
     margin: 1%;
+    /* margin-top:2%; */
     font-weight: 700;
   }
-  & .reviews-data {
+  & .rating-data-box{
+    margin:2% 1%;
+  }
+   & .reviews-data {
     color: #757575;
     font-size: 14px;
     padding-left: 0.5rem;
   }
   & .viewed-date {
-    margin-top: 1.5%;
-    font-size: 12px;
+    margin-top: 3%;
+    font-size: 14px;
     color: #999;
   }
   & .rating-style {
     text-align: center;
     justify-content: center;
     font-size: 14px;
-    margin: auto;
+    margin: 1% auto;
     color: white;
   }
   & .arrow-handle {
@@ -162,8 +167,8 @@ const RecentlyCard = styled.div`
   }
   & .side-arrow {
     background-color: #f5f5f5;
-    margin-left:auto;
-    justify-content:space-around;
+    margin-left: auto;
+    justify-content: space-around;
     width: 5%;
   }
   & .box-data {
