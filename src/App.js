@@ -6,18 +6,19 @@ import { Routes } from "./components/Route component/Routes";
 import HotCard from "./components/HotDet/HotCard";
 
 import Loading from "./components/material-ui-components/LoadingAnimation";
+import { ComparePrice } from './components/HotDet/ComparePrice';
+import { OverBelow } from './components/HotDet/OverBelow';
 
 function App() {
   const login = useSelector((state) => state.login);
   return (
     <div>
 
-      {login.isLoading && <Loading />}
-      <Routes />
+      {/* {login.isLoading && <Loading />} */}
+      {/* <Routes /> */}
 
-      <NavBar />
+      {/* <NavBar /> */}
       <HotCard />
-      
 
     </div>
   );
