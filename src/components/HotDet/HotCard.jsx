@@ -180,6 +180,7 @@ const HotCard = () => {
                 </div>
               </BigGrn>
               <div>
+<<<<<<< HEAD
                 <div>
                   <h3>Conrad</h3>
                   <h3>₹7,280</h3>
@@ -191,6 +192,10 @@ const HotCard = () => {
                     <span> Trip.com</span>
                   </p>
                 </div>
+=======
+                <h2>₹7,580</h2>
+                <button>{`View Deal > `}</button>
+>>>>>>> d62afddb365eaa25d830e186bf1ade9161e62b73
               </div>
             </Last>
           </Cont>
@@ -246,7 +251,10 @@ const HotCard = () => {
           </div>
         </Bar>
       )}
-      {map && over && <div>OverView</div>}
+      {map && over && <div>OverView
+      
+      
+      </div>}
       {map && info && (
         <>
           <Amenity

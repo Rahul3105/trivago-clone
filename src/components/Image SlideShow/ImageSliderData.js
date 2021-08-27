@@ -1,0 +1,22 @@
+export const ImageSliderData = [
+  {
+    image:
+      "https://p4.wallpaperbetter.com/wallpaper/328/294/532/iron-man-and-captain-america-civil-war-movie-hd-desktop-wallpaper-2560%C3%971440-wallpaper-preview.jpg",
+  },
+  {
+    image:
+      "https://c4.wallpaperflare.com/wallpaper/14/548/927/the-avengers-avengers-endgame-avengers-endgame-infinity-gauntlet-iron-man-hd-wallpaper-preview.jpg",
+  },
+  {
+    image:
+      "https://www.pixel4k.com/wp-content/uploads/2019/12/iron-man-artwork_1576090203.jpg",
+  },
+  {
+    image:
+      "https://c4.wallpaperflare.com/wallpaper/731/574/513/movie-thor-ragnarok-thor-wallpaper-preview.jpg",
+  },
+  {
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn4tbMl86p8my62FXJor5EzUnf8l4MfrW2IOk3NcpJ0oSeopKm07s2fZGywkklAEPm2Iw&usqp=CAU",
+  },
+];
