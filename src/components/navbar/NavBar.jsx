@@ -58,13 +58,11 @@ const NavBar = () => {
   const big = useMediaQuery(theme.breakpoints.up(1280));
   const loginInfo = useSelector((state) => state.login);
   const classes = useStyles();
-  
   //this function is to redirect to auth component for login and signup purpose
   const handleAuth = () => {
     history.push('/auth/login')    
   }
 
-  // console.log(theme, mob, pad, med, tri, big);
   return (
     <>
       <Top>
@@ -94,7 +92,7 @@ const NavBar = () => {
           </First>
         )}
         <Log>
-          { loginInfo.isAuth  ? <ShowProfile loginInfo={loginInfo.userInfo}/> : <button onClick={handleAuth}>
+          { loginInfo.isAuth  ? <ShowProfile/> : <button onClick={handleAuth}>
             <PersonOutlineOutlinedIcon className={classes.logoWidth} />
             {!mob ? "Log-In" : ""}
           </button> }

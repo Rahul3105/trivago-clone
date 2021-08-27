@@ -8,19 +8,20 @@ import { SearchBar } from "../Search-Bar/SearchBar";
 import { useSelector } from "react-redux";
 
 //loading animation
-import Loading from "../material-ui-components/LoadingAnimation";
+
+import Loading from '../material-ui-components/LoadingAnimation'
 export const Home = () => {
-  const loginInfo = useSelector((state) => state.login);
-  return (
-    <>
-      {loginInfo.isLoading && <Loading />}
-      <NavBar />
-      <SearchBar />
-      <RecentlyHome />
-      <HomeCarousel />
-      <QNASection />
-      <MoreCitiesSection />
-      <Footer />
-    </>
-  );
-};
+    const loginInfo = useSelector((state) => state.login);
+    return (
+        <>
+            { loginInfo.isLoading && <Loading/> }
+            <NavBar />
+            <SearchBar />
+            <RecentlyHome/>
+            <HomeCarousel />
+            <QNASection />
+            <MoreCitiesSection/>
+            <Footer />
+        </>
+    )
+}

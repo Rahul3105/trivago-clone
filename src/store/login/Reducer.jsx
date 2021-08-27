@@ -2,7 +2,8 @@
 import {
     REQUEST_FAILURE,
     REQUEST_SUCCESS,
-    REQUEST_PENDING
+    REQUEST_PENDING,
+    LOGOUT_USER
 } from './actionTypes';
 
 import {getLocalStorage ,setLocalStorage, removeLocalStorage} from '../../utils/LocalStorage'
@@ -15,6 +16,7 @@ const init = {
     userInfo: getLocalStorage('currLoggedIn') || ''
 };
 export const Reducer = (state = init, { type, payload }) => {
+   
     switch (type) {
         case REQUEST_PENDING:
             return {
@@ -38,17 +40,16 @@ export const Reducer = (state = init, { type, payload }) => {
                 error: '',
                 isAuth: true,
             }
-        // case LOGOUT_USER:
-        //     removeLocalStorage('currLoggedIn');
-        //     return {
-        //         ...state,
-        //         isLoading: false,
-        //         isError: false,
-        //         error: '',
-        //         token: '',
-        //         isAuth: false,
-        //         message:''
-        //     }
+        case LOGOUT_USER:
+        
+            removeLocalStorage('currLoggedIn');
+            return {
+                ...state,
+                isLoading: false,
+                isError: false,
+                error: '',
+                isAuth: false,
+            }
 
         default:
             return state;
