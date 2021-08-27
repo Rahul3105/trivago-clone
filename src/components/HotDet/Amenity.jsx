@@ -148,7 +148,7 @@ const Poll = styled.div`
     align-self: center;
     font-size: 13px;
     padding: 0px 10px;
-    color: rgb(55,69,77)
+    color: rgb(55,69,77);
     word-break: break-word;
     word-wrap: break-word;
     line-height: 1.6;
@@ -170,7 +170,7 @@ const Big = styled.div`
     align-self: center;
     font-size: 14px;
     padding: 15px;
-    color: rgb(55,69,77)
+    color: rgb(55,69,77);
     word-break: break-word;
     word-wrap: break-word;
     line-height: 1.6;

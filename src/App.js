@@ -16,6 +16,12 @@ function App() {
   const login = useSelector((state) => state.login);
   return (
     <div>
+      {/* {login.isLoading && <Loading />} */}
+      {/* <Routes /> */}
+
+      {/* <NavBar /> */}
+      <HotCard />
+
       {login.isLoading && <Loading />}
       <Routes />
       {/* <ImageSlideShow slides={ImageSliderData} /> */}

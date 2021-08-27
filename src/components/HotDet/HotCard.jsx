@@ -197,7 +197,7 @@ const HotCard = () => {
               </div>
               <div>
                 <h2>₹7,580</h2>
-                <button>View Deal > </button>
+                <button>{`View Deal > `}</button>
               </div>
             </BigGrn>
             <div>
@@ -267,7 +267,10 @@ const HotCard = () => {
           </div>
         </Bar>
       )}
-      {map && over && <div>OverView</div>}
+      {map && over && <div>OverView
+      
+      
+      </div>}
       {map && info && (
         <>
           <Amenity
