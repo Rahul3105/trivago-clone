@@ -7,9 +7,9 @@ function App() {
   const login = useSelector((state) => state.login);
   return (
     <div>
-      {/* {login.isLoading && <Loading />} */}
-      {/* <Routes /> */}
-      <CheckoutPage />
+      {login.isLoading && <Loading />}
+      <Routes />
+      {/* <CheckoutPage /> */}
     </div>
   );
 }
