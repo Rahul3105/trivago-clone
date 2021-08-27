@@ -4,7 +4,7 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 
-
+import styled from 'styled-components'
 const useStyles = makeStyles((theme) => ({
   root: {
     width: 300 + theme.spacing(3) * 2
@@ -17,10 +17,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 const PrettoSlider = withStyles({
-  root: {
-    color: "#2bb4e6 !important",
-    height: 8
-  },
   thumb: {
     height: 24,
     width: 24,
@@ -42,20 +38,21 @@ const PrettoSlider = withStyles({
   rail: {
     height: 8,
     borderRadius: 4
-    },
-    check : {
-        border: '1px solid lime',
-        color:'red'
-    }
+  }
 })(Slider);
 
-export default function MuiSlider() {
+export default function MuiSlider({forRatingBar}) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Typography gutterBottom>Price / night</Typography>
-      <PrettoSlider aria-label="pretto slider" defaultValue={10} className={classes.check}/>
-    </div>
+    <StyledMuiSlider className={classes.root}>
+      {!forRatingBar && <Typography gutterBottom>Price / night</Typography>}
+      <PrettoSlider  disabled aria-label="pretto slider" defaultValue={10} className='customized'/>
+    </StyledMuiSlider>
   );
 }
+
+const StyledMuiSlider = styled.div`
+  border:1px solid lime;
+  height: 40px;
+`
