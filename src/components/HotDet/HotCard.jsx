@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
+import StarRateOutlinedIcon from "@material-ui/icons/StarRateOutlined";
 import { makeStyles, withStyles } from "@material-ui/core";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import Slider from "@material-ui/core/Slider";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import Clean from "./clean";
 import Amenity from "./Amenity";
 import Rating from "@material-ui/lab/Rating";
-import Photo from "./Photo";
-import ReviewMain from "./Review";
-import CardLoad from "./CardLoad";
 
 const useStyle = makeStyles({
   logoWidth: {
@@ -23,6 +22,36 @@ const useStyle = makeStyles({
   },
 });
 
+const PrettoSlider = withStyles({
+  root: {
+    alignItems: "center",
+    padding: "12px 0",
+  },
+  thumb: {
+    height: 8,
+    width: 24,
+    backgroundColor: "transparent",
+    marginTop: 8,
+    marginLeft: 12,
+    "&:focus, &:hover, &$active": {
+      boxShadow: "inherit",
+    },
+  },
+  active: {},
+  valueLabel: {
+    left: "calc(-50% + 4px)",
+  },
+  track: {
+    height: 8,
+    borderRadius: 4,
+    color: "rgb(2,128,0)",
+  },
+  rail: {
+    height: 8,
+    borderRadius: 4,
+    color: "#b7d7f7",
+  },
+})(Slider);
 const hotImg = [
   "https://tse4.mm.bing.net/th?id=OIP.XA-4n_CHeMA-qteo0KWyiAHaGO&pid=Api&P=0&w=215&h=182",
   "https://tse2.mm.bing.net/th?id=OIP.8PsnrR9xKfvTQhHztUdEBQHaFc&pid=Api&P=0&w=207&h=1530",
@@ -63,22 +92,14 @@ const me = {
   children: ["a", "b", "c"],
 };
 const HotCard = () => {
-  const [map, setMap] = useState(true);
+  const [map, setMap] = useState(false);
   const [det, SetDet] = useState(false);
   const [over, SetOver] = useState(false);
   const [info, SetInfo] = useState(false);
   const [pic, SetPic] = useState(false);
   const [review, SetReview] = useState(false);
   const [deal, SetDeal] = useState(false);
-  const [ld, setLd] = useState(true);
-
   const cls = useStyle();
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLd(false);
-    }, 3000);
-  }, []);
 
   const tog1 = () => {
     SetOver((p) => !p);
@@ -125,78 +146,76 @@ const HotCard = () => {
   };
   return (
     <div>
-      <div>{ld ? "true" : "false"}</div>
       <button onClick={() => setMap(true)}>Open map</button>
       <button onClick={() => setMap(false)}>Close map</button>
-      {map &&
-        (ld ? (
-          <CardLoad setLd={setLd} ld={ld} />
-        ) : (
-          <Cont onClick={big}>
-            <Imag>
-              <img
-                src="https://imgcy.trivago.com/c_lfill,d_dummy.jpeg,e_sharpen:60,f_auto,h_450,q_auto,w_450/itemimages/75/66/7566748_v1.jpeg"
-                alt=""
-              />
-              <Fav>
-                <FavoriteBorderOutlinedIcon className={cls.logoWidth} />
-              </Fav>
-            </Imag>
+      {map && (
+        <Cont onClick={big}>
+          <Imag>
+            <img
+              src="https://imgcy.trivago.com/c_lfill,d_dummy.jpeg,e_sharpen:60,f_auto,h_450,q_auto,w_450/itemimages/75/66/7566748_v1.jpeg"
+              alt=""
+            />
+            <Fav>
+              <FavoriteBorderOutlinedIcon className={cls.logoWidth} />
+            </Fav>
+          </Imag>
 
-            <Mid>
+          <Mid>
+            <div>
+              <h2>Conrad hotel</h2>
+            </div>
+            <Star>
+              {/* <StarRateOutlinedIcon className={cls.logoWidth} />
+              <StarRateOutlinedIcon className={cls.logoWidth} />
+              <StarRateOutlinedIcon className={cls.logoWidth} />
+              <StarRateOutlinedIcon className={cls.logoWidth} /> */}
+              <Rating value={4} readOnly />
+              <p>Hotel</p>
+            </Star>
+            <button>
               <div>
-                <h2>Conrad hotel</h2>
+                <RoomOutlinedIcon className={cls.logoWidth} />
+                <p>8.1 km from City Centre</p>
               </div>
-              <Star>
-                <Rating value={4} readOnly />
-                <p>Hotel</p>
-              </Star>
-              <button>
-                <div>
-                  <RoomOutlinedIcon className={cls.logoWidth} />
-                  <p>8.1 km from City Centre</p>
-                </div>
-                <ExpandMoreIcon className={cls.logoWidth} />
-              </button>
-              <button>
-                <div>
-                  <Grn> 8.6 </Grn>
-                  <b>Excellent</b> (86 reviews)
-                </div>
-                <ExpandMoreIcon className={cls.logoWidth} />
-              </button>
-            </Mid>
-            <Last>
-              <BigGrn>
-                <p>GoIibibo</p>
-                <div>
-                  <CheckCircleIcon className={cls.logoWidth} />
-                  <p> | Free Cancelation </p>
-                  <p> | Free BreakFast </p>
-                </div>
-                <div>
-                  <h2>₹7,580</h2>
-                  <button>View Deal > </button>
-                </div>
-              </BigGrn>
+              <ExpandMoreIcon className={cls.logoWidth} />
+            </button>
+            <button>
               <div>
-                <div>
-                  <h3>Conrad</h3>
-                  <h3>₹7,280</h3>
-                </div>
-                <div>
-                  <h3>Our Lowest Price</h3>
-                  <p>
-                    <b>₹6,384</b>
-                    <span> Trip.com</span>
-                  </p>
-                </div>
+                <Grn> 8.6 </Grn>
+                <b>Excellent</b> (86 reviews)
+              </div>
+              <ExpandMoreIcon className={cls.logoWidth} />
+            </button>
+          </Mid>
+          <Last>
+            <BigGrn>
+              <p>GoIibibo</p>
+              <div>
+                <CheckCircleIcon className={cls.logoWidth} />
+                <p> | Free Cancelation </p>
+                <p> | Free BreakFast </p>
+              </div>
+              <div>
                 <h2>₹7,580</h2>
                 <button>{`View Deal > `}</button>
               </div>
-            </Last>
-          </Cont>
-        ))}
+            </BigGrn>
+            <div>
+              <div>
+                <h3>Conrad</h3>
+                <h3>₹7,280</h3>
+              </div>
+              <div>
+                <h3>Our Lowest Price</h3>
+                <p>
+                  <b>₹6,384</b>
+                  <span> Trip.com</span>
+                </p>
+              </div>
+            </div>
+          </Last>
+        </Cont>
+      )}
       {map && det && (
         <Bar>
           <div>
@@ -248,7 +267,10 @@ const HotCard = () => {
           </div>
         </Bar>
       )}
-      {map && over && <div>OverView</div>}
+      {map && over && <div>OverView
+      
+      
+      </div>}
       {map && info && (
         <>
           <Amenity
@@ -262,8 +284,50 @@ const HotCard = () => {
           <Clean />
         </>
       )}
-      {map && pic && <Photo hotImg={hotImg} />}
-      {map && review && <ReviewMain />}
+      {map && pic && (
+        <Pics>
+          {hotImg.map((it) => {
+            return <img src={it} alt="" />;
+          })}
+        </Pics>
+      )}
+      {map && review && (
+        <div className={cls.colo}>
+          <Tag>Rating Overview</Tag>
+          <Review>
+            <div>
+              <h2>8.6</h2>
+              <p>
+                <b>trivago Rating Index</b> based on <b>100</b> reviews across
+                the web
+              </p>
+            </div>
+            <div>
+              <div>
+                <p>Location</p>
+                <p>Rooms</p>
+                <p>Services</p>
+                <p>Facilities</p>
+                <p>Value for Money</p>
+              </div>
+              <div>
+                <PrettoSlider disabled defaultValue={8.4 * 10} />
+                <PrettoSlider disabled defaultValue={8.6 * 10} />
+                <PrettoSlider disabled defaultValue={8.3 * 10} />
+                <PrettoSlider disabled defaultValue={8.9 * 10} />
+                <PrettoSlider disabled defaultValue={9.1 * 10} />
+              </div>
+              <div>
+                <p>{8.4 > 8.5 ? "Excellent" : "Very Good"} (8.4/10)</p>
+                <p>{8.6 > 8.5 ? "Excellent" : "Very Good"} (8.6/10)</p>
+                <p>{8.3 > 8.5 ? "Excellent" : "Very Good"} (8.3/10)</p>
+                <p>{8.9 > 8.5 ? "Excellent" : "Very Good"} (8.9/10)</p>
+                <p>{9.1 > 8.5 ? "Excellent" : "Very Good"} (9.1/10)</p>
+              </div>
+            </div>
+          </Review>
+        </div>
+      )}
       {map && deal && <div>Deal</div>}
     </div>
   );
@@ -446,7 +510,73 @@ const Bar = styled.div`
     background-color: rgb(235, 236, 237);
   }
 `;
-
+const Pics = styled.div`
+  width: 1000px;
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  img {
+    width: 24%;
+    height: auto;
+    margin: 0.5%;
+    border-radius: 10px;
+  }
+`;
+const Review = styled.div`
+  width: 980px;
+  margin: 10px;
+  display: flex;
+  padding: 20px;
+  border: 1px solid rgb(205, 208, 210);
+  border-radius: 15px;
+  > :nth-child(1) {
+    flex: 1;
+    h2 {
+      background-color: rgb(0, 95, 0);
+      color: white;
+      width: 60px;
+      font-size: 26px;
+      text-align: center;
+      padding: 2px 5px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 13px;
+      :hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  > :nth-child(2) {
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    > :nth-child(1) {
+      flex: 1.2;
+      border-left: 1px solid rgb(205, 208, 210);
+      padding-left: 10px;
+    }
+    > :nth-child(3) {
+      flex: 1;
+      text-align: end;
+    }
+    > :nth-child(2) {
+      width: 50px;
+      flex: 1.8;
+    }
+    p {
+      font-size: 14px;
+      padding: 6px;
+    }
+  }
+`;
+const Tag = styled.h2`
+  padding: 20px 15px 10px;
+  font-size: 18px;
+  font-weight: 600;
+`;
 const Fav = styled.button`
   position: relative;
   left: -210px;

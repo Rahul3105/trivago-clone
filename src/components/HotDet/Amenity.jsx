@@ -1,115 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import Skeleton from "@material-ui/lab/Skeleton";
 
 const Amenity = (p) => {
   const [sho, setSho] = useState(false);
   const [pol, setPol] = useState(false);
-  const [load, setLoad] = useState(true);
   //console.log(p.me);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoad(false);
-    }, Math.random() * 3000);
-  }, []);
-
-  return load ? (
-    <Big>
-      <h3>
-        <Skeleton animation="wave" width="30%" />
-      </h3>
-      <p>
-        <Skeleton animation="wave" />
-        <Skeleton animation="wave" />
-        <Skeleton animation="wave" />
-        <Skeleton animation="wave" width="60%" />
-      </p>
-      <div></div>
-      <div>
-        <Amen>
-          <Skeleton
-            variant="rect"
-            width={"100%"}
-            height={50}
-            animation="wave"
-          />
-        </Amen>
-        <Amen>
-          <Skeleton
-            variant="rect"
-            width={"100%"}
-            height={50}
-            animation="wave"
-          />
-        </Amen>
-        <Amen>
-          <Skeleton
-            variant="rect"
-            width={"100%"}
-            height={50}
-            animation="wave"
-          />
-        </Amen>
-        <Amen>
-          <Skeleton
-            variant="rect"
-            width={"100%"}
-            height={50}
-            animation="wave"
-          />
-        </Amen>
-        <Amen>
-          <Skeleton
-            variant="rect"
-            width={"100%"}
-            height={50}
-            animation="wave"
-          />
-        </Amen>
-        <Amen>
-          <Skeleton
-            variant="rect"
-            width={"100%"}
-            height={50}
-            animation="wave"
-          />
-        </Amen>
-        <Amen>
-          <Skeleton
-            variant="rect"
-            width={"100%"}
-            height={50}
-            animation="wave"
-          />
-        </Amen>
-        <Amen>
-          <Skeleton
-            variant="rect"
-            width={"100%"}
-            height={50}
-            animation="wave"
-          />
-        </Amen>
-        <Amen>
-          <Skeleton
-            variant="rect"
-            width={"100%"}
-            height={50}
-            animation="wave"
-          />
-        </Amen>
-        <Amen>
-          <Skeleton
-            variant="rect"
-            width={"100%"}
-            height={50}
-            animation="wave"
-          />
-        </Amen>
-      </div>
-    </Big>
-  ) : (
+  return (
     <Big>
       <h3>About {p.name} </h3>
       <p>{p.about}</p>
