@@ -1,10 +1,10 @@
 import { ModifiedCarousel } from './ModifiedCarousel';
 import styled from 'styled-components';
 
-const TopCities = () => {
+const TopDestinations = () => {
     return <>
         <ModifiedCarousel>
-             {cities.map((item) => {
+             {destinations.map((item) => {
                 return <StyledCity>
                     <div className="imgCont">
                         <img src={item.img} alt="location-img" />
@@ -16,7 +16,7 @@ const TopCities = () => {
         </ModifiedCarousel>
     </>
 }
-export { TopCities };
+export { TopDestinations  };
 const StyledCity = styled.div`
     & > .imgCont > img {
         border-radius: 20px; 
@@ -29,7 +29,7 @@ const StyledCity = styled.div`
     }
 `;
 
-const cities = [
+const destinations = [
     {
         location: 'Delhi',
         noOfHotels: 1400,
