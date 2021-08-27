@@ -26,6 +26,7 @@ import PaymentIcon from "@material-ui/icons/Payment";
 import SpaIcon from "@material-ui/icons/Spa";
 import AccessibleForwardIcon from "@material-ui/icons/AccessibleForward";
 import { useState, useEffect } from "react";
+import { set } from "date-fns/esm";
 const useStyles = makeStyles({
     root: {
         maxWidth: "600px",
@@ -34,6 +35,7 @@ const useStyles = makeStyles({
         gridTemplateColumns: "1fr",
         gridGap: "1rem",
         margin: "4rem auto",
+        boxShadow: "1px 1px 20px black"
     },
     starsCont: {
         display: "grid",
@@ -61,10 +63,11 @@ const useStyles = makeStyles({
 
 export default function MoreFilterCard() {
     const classes = useStyles();
+    const [isChecked, setIschecked] = useState(false)
     const [facilities, setFacilities] = useState({})
 
     const handleChange = (event) => {
-
+        setIschecked(false)
         if (event.target.checked) {
             const name = event.target.name;
             setFacilities({
@@ -80,13 +83,21 @@ export default function MoreFilterCard() {
             }
             console.log(facilities);
 
+
         }
     };
     const handleCheckboxReset = () => {
+        setIschecked(!isChecked)
+        for (let i in facilities) {
+            delete facilities[i]
+        }
+        console.log(facilities)
+        console.log(Object.keys(facilities).length)
 
     }
     useEffect(() => {
         console.log(facilities);
+        console.log(Object.keys(facilities).length)
     }, [facilities])
     return (
         <Card className={classes.root} variant="outlined">
@@ -122,31 +133,31 @@ export default function MoreFilterCard() {
                     <div >
                         <CancelIcon fontSize="large" />
                         <span>Free cancellation</span>
-                        <input onChange={handleChange} value="freeCancellation" name="freeCancellation" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="freeCancellation" name="freeCancellation" type="checkbox" />
                     </div>
                     <div >
                         <PoolIcon fontSize="large" /> <span>Pool</span>
-                        <input onChange={handleChange} value="pool" name="pool" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="pool" name="pool" type="checkbox" />
                     </div>
                     <div >
                         <LocalParkingIcon fontSize="large" />
                         <span>Car park</span>
-                        <input onChange={handleChange} value="carPark" name="carPark" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="carPark" name="carPark" type="checkbox" />
                     </div>
                     <div >
                         <RestaurantIcon fontSize="large" />
                         <span>Restaurant</span>
-                        <input onChange={handleChange} value="restaurant" name="restaurant" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="restaurant" name="restaurant" type="checkbox" />
                     </div>
                     <div >
                         <PeopleAltIcon fontSize="large" />
                         <span>Family friendly</span>
-                        <input onChange={handleChange} value="familyFriendly" name="familyFriendly" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="familyFriendly" name="familyFriendly" type="checkbox" />
                     </div>
                     <div >
                         <HotTubIcon fontSize="large" />
                         <span>Whirlpool/Hot tub</span>
-                        <input onChange={handleChange} value="whirlPool" name="whirlPool" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="whirlPool" name="whirlPool" type="checkbox" />
                     </div>
                     <div >
                         <img
@@ -154,47 +165,47 @@ export default function MoreFilterCard() {
                             alt=""
                         />
                         <span>Gym</span>
-                        <input onChange={handleChange} value="gym" name="gym" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="gym" name="gym" type="checkbox" />
                     </div>
                     <div >
                         <LocalOfferIcon fontSize="large" />
                         <span>Excellent value</span>
-                        <input onChange={handleChange} value="excellentValue" name="excellentValue" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="excellentValue" name="excellentValue" type="checkbox" />
                     </div>
                     <div >
                         <FreeBreakfastIcon fontSize="large" />
                         <span>Free breakfast</span>
-                        <input onChange={handleChange} value="freeBreakfast" name="freeBreakfast" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="freeBreakfast" name="freeBreakfast" type="checkbox" />
                     </div>
                     <div >
                         <WifiIcon fontSize="large" />
                         <span>Wifi</span>
-                        <input onChange={handleChange} value="wifi" name="wifi" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="wifi" name="wifi" type="checkbox" />
                     </div>
                     <div >
                         <AirplayIcon fontSize="large" />
                         <span>Airconditoning</span>
-                        <input onChange={handleChange} value="airConditioning" name="airConditioning" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="airConditioning" name="airConditioning" type="checkbox" />
                     </div>
                     <div >
                         <PetsIcon fontSize="large" />
                         <span>Pets friendly</span>
-                        <input onChange={handleChange} value="petsFriendly" name="petsFriendly" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="petsFriendly" name="petsFriendly" type="checkbox" />
                     </div>
                     <div >
                         <PaymentIcon fontSize="large" />
                         <span>Pay at the property</span>
-                        <input onChange={handleChange} value="payAttheproperty" name="payAttheproperty" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="payAttheproperty" name="payAttheproperty" type="checkbox" />
                     </div>
                     <div >
                         <SpaIcon fontSize="large" />
                         <span>spa</span>
-                        <input onChange={handleChange} value="spa" name="spa" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="spa" name="spa" type="checkbox" />
                     </div>
                     <div >
                         <AccessibleForwardIcon fontSize="large" />
                         <span>Wheelchair Accessible</span>
-                        <input onChange={handleChange} value="wheelchairAccessible" name="wheelchairAccessible" type="checkbox" />
+                        <input checked={isChecked ? false : null} onChange={handleChange} value="wheelchairAccessible" name="wheelchairAccessible" type="checkbox" />
                     </div>
 
                 </FacilitiesWrapper>
@@ -221,6 +232,9 @@ const HotelstarsWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 5fr;
   width: 100%;
+  &>div{
+      cursor: pointer;
+  }
   & > div:nth-child(1) {
     padding: 1.5rem;
   }
@@ -253,6 +267,10 @@ grid-gap: 2px;
     box-shadow: 0px 2px 1px -2px grey;
     border-radius: 2px;
     padding: 1rem;
+    cursor: pointer;
+    input{
+        cursor:pointer;
+    }
     .MuiSvgIcon-root {
     fill: currentColor;
     width: 1em;
@@ -263,6 +281,8 @@ grid-gap: 2px;
     flex-shrink: 0;
     user-select: none;
     color: rgb(105,116,122);
+   
+ 
 }
     :hover{
         background-color:rgb(235,236,237);
