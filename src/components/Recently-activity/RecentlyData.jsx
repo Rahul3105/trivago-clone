@@ -82,10 +82,8 @@ export default function RecentlyData({ data }) {
 
 const Activity = styled.div`
   background-color: #fff;
-  /* border: 1px solid red; */
   padding-left: 0;
   margin-left: -24%;
-  /* position:absolute; */
   min-width:700px;
 
   

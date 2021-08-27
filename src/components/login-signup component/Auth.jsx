@@ -1,13 +1,11 @@
-import { Login } from "./Login";
-
-// import { Signup } from './Signup';
 
 import styled from "styled-components";
-
-import { Switch, Route, useHistory, useParams } from "react-router-dom";
+import { loginUser } from '../../store/login/actions';
+import {  useHistory, useParams } from "react-router-dom";
+import { useSelector , useDispatch} from "react-redux";
 
 // material ui imports
-
+import Alert from '@material-ui/lab/Alert';
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 //react-google component
@@ -16,13 +14,22 @@ import GoogleLogin from "react-google-login";
 const Auth = ({ children }) => {
   const history = useHistory();
   const { id } = useParams();
-  const handleLogin = (response) => {
-    console.log(response);
-  };
-  const handleFailure = (response) => {
-    console.log(response);
-  };
+  const dispatch = useDispatch();
+  const loginStore = useSelector((state) => state.login);
+  const handleAuthLogin = ({profileObj}) => {
+    let payload = {
+      ...profileObj,
+      googleAuth: true
+    }
+    dispatch(loginUser(payload))
 
+  };
+  const handleAuthFailure = (response) => {
+    console.log(response);
+  };
+  if (loginStore.isAuth) {
+    history.push('/')
+  }
   return (
     <>
       <StyledAuth>
@@ -34,6 +41,10 @@ const Auth = ({ children }) => {
             <img src="/images/trivago.svg" width="200" alt="trivago-logo" />
           </div>
         </header>
+          {loginStore.error && <Alert className='alert' variant="filled" severity="error">
+              {loginStore.error}
+            </Alert>
+          }
         <section className="Auth-section">
           <div className="auth-route">{children}</div>
           <div className="goggle-auth">
@@ -41,8 +52,8 @@ const Auth = ({ children }) => {
             <GoogleLogin
               clientId={process.env?.REACT_APP_GOOGLE_API_KEY}
               buttonText="Continue with Google"
-              onSuccess={handleLogin}
-              onFailure={handleFailure}
+              onSuccess={handleAuthLogin}
+              onFailure={handleAuthFailure}
               cookiePolicy={"single_host_origin"}
               render={(renderProps) => (
                 <StyledAuthBtn
@@ -98,6 +109,9 @@ const StyledAuth = styled.div`
   max-height: 60rem;
   & p {
     font-size: 16px;
+  }
+  & .alert {
+    font-size:15px;
   }
 
   //header css

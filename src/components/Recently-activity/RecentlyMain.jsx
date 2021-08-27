@@ -6,6 +6,7 @@ import { RecentlyContent } from './RecentlyContent';
 import RecentlyViewed from './RecentlyViewed';
 import { getAllDetails } from '../../store/actions';
 import { AccountSetting } from './AccountSetting';
+import { BookingOverview } from './BookingOverview';
 export const RecentlyMain = () => {
      const dispatch = useDispatch()
      const { data, isLoading, isError } = useSelector(
@@ -30,13 +31,18 @@ export const RecentlyMain = () => {
               <RecentlyViewed item={item} key={item.id} />
             ))}
             <ButtonPart>
-              <Button variant="outlined">Show Fewer</Button>
+              <Button className="prm-btn" variant="outlined">Show Fewer</Button>
               <Typography className="clear-link">
                 Clear recently viewed
               </Typography>
             </ButtonPart>
-            <hr className="line-length"/>
+
+            <hr style={{ width: "65%" }} />
+            {/* acount component */}
             <AccountSetting />
+            <hr style={{ width: "65%" }} />
+            {/* booking component */}
+            <BookingOverview />
           </Grid>
         </Grid>
       </RecentlyBox>
@@ -46,22 +52,27 @@ export const RecentlyMain = () => {
 const RecentlyBox = styled.div`
 width:96%;
 margin:2% auto;
-border:1px solid red;
 `
-const ButtonPart = styled.div`
+export const ButtonPart = styled.div`
   width: 60%;
-  margin:4% 2%;
-    display:flex;
+  margin: 4% 2%;
+  display: flex;
+  & .prm-btn{
+    height:5vh;
+    color:black;
+    font-size:16px;
+    font-weight:600;
+    border:1px solid black;
+  }
+  & .clear-link {
+    margin-left: 50%;
+    margin-top: 1%;
+    color: #808080;
+    font-size: 14px;
 
-    & .clear-link{
-        margin-left:50%;
-        margin-top:1%;
-        color:#808080;
-        font-size:14px;
-        
-        &:hover{
-            text-decoration:underline;
-            cursor: pointer;
-        }
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
     }
+  }
 `;
