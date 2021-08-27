@@ -7,12 +7,19 @@ import HotCard from "./components/HotDet/HotCard";
 
 import Loading from "./components/material-ui-components/LoadingAnimation";
 import { CheckoutPage } from "./components/Checkout-Page/CheckoutPage";
+
+import { MapComponent } from "./components/Map/MapComponent";
+
+import { ImageSlideShow } from "./components/Image SlideShow/ImageSlideShow";
+import { ImageSliderData } from "./components/Image SlideShow/ImageSliderData";
 function App() {
   const login = useSelector((state) => state.login);
   return (
     <div>
       {login.isLoading && <Loading />}
-      <Routes />
+      {/* <Routes /> */}
+      <ImageSlideShow slides={ImageSliderData} />
+      {/* <MapComponent /> */}
       {/* <CheckoutPage /> */}
     </div>
   );
