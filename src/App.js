@@ -6,6 +6,7 @@ import { Routes } from "./components/Route component/Routes";
 import HotCard from "./components/HotDet/HotCard";
 
 import Loading from "./components/material-ui-components/LoadingAnimation";
+
 import { CheckoutPage } from "./components/Checkout-Page/CheckoutPage";
 
 import { MapComponent } from "./components/Map/MapComponent";
@@ -16,6 +17,13 @@ function App() {
   const login = useSelector((state) => state.login);
   return (
     <div>
+
+      {/* {login.isLoading && <Loading />} */}
+      {/* <Routes /> */}
+
+      {/* <NavBar /> */}
+      <HotCard />
+
       {login.isLoading && <Loading />}
       {/* <Routes /> */}
       <ImageSlideShow slides={ImageSliderData} />
