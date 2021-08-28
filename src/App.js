@@ -18,14 +18,22 @@ import Loading from "./components/material-ui-components/LoadingAnimation";
 // import { ImageSliderData } from "./components/Image SlideShow/ImageSliderData";
 import { FilterSearchBar } from "./components/FilterSearchBar/FilterSearchBar";
 function App() {
-      const login = useSelector((state) => state.login);
-      return (
-            <div>
-                  {login.isLoading && <Loading />}
 
-                  {/* <HotCard /> */}
-                  {/* <BigHot /> */}
-                  <Routes />
+
+
+  const login = useSelector((state) => state.login);
+  return (
+    <div>
+
+      {/* {login.isLoading && <Loading />} */}
+
+      {login.isLoading && <Loading />}
+
+      {/* <HotCard /> */}
+      <BigHot />
+
+      <Routes />
+
 
                   {/* <ImageSlideShow slides={ImageSliderData} /> */}
                   {/* <MapComponent /> */}

@@ -24,7 +24,7 @@ const hotImg = [
   "https://tse4.mm.bing.net/th?id=OIP.jDVX474QtM5qBBJxCKO2jQHaFC&pid=Api&P=0&w=251&h=172",
 ];
 
-const Overview = () => {
+const Overview = ({ x, r }) => {
   const [load, setLoad] = useState(true);
   const cls = useStyle();
 
@@ -105,21 +105,21 @@ const Overview = () => {
   ) : (
     <>
       <Imag>
-        <img src={hotImg[0]} alt="" />
-        <img src={hotImg[1]} alt="" />
-        <img src={hotImg[2]} alt="" />
-        <div style={{ background: `url(${hotImg[3]})` }}>
+        <img src={x.img[0]} alt="" />
+        <img src={x.img[1]} alt="" />
+        <img src={x.img[2]} alt="" />
+        <div style={{ background: `url(${x.img[3]})` }}>
           <button>More Photos > </button>
         </div>
       </Imag>
       <Man>
-        <Deal />
+        <Deal x={x} />
         <Buht>Show All Deals > </Buht>
       </Man>
       <Over>
-        <OverBelow />
+        <OverBelow x={x} r={r} />
         <h1>
-          <Map w={400} h={380} />
+          <Map w={400} h={380} lat={x.map[0]} long={x.map[1]} />
         </h1>
       </Over>
     </>
