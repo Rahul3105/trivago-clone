@@ -15,14 +15,14 @@ import Loading from "./components/material-ui-components/LoadingAnimation";
 
 // import { ImageSlideShow } from "./components/Image SlideShow/ImageSlideShow";
 // import { ImageSliderData } from "./components/Image SlideShow/ImageSliderData";
-
+import { FilterSearchBar } from "./components/FilterSearchBar/FilterSearchBar";
 function App() {
   const login = useSelector((state) => state.login);
   return (
     <div>
 
       {login.isLoading && <Loading />}
-      <Routes />
+      {/* <Routes /> */}
       {/* <ImageSlideShow slides={ImageSliderData} /> */}
       {/* <MapComponent /> */}
 
@@ -30,10 +30,10 @@ function App() {
       {/* <LocationCard />
       <MoreFilterCard />
       <RatingCard /> */}
-      <SearchBar />
+      {/* <SearchBar />
 
+      <FilterSearchBar /> */}
       <FilterSearchBar />
-
 
     </div>
   );

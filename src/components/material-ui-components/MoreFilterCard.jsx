@@ -35,7 +35,10 @@ const useStyles = makeStyles({
         gridTemplateColumns: "1fr",
         gridGap: "1rem",
         margin: "4rem auto",
-        boxShadow: "1px 1px 20px black"
+        boxShadow: "1px 1px 20px black",
+        position: "absolute",
+        top: "10rem",
+        right: "21rem",
     },
     starsCont: {
         display: "grid",
@@ -61,7 +64,7 @@ const useStyles = makeStyles({
     },
 });
 
-export function MoreFilterCard() {
+export function MoreFilterCard({ setFacilitiesforfilter, setFacilitieslength }) {
     const classes = useStyles();
     const [isChecked, setIschecked] = useState(false)
     const [facilities, setFacilities] = useState({})
@@ -74,6 +77,8 @@ export function MoreFilterCard() {
                 ...facilities,
                 [name]: event.target.value,
             });
+            setFacilitiesforfilter(facilities)
+            setFacilitieslength(Object.keys(facilities).length)
 
         } else {
             for (let key in facilities) {
@@ -82,7 +87,8 @@ export function MoreFilterCard() {
                 }
             }
             console.log(facilities);
-
+            setFacilitiesforfilter(facilities)
+            setFacilitieslength(Object.keys(facilities).length)
 
         }
     };
@@ -91,13 +97,18 @@ export function MoreFilterCard() {
         for (let i in facilities) {
             delete facilities[i]
         }
-        console.log(facilities)
-        console.log(Object.keys(facilities).length)
+
+        setFacilitiesforfilter(facilities)
+        setFacilitieslength(Object.keys(facilities).length)
 
     }
     useEffect(() => {
         console.log(facilities);
         console.log(Object.keys(facilities).length)
+        setFacilitieslength(Object.keys(facilities).length)
+        setFacilitiesforfilter(facilities)
+
+
     }, [facilities])
     return (
         <Card className={classes.root} variant="outlined">
