@@ -182,17 +182,23 @@ export function SearchBar() {
         </SearchBoxWrapper>
         {datePicker && (
           <Search
+            left="25%"
+            top="42rem"
+            position="absolute"
             setCheckInDate={setCheckInDate}
             setCheckOutDate={setCheckOutDate}
           />
         )}
         {clickedCheckOut && (
           <Search
+            left="25%"
+            top="42rem"
+            position="absolute"
             setCheckInDate={setCheckInDate}
             setCheckOutDate={setCheckOutDate}
           />
         )}
-        {guestSelect && <GuestCard setGuestNumber={setGuestNumber} setRoomsNumber={setRoomsNumber} />}
+        {guestSelect && <GuestCard top="42rem" position="absolute" right="30rem" setGuestNumber={setGuestNumber} setRoomsNumber={setRoomsNumber} />}
 
         <BookingLogosWrapper>
           <div className="booking-sites-text">

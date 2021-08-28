@@ -44,7 +44,7 @@ const useStyle = makeStyles({
     margin: "auto",
   },
 });
-const ReviewMain = () => {
+const ReviewMain = ({ x, r }) => {
   const [load, setLoad] = useState(true);
   const cls = useStyle();
   useEffect(() => {
@@ -126,10 +126,10 @@ const ReviewMain = () => {
       <Tag>Rating Overview</Tag>
       <Review>
         <div>
-          <h2>8.6</h2>
+          <h2>{r}</h2>
           <p>
-            <b>trivago Rating Index</b> based on <b>100</b> reviews across the
-            web
+            <b>trivago Rating Index</b> based on Top <b>100</b> reviews across
+            the web
           </p>
         </div>
         <div>
@@ -141,18 +141,33 @@ const ReviewMain = () => {
             <p>Value for Money</p>
           </div>
           <div>
-            <PrettoSlider disabled defaultValue={8.4 * 10} />
-            <PrettoSlider disabled defaultValue={8.6 * 10} />
-            <PrettoSlider disabled defaultValue={8.3 * 10} />
-            <PrettoSlider disabled defaultValue={8.9 * 10} />
-            <PrettoSlider disabled defaultValue={9.1 * 10} />
+            <PrettoSlider disabled defaultValue={x.review.location * 10} />
+            <PrettoSlider disabled defaultValue={x.review.room * 10} />
+            <PrettoSlider disabled defaultValue={x.review.services * 10} />
+            <PrettoSlider disabled defaultValue={x.review.facilities * 10} />
+            <PrettoSlider disabled defaultValue={x.review.vom * 10} />
           </div>
           <div>
-            <p>{8.4 > 8.5 ? "Excellent" : "Very Good"} (8.4/10)</p>
-            <p>{8.6 > 8.5 ? "Excellent" : "Very Good"} (8.6/10)</p>
-            <p>{8.3 > 8.5 ? "Excellent" : "Very Good"} (8.3/10)</p>
-            <p>{8.9 > 8.5 ? "Excellent" : "Very Good"} (8.9/10)</p>
-            <p>{9.1 > 8.5 ? "Excellent" : "Very Good"} (9.1/10)</p>
+            <p>
+              {x.review.location > 8.5 ? "Excellent" : "Good"} (
+              {x.review.location}/10)
+            </p>
+            <p>
+              {x.review.room > 8.5 ? "Excellent" : "Good"} ({x.review.room}
+              /10)
+            </p>
+            <p>
+              {x.review.services > 8.5 ? "Excellent" : "Good"} (
+              {x.review.services}/10)
+            </p>
+            <p>
+              {x.review.facilities > 8.5 ? "Excellent" : "Good"} (
+              {x.review.facilities}/10)
+            </p>
+            <p>
+              {x.review.vom > 8.5 ? "Excellent" : "Good"} ({x.review.vom}
+              /10)
+            </p>
           </div>
         </div>
       </Review>

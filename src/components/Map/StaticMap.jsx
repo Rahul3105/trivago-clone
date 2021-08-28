@@ -1,12 +1,23 @@
 import React, { useRef, useEffect, useState } from "react";
 import ReactMapGl, { Marker, Popup } from "react-map-gl";
+import RoomIcon from "@material-ui/icons/Room";
+import { makeStyles } from "@material-ui/core";
 
-export default function Map({ w, h }) {
+const useStyle = makeStyles({
+  logo: {
+    width: "30px",
+    height: "30px",
+    color: "red",
+  },
+});
+
+export default function Map({ w, h, lat, long }) {
+  const cls = useStyle();
   const [port, setPort] = useState({
     width: w,
     height: h,
-    latitude: 37.7577,
-    longitude: -122.4376,
+    latitude: 19.07283,
+    longitude: 72.88261,
     zoom: 8,
   });
   const [sel, setSel] = useState(null);
@@ -18,15 +29,14 @@ export default function Map({ w, h }) {
         onViewportChange={(p) => setPort(p)}
         mapStyle="mapbox://styles/akshaykumar24/cksum88qz319v18o2jzl25kao/draft"
       >
-        <Marker latitude={37.8271784} longitude={-122.29130780000003}>
-          <button
+        <Marker latitude={19.07283} longitude={72.88261}>
+          <RoomIcon
+            className={cls.logo}
             onClick={(e) => {
               e.preventDefault();
-              setSel([37.8271784, -122.29130780000003]);
+              setSel([37.7577, -122.4376]);
             }}
-          >
-            Here
-          </button>
+          />
         </Marker>
         {sel ? (
           <Popup
