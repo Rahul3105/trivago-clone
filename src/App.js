@@ -8,6 +8,7 @@ import { LocationCard } from "./components/material-ui-components/LocationCard";
 import { MoreFilterCard } from "./components/material-ui-components/MoreFilterCard";
 
 import Loading from "./components/material-ui-components/LoadingAnimation";
+import BigHot from "./components/HotDet/BigHot";
 
 // import { CheckoutPage } from "./components/Checkout-Page/CheckoutPage";
 
@@ -20,9 +21,12 @@ function App() {
   const login = useSelector((state) => state.login);
   return (
     <div>
-
       {login.isLoading && <Loading />}
-      {/* <Routes /> */}
+
+      {/* <HotCard /> */}
+      <BigHot />
+      <Routes />
+
       {/* <ImageSlideShow slides={ImageSliderData} /> */}
       {/* <MapComponent /> */}
 
@@ -33,8 +37,8 @@ function App() {
       {/* <SearchBar />
 
       <FilterSearchBar /> */}
-      <FilterSearchBar />
 
+      <FilterSearchBar />
     </div>
   );
 }

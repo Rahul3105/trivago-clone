@@ -1,86 +1,86 @@
-import { Box, Button, Container, Typography } from '@material-ui/core'
-import React from 'react'
-import styled from 'styled-components'
+import { Box, Button, Container, Typography } from "@material-ui/core";
+import React from "react";
+import styled from "styled-components";
 import WifiSharpIcon from "@material-ui/icons/WifiSharp";
 import AcUnitSharpIcon from "@material-ui/icons/AcUnitSharp";
 import LiveTvSharpIcon from "@material-ui/icons/LiveTvSharp";
 import PoolSharpIcon from "@material-ui/icons/PoolSharp";
 import LocalParkingSharpIcon from "@material-ui/icons/LocalParkingSharp";
 export const OverBelow = () => {
-    const rating = 8.3
-    const reviews = 2400
-    return (
-      <BelowBox>
-        <Container className="container">
-          <div className="box-len">
-            <Box className="flex-box">
-              <div className="rating-box">{rating}</div>
-              <Typography variant="h3" className="review-data">
-                <p className="condional-reviews">
-                  {500 < reviews && reviews < 1499
-                    ? "Average"
-                    : 1500 < reviews && reviews < 2500
-                    ? "Good"
-                    : reviews > 2501
-                    ? "Very Good"
-                    : "Excellent"}{" "}
-                </p>
-                <p>
-                  {`(${reviews} reviews)`}
-                  <Typography className="rating-index">
-                    trivago Rating Index
-                  </Typography>
-                </p>
-              </Typography>
-            </Box>
-            <Button variant="outlined" className="guest-review-button">
-              Read guest's reviews {`>`}
-            </Button>
-          </div>
-          <hr className="line-len" />
+  const rating = 8.3;
+  const reviews = 2400;
+  return (
+    <BelowBox>
+      <Container className="container">
+        <div className="box-len">
+          <Box className="flex-box">
+            <div className="rating-box">{rating}</div>
+            <Typography variant="h3" className="review-data">
+              <p className="condional-reviews">
+                {500 < reviews && reviews < 1499
+                  ? "Average"
+                  : 1500 < reviews && reviews < 2500
+                  ? "Good"
+                  : reviews > 2501
+                  ? "Very Good"
+                  : "Excellent"}{" "}
+              </p>
+              <p>
+                {`(${reviews} reviews)`}
+                <Typography className="rating-index">
+                  trivago Rating Index
+                </Typography>
+              </p>
+            </Typography>
+          </Box>
+          <Button variant="outlined" className="guest-review-button">
+            Read guest's reviews {`>`}
+          </Button>
+        </div>
+        <hr className="line-len" />
 
-          <div className="box-len">
-            <Typography
-              component="h2"
-              variant="h3"
-              className="amenities-heading"
-            >{`Amenities & facilities`}</Typography>
-            <Box className="icon-box">
-              <div className="left-dis">
-                <WifiSharpIcon fontSize="large" className="icons" />
-                <div className="free">Free</div>
-                <p className="logo-name">Wifi</p>
-              </div>
+        <div className="box-len">
+          <Typography
+            component="h2"
+            variant="h3"
+            className="amenities-heading"
+          >{`Amenities & facilities`}</Typography>
+          <Box className="icon-box">
+            <div className="left-dis">
+              <WifiSharpIcon fontSize="large" className="icons" />
+              <div className="free">Free</div>
+              <p className="logo-name">Wifi</p>
+            </div>
 
-              <div className="left-dis">
-                <AcUnitSharpIcon fontSize="large" className="icons" />
-                <p className="logo-name">A/C</p>
-              </div>
+            <div className="left-dis">
+              <AcUnitSharpIcon fontSize="large" className="icons" />
+              <p className="logo-name">A/C</p>
+            </div>
 
-              <div className="left-dis">
-                <PoolSharpIcon fontSize="large" className="icons" />
-                <p className="logo-name">TV</p>
-              </div>
-              <div className="left-dis">
-                <LiveTvSharpIcon fontSize="large" className="icons" />
-                <p className="logo-name">Pool</p>
-              </div>
+            <div className="left-dis">
+              <PoolSharpIcon fontSize="large" className="icons" />
+              <p className="logo-name">Pool</p>
+            </div>
+            <div className="left-dis">
+              <LiveTvSharpIcon fontSize="large" className="icons" />
+              <p className="logo-name">TV</p>
+            </div>
 
-              <div className="left-dis">
-                <LocalParkingSharpIcon fontSize="large" className="icons" />
-                <p className="logo-name">Parking</p>
-              </div>
-            </Box>
-            <Button variant="outlined" className="guest-review-button">
-              Show all amenities  {`>`}
-            </Button>
-          </div>
+            <div className="left-dis">
+              <LocalParkingSharpIcon fontSize="large" className="icons" />
+              <p className="logo-name">Parking</p>
+            </div>
+          </Box>
+          <Button variant="outlined" className="guest-review-button">
+            Show all amenities {`>`}
+          </Button>
+        </div>
 
-          <hr className="line-len" />
-        </Container>
-      </BelowBox>
-    );
-}
+        <hr className="line-len" />
+      </Container>
+    </BelowBox>
+  );
+};
 
 const BelowBox = styled.div`
   & .container {
@@ -91,18 +91,18 @@ const BelowBox = styled.div`
     display: flex;
   }
   & .box-len {
-    width: 35%;
+    width: 100%;
   }
   & .rating-box {
     font-size: 24px;
     padding: 5px 0;
     font-weight: 700;
-    background-color: #62a30f;
+    background-color: rgb(0, 95, 0);
     color: white;
     text-align: center;
-    border-radius: 40%;
+    border-radius: 20px;
     width: 7rem;
-    height: 6vh;
+    height: 40px;
   }
   & .condional-reviews {
     padding: 0 4px;
@@ -125,7 +125,7 @@ const BelowBox = styled.div`
     float: right;
     padding: 1%;
     margin: 1%;
-    height: 5vh;
+    height: 40px;
     :hover {
       background-color: #999;
       color: white;
@@ -135,8 +135,8 @@ const BelowBox = styled.div`
 
   & .line-len {
     clear: both;
-    width: 33%;
-    margin: 6% 2% 3% 2%;
+    width: 100%;
+    margin: 10% -2%;
   }
 
   & .amenities-heading {
@@ -153,24 +153,24 @@ const BelowBox = styled.div`
   & .free {
     width: 3rem;
     font-size: 12px;
-    height: 2vh;
+    height: 15px;
     padding: 0;
     margin: 0 0 0 0;
     font-weight: 700;
     background-color: #62a30f;
     color: white;
     text-align: center;
-    border-radius:10%;
+    border-radius: 10%;
   }
-  & .icons{
-      margin:1%;
-      width:3rem;
+  & .icons {
+    margin: 1%;
+    width: 3rem;
   }
-  & .logo-name{
-      font-size:14px;
-      padding:1%;
+  & .logo-name {
+    font-size: 14px;
+    padding: 1%;
   }
-  & .left-dis{
-      margin:1% 6%
+  & .left-dis {
+    margin: 1% 6%;
   }
 `;
