@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Skeleton from "@material-ui/lab/Skeleton";
 
-const Photo = (p) => {
+const Photo = ({ hotImg }) => {
   const [load, setLoad] = useState(true);
   //console.log(p.me);
+  const l = hotImg.slice(0, 12);
   useEffect(() => {
     setTimeout(() => {
       setLoad(false);
@@ -23,7 +24,7 @@ const Photo = (p) => {
     </PicSkel>
   ) : (
     <Pics>
-      {p.hotImg.map((it) => {
+      {l.map((it) => {
         return <img src={it} alt="" />;
       })}
     </Pics>
