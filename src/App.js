@@ -16,7 +16,7 @@ function App() {
   const login = useSelector((state) => state.login);
   return (
     <div>
-      {login.isLoading && <Loading />}
+      {/* {login.isLoading && <Loading />} */}
       <Routes />
       {/* <ImageSlideShow slides={ImageSliderData} /> */}
       {/* <MapComponent /> */}
