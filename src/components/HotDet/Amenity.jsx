@@ -114,7 +114,7 @@ const Amenity = ({ x }) => {
   ) : (
     <>
       <Big>
-        <Map w={980} h={300} />
+        <Map w={980} h={300} lat={x.map[0]} long={x.map[1]} />
         <h3>About {x.name} </h3>
         <p>{x.about}</p>
         <h3>Top Amenities</h3>
