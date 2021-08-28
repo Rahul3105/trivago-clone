@@ -8,25 +8,21 @@ import { LocationCard } from "./components/material-ui-components/LocationCard";
 import { MoreFilterCard } from "./components/material-ui-components/MoreFilterCard";
 
 import Loading from "./components/material-ui-components/LoadingAnimation";
-// import BigHot from "./components/HotDet/BigHot";
-
+import { SearchBar } from './components/Search-Bar/SearchBar';
+import { FilterSearchBar } from './components/FilterSearchBar/FilterSearchBar';
+import BigHot from "./components/HotDet/BigHot";
 // import { CheckoutPage } from "./components/Checkout-Page/CheckoutPage";
 
 // import { MapComponent } from "./components/Map/MapComponent";
 
 // import { ImageSlideShow } from "./components/Image SlideShow/ImageSlideShow";
 // import { ImageSliderData } from "./components/Image SlideShow/ImageSliderData";
-import { FilterSearchBar } from "./components/FilterSearchBar/FilterSearchBar";
+
 function App() {
       const login = useSelector((state) => state.login);
       return (
             <div>
-                  {login.isLoading && <Loading />}
-
-                  {/* <HotCard /> */}
-                  {/* <BigHot /> */}
-                  <Routes />
-
+                  {/* {login.isLoading && <Loading />} */}
                   {/* <ImageSlideShow slides={ImageSliderData} /> */}
                   {/* <MapComponent /> */}
 
@@ -34,9 +30,11 @@ function App() {
                   {/* <LocationCard />
       <MoreFilterCard />
       <RatingCard /> */}
-                  {/* <SearchBar />
 
-      <FilterSearchBar /> */}
+                  {/* <FilterSearchBar /> */}
+
+                  {/* <FilterSearchBar />  */}
+                  <Routes />
 
                   {/* <FilterSearchBar /> */}
             </div>

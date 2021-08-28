@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Skeleton from "@material-ui/lab/Skeleton";
 import Map from "../Map/StaticMap";
 
-const Amenity = (p) => {
+const Amenity = ({ x }) => {
   const [sho, setSho] = useState(false);
   const [pol, setPol] = useState(false);
   const [load, setLoad] = useState(true);
@@ -115,58 +115,72 @@ const Amenity = (p) => {
     <>
       <Big>
         <Map w={980} h={300} />
-        <h3>About {p.name} </h3>
-        <p>{p.about}</p>
+        <h3>About {x.name} </h3>
+        <p>{x.about}</p>
         <h3>Top Amenities</h3>
         <div>
           <Amen>
             <Wifi />
-            <p style={{ color: p.a[0] ? "" : "rgb(194,196,200)" }}>
+            <p style={{ color: x.topAmenities[0] ? "" : "rgb(194,196,200)" }}>
               WiFi in Lobby
             </p>
           </Amen>
           <Amen>
             <Wifi />
-            <p style={{ color: p.a[1] ? "" : "rgb(194,196,200)" }}>
+            <p style={{ color: x.topAmenities[1] ? "" : "rgb(194,196,200)" }}>
               WiFi in Room
             </p>
           </Amen>
           <Amen>
             <Pool />
-            <p style={{ color: p.a[2] ? "" : "rgb(194,196,200)" }}>Pool</p>
+            <p style={{ color: x.topAmenities[2] ? "" : "rgb(194,196,200)" }}>
+              Pool
+            </p>
           </Amen>
           <Amen>
             <Spa />
-            <p style={{ color: p.a[3] ? "" : "rgb(194,196,200)" }}>Spa</p>
+            <p style={{ color: x.topAmenities[3] ? "" : "rgb(194,196,200)" }}>
+              Spa
+            </p>
           </Amen>
           <Amen>
             <Park />
-            <p style={{ color: p.a[4] ? "" : "rgb(194,196,200)" }}>Parking</p>
+            <p style={{ color: x.topAmenities[4] ? "" : "rgb(194,196,200)" }}>
+              Parking
+            </p>
           </Amen>
           <Amen>
             <Pets />
-            <p style={{ color: p.a[5] ? "" : "rgb(194,196,200)" }}>Pets</p>
+            <p style={{ color: x.topAmenities[5] ? "" : "rgb(194,196,200)" }}>
+              Pets
+            </p>
           </Amen>
           <Amen>
             <AC />
-            <p style={{ color: p.a[6] ? "" : "rgb(194,196,200)" }}>AC</p>
+            <p style={{ color: x.topAmenities[6] ? "" : "rgb(194,196,200)" }}>
+              AC
+            </p>
           </Amen>
           <Amen>
             <Resto />
-            <p style={{ color: p.a[7] ? "" : "rgb(194,196,200)" }}>
+            <p style={{ color: x.topAmenities[7] ? "" : "rgb(194,196,200)" }}>
               Restaurant
             </p>
           </Amen>
           <Amen>
             <HotBar />
-            <p style={{ color: p.a[8] ? "" : "rgb(194,196,200)" }}>Hotel Bar</p>
+            <p style={{ color: x.topAmenities[8] ? "" : "rgb(194,196,200)" }}>
+              Hotel Bar
+            </p>
           </Amen>
           <Amen>
             <Gym />
-            <p style={{ color: p.a[9] ? "" : "rgb(194,196,200)" }}>Gym</p>
+            <p style={{ color: x.topAmenities[9] ? "" : "rgb(194,196,200)" }}>
+              Gym
+            </p>
           </Amen>
         </div>
-        {sho && <AllAm p={p.me} />}
+        {sho && <AllAm x={x} />}
         <h5 onClick={() => setSho((p) => !p)}>
           {!sho ? "+ Show" : "- Hide "}All Amenities
         </h5>
@@ -191,35 +205,35 @@ const Amenity = (p) => {
 
 export default Amenity;
 
-const AllAm = ({ p }) => {
-  console.log(p.hotel);
+const AllAm = ({ x }) => {
+  console.log(x.allAmenities.hotel);
   return (
     <Hold>
       <h3>All Amenities</h3>
       <div>
         <div>
           <ul>Hotel Facilities</ul>
-          {p.hotel.map((item) => (
+          {x.allAmenities.hotel.map((item) => (
             <li>{item}</li>
           ))}
         </div>
         <div>
           <ul>Room Facilities</ul>
-          {p.room.map((item) => (
+          {x.allAmenities.room.map((item) => (
             <li>{item}</li>
           ))}
         </div>
         <div>
           <ul>Wellness / Spa</ul>
-          {p.spa.map((item) => (
+          {x.allAmenities.spa.map((item) => (
             <li>{item}</li>
           ))}
           <ul>Accessability</ul>
-          {p.accessability.map((item) => (
+          {x.allAmenities.accessability.map((item) => (
             <li>{item}</li>
           ))}
           <ul>For Children</ul>
-          {p.children.map((item) => (
+          {x.allAmenities.children.map((item) => (
             <li>{item}</li>
           ))}
         </div>
@@ -244,6 +258,9 @@ const Hold = styled.div`
       }
       > ul {
         padding: 15px 0 10px;
+      }
+      li {
+        padding: 5px 10px;
       }
     }
   }

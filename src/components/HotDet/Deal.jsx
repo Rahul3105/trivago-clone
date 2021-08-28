@@ -3,8 +3,8 @@ import { ComparePrice } from "./ComparePrice";
 import styled from "styled-components";
 import Skeleton from "@material-ui/lab/Skeleton";
 
-const Deal = () => {
-  const deals = [3626, 3234, 3499, 3580, 3300];
+const Deal = ({ x }) => {
+  const deals = x.deals;
   const [load, setLoad] = useState(true);
   //console.log(p.me);
   useEffect(() => {

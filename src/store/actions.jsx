@@ -54,8 +54,6 @@ export const getAllDetails = (dispatch) => {
     });
 };
 
-/////////////Hotel Data//////////////////
-
 const hotelRequest = () => {
   return {
     type: HOTEL_REQUEST,
@@ -87,11 +85,15 @@ const hotelFailure = (err) => {
 //       dispatch(failureAction);
 //     });
 // };
-export const getAllHotel = (query) => (dispatch) => {
+export const getAllHotel = (query = null) => dispatch => {
   const requestAction = hotelRequest();
+  console.log(query, "query is here")
   dispatch(requestAction);
-  axios
-    .get(`http://localhost:8000/${query}`)
+  if (!query) {
+    const failureAction = hotelFailure("no results");
+    dispatch(failureAction);
+  }
+  return axios.get(`http://localhost:8000/MainData?q=${query}`)
     .then((res) => {
       const successAction = hotelSuccess(res.data);
       dispatch(successAction);
@@ -101,3 +103,21 @@ export const getAllHotel = (query) => (dispatch) => {
       dispatch(failureAction);
     });
 };
+
+
+// export const fetchDataall = (query = null) => dispatch => {
+//   // dispatching request
+//   console.log(query)
+//   dispatch(getTodoRequest());
+//   if (!query) {
+//     dispatch(getTodoFailure("no query"))
+//   }
+//   console.log(query, "hiii")
+//   return axios.get(`http://localhost:3001/${query}`).then(res => {
+//     console.log(res.data, "hiiiiiiiii")
+//     return dispatch(getTodoSuccess(res.data));
+//   })
+//     .catch(err => dispatch(getTodoFailure(err)))
+
+// };
+

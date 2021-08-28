@@ -14,7 +14,7 @@ const BigHot = () => {
   useEffect(() => {
 
     handleAllDetails();
-  }, []);
+  }, [searchData]);
   const handleAllDetails = () => {
 
     dispatch(getAllHotel(searchData));
@@ -25,7 +25,7 @@ const BigHot = () => {
   return (
     <>
       {hotel.map((i) => (
-        <HotCard p={i} />
+        <HotCard x={i} />
       ))}
     </>
   );
