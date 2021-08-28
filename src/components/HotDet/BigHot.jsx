@@ -17,7 +17,7 @@ const BigHot = () => {
   return (
     <>
       {hotel.map((i) => (
-        <HotCard p={i} />
+        <HotCard x={i} />
       ))}
     </>
   );
