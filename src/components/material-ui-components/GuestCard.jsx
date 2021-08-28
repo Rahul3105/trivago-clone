@@ -16,7 +16,7 @@ const useStyles = makeStyles({
         minWidth: "300px",
         maxWidth: "300px",
         maxHeight: "auto",
-        top: "19rem",
+        top: "42rem",
         right: "31rem",
         boxShadow: "0px 0px 17px -2px black",
     },
@@ -332,10 +332,11 @@ const PeoplesWrapper = styled.div`
       height: 35px;
       border-radius: 7px;
       text-align: center;
+      font-size:14px;
     }
   }
 `;
-const BtnsWrapper = styled.div`
+export const BtnsWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   & > div:nth-child(1) {
