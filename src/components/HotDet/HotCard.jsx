@@ -13,6 +13,7 @@ import ReviewMain from "./Review";
 import CardLoad from "./CardLoad";
 import Overview from "./Overview";
 import Deal from "./Deal";
+import { useHistory } from 'react-router-dom';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 const useStyle = makeStyles({
   logoWidth: {
@@ -34,6 +35,7 @@ const HotCard = ({ x }) => {
   const [review, SetReview] = useState(false);
   const [deal, SetDeal] = useState(false);
   const [ld, setLd] = useState(true);
+  const history = useHistory()
 
   const cls = useStyle();
 
@@ -107,6 +109,14 @@ const HotCard = ({ x }) => {
     SetReview(false);
     SetDeal(false);
   };
+  ////this is for redirecting to other website
+
+  const handleRedirect = () => {
+    history.push('/redirect/goibibo.com');
+    setTimeout(() => {
+      history.replace('/externalSide/goibibo.com');
+    },5000)
+  }
   return (
     <div>
       {map &&
@@ -155,7 +165,7 @@ const HotCard = ({ x }) => {
                 </div>
                 <div>
                   <h2>₹{x.deals[ind]}</h2>
-                  <button style={{ display: 'flex', alignItems: "center" }}>View Deal <ArrowForwardIosIcon fontSize="small" /></button>
+                  <button style={{ display: 'flex', alignItems: "center" }} onClick={ handleRedirect }>View Deal <ArrowForwardIosIcon fontSize="small" /></button>
                 </div>
               </BigGrn>
               <div>
