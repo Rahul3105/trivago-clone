@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Skeleton from "@material-ui/lab/Skeleton";
-
+import { ImageSlideShow } from '../Image SlideShow/ImageSlideShow';
 const Photo = ({ hotImg }) => {
   const [load, setLoad] = useState(true);
-  //console.log(p.me);
   const l = hotImg.slice(0, 12);
+  const [openModal, setOpenModal] = useState(false);
+  const [currOpenModal, setCurrOpenModal] = useState(0);
   useEffect(() => {
     setTimeout(() => {
       setLoad(false);
     }, Math.random() * 3000);
   }, []);
+  const handleOpenModal = (ind) => {
+    setCurrOpenModal(ind);
+    setOpenModal(true);
+    
+  }
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    // setCurrOpenModal(0)
+  }
   return load ? (
     <PicSkel>
       <Skeleton variant="rect" width={"23.5%"} height={200} animation="wave" />
@@ -23,11 +33,14 @@ const Photo = ({ hotImg }) => {
       <Skeleton variant="rect" width={"23.5%"} height={200} animation="wave" />
     </PicSkel>
   ) : (
-    <Pics>
-      {l.map((it) => {
-        return <img src={it} alt="" />;
-      })}
-    </Pics>
+    <>
+        <Pics>
+          {l.map((it,ind) => {
+            return <img src={it} alt="" onClick={() => handleOpenModal(ind)} key={ind}/>;
+          })}
+        </Pics>
+        <ImageSlideShow open={openModal} onClose={handleCloseModal} ImageSliderData={l}  currPos = {currOpenModal}/>
+    </>
   );
 };
 

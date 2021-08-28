@@ -4,7 +4,7 @@ import { AuthRoute } from '../login-signup component/AuthRoute';
 
 import { Home } from '../Home page/Home'
 import { RecentlyMain } from '../Recently-activity/RecentlyMain';
-import BigHot from '../HotDet/BigHot';
+import { HotelPage } from '../Hotel Page/HotelPage';
 const Routes = () => {
   return (
     <>
@@ -19,8 +19,8 @@ const Routes = () => {
           <RecentlyMain />
         </Route>
 
-        <Route exact path="/bigHot">
-          <BigHot />
+        <Route exact path="/hotel-booking">
+          <HotelPage />
         </Route>
         <Route>
           <h1>Page not found</h1>
