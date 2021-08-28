@@ -113,7 +113,7 @@ const HotCard = ({ x }) => {
         (ld ? (
           <CardLoad setLd={setLd} ld={ld} />
         ) : (
-          <Cont onClick={big}>
+          <Cont onClick={big} >
             <Imag>
               <img src={`${x.img[0]}`} alt="" />
               <Fav>
@@ -255,6 +255,9 @@ const Cont = styled.div`
   border-radius: 20px;
   padding: 3px;
   margin: auto;
+  background-color: white;
+  box-shadow: 0 1px 4px rgb(41 51 57 / 50%);
+  margin-bottom: 8px;
   border: 1px solid rgb(235, 236, 237);
   * {
     white-space: pre;
