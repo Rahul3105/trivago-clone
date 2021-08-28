@@ -1,81 +1,191 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
+import Skeleton from "@material-ui/lab/Skeleton";
+import Map from "../Map/StaticMap";
 
 const Amenity = (p) => {
   const [sho, setSho] = useState(false);
   const [pol, setPol] = useState(false);
+  const [load, setLoad] = useState(true);
   //console.log(p.me);
-  return (
+  useEffect(() => {
+    setTimeout(() => {
+      setLoad(false);
+    }, Math.random() * 3000);
+  }, []);
+
+  return load ? (
     <Big>
-      <h3>About {p.name} </h3>
-      <p>{p.about}</p>
-      <h3>Top Amenities</h3>
+      <h3>
+        <Skeleton animation="wave" width="30%" />
+      </h3>
+      <p>
+        <Skeleton animation="wave" />
+        <Skeleton animation="wave" />
+        <Skeleton animation="wave" />
+        <Skeleton animation="wave" width="60%" />
+      </p>
+      <div></div>
+      <div></div>
       <div>
         <Amen>
-          <Wifi />
-          <p style={{ color: p.a[0] ? "" : "rgb(194,196,200)" }}>
-            WiFi in Lobby
-          </p>
+          <Skeleton
+            variant="rect"
+            width={"100%"}
+            height={50}
+            animation="wave"
+          />
         </Amen>
         <Amen>
-          <Wifi />
-          <p style={{ color: p.a[1] ? "" : "rgb(194,196,200)" }}>
-            WiFi in Room
-          </p>
+          <Skeleton
+            variant="rect"
+            width={"100%"}
+            height={50}
+            animation="wave"
+          />
         </Amen>
         <Amen>
-          <Pool />
-          <p style={{ color: p.a[2] ? "" : "rgb(194,196,200)" }}>Pool</p>
+          <Skeleton
+            variant="rect"
+            width={"100%"}
+            height={50}
+            animation="wave"
+          />
         </Amen>
         <Amen>
-          <Spa />
-          <p style={{ color: p.a[3] ? "" : "rgb(194,196,200)" }}>Spa</p>
+          <Skeleton
+            variant="rect"
+            width={"100%"}
+            height={50}
+            animation="wave"
+          />
         </Amen>
         <Amen>
-          <Park />
-          <p style={{ color: p.a[4] ? "" : "rgb(194,196,200)" }}>Parking</p>
+          <Skeleton
+            variant="rect"
+            width={"100%"}
+            height={50}
+            animation="wave"
+          />
         </Amen>
         <Amen>
-          <Pets />
-          <p style={{ color: p.a[5] ? "" : "rgb(194,196,200)" }}>Pets</p>
+          <Skeleton
+            variant="rect"
+            width={"100%"}
+            height={50}
+            animation="wave"
+          />
         </Amen>
         <Amen>
-          <AC />
-          <p style={{ color: p.a[6] ? "" : "rgb(194,196,200)" }}>AC</p>
+          <Skeleton
+            variant="rect"
+            width={"100%"}
+            height={50}
+            animation="wave"
+          />
         </Amen>
         <Amen>
-          <Resto />
-          <p style={{ color: p.a[7] ? "" : "rgb(194,196,200)" }}>Restaurant</p>
+          <Skeleton
+            variant="rect"
+            width={"100%"}
+            height={50}
+            animation="wave"
+          />
         </Amen>
         <Amen>
-          <HotBar />
-          <p style={{ color: p.a[8] ? "" : "rgb(194,196,200)" }}>Hotel Bar</p>
+          <Skeleton
+            variant="rect"
+            width={"100%"}
+            height={50}
+            animation="wave"
+          />
         </Amen>
         <Amen>
-          <Gym />
-          <p style={{ color: p.a[9] ? "" : "rgb(194,196,200)" }}>Gym</p>
+          <Skeleton
+            variant="rect"
+            width={"100%"}
+            height={50}
+            animation="wave"
+          />
         </Amen>
       </div>
-      {sho && <AllAm p={p.me} />}
-      <h5 onClick={() => setSho((p) => !p)}>
-        {!sho ? "+ Show" : "- Hide "}All Amenities
-      </h5>
-      {pol && (
-        <Poll>
-          <h3>Arrival / Departure</h3>
-          <p>Check-In : 14:00</p>
-          <p>Check-Out : 12:00</p>
-          <h3>Contact</h3>
-          <p>Sahar, Andheri, 400059, Mumbai, India</p>
-          <p>Telephone: +91 (22) 6691 1234 | Fax: +91 (22) 6691 1212</p>
-          <h3></h3>
-        </Poll>
-      )}
-      <Butt onClick={() => setPol((p) => !p)}>
-        {!pol ? "Show" : "Hide"} Hotel Policies
-      </Butt>
     </Big>
+  ) : (
+    <>
+      <Big>
+        <Map w={980} h={300} />
+        <h3>About {p.name} </h3>
+        <p>{p.about}</p>
+        <h3>Top Amenities</h3>
+        <div>
+          <Amen>
+            <Wifi />
+            <p style={{ color: p.a[0] ? "" : "rgb(194,196,200)" }}>
+              WiFi in Lobby
+            </p>
+          </Amen>
+          <Amen>
+            <Wifi />
+            <p style={{ color: p.a[1] ? "" : "rgb(194,196,200)" }}>
+              WiFi in Room
+            </p>
+          </Amen>
+          <Amen>
+            <Pool />
+            <p style={{ color: p.a[2] ? "" : "rgb(194,196,200)" }}>Pool</p>
+          </Amen>
+          <Amen>
+            <Spa />
+            <p style={{ color: p.a[3] ? "" : "rgb(194,196,200)" }}>Spa</p>
+          </Amen>
+          <Amen>
+            <Park />
+            <p style={{ color: p.a[4] ? "" : "rgb(194,196,200)" }}>Parking</p>
+          </Amen>
+          <Amen>
+            <Pets />
+            <p style={{ color: p.a[5] ? "" : "rgb(194,196,200)" }}>Pets</p>
+          </Amen>
+          <Amen>
+            <AC />
+            <p style={{ color: p.a[6] ? "" : "rgb(194,196,200)" }}>AC</p>
+          </Amen>
+          <Amen>
+            <Resto />
+            <p style={{ color: p.a[7] ? "" : "rgb(194,196,200)" }}>
+              Restaurant
+            </p>
+          </Amen>
+          <Amen>
+            <HotBar />
+            <p style={{ color: p.a[8] ? "" : "rgb(194,196,200)" }}>Hotel Bar</p>
+          </Amen>
+          <Amen>
+            <Gym />
+            <p style={{ color: p.a[9] ? "" : "rgb(194,196,200)" }}>Gym</p>
+          </Amen>
+        </div>
+        {sho && <AllAm p={p.me} />}
+        <h5 onClick={() => setSho((p) => !p)}>
+          {!sho ? "+ Show" : "- Hide "}All Amenities
+        </h5>
+        {pol && (
+          <Poll>
+            <h3>Arrival / Departure</h3>
+            <p>Check-In : 14:00</p>
+            <p>Check-Out : 12:00</p>
+            <h3>Contact</h3>
+            <p>Sahar, Andheri, 400059, Mumbai, India</p>
+            <p>Telephone: +91 (22) 6691 1234 | Fax: +91 (22) 6691 1212</p>
+            <h3></h3>
+          </Poll>
+        )}
+        <Butt onClick={() => setPol((p) => !p)}>
+          {!pol ? "Show" : "Hide"} Hotel Policies
+        </Butt>
+      </Big>
+    </>
   );
 };
 
@@ -148,7 +258,7 @@ const Poll = styled.div`
     align-self: center;
     font-size: 13px;
     padding: 0px 10px;
-    color: rgb(55,69,77);
+    color: rgb(55, 69, 77);
     word-break: break-word;
     word-wrap: break-word;
     line-height: 1.6;
@@ -170,22 +280,22 @@ const Big = styled.div`
     align-self: center;
     font-size: 14px;
     padding: 15px;
-    color: rgb(55,69,77);
+    color: rgb(55, 69, 77);
     word-break: break-word;
     word-wrap: break-word;
     line-height: 1.6;
     font-weight: 400;
   }
-  >:nth-child(4){
-      display: flex;
-      flex-wrap: wrap;
+  > :nth-child(5) {
+    display: flex;
+    flex-wrap: wrap;
   }
-  >h5{
-      color:rgb(74,164,197);
-      font-size: 13px;
-      cursor: pointer;
-      font-weight: 500;
-      padding: 15px 10px;
+  > h5 {
+    color: rgb(74, 164, 197);
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 15px 10px;
   }
 `;
 const Amen = styled.div`

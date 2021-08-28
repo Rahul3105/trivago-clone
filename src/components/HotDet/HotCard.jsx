@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
-import StarRateOutlinedIcon from "@material-ui/icons/StarRateOutlined";
 import { makeStyles, withStyles } from "@material-ui/core";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import Slider from "@material-ui/core/Slider";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import Clean from "./clean";
 import Amenity from "./Amenity";
 import Rating from "@material-ui/lab/Rating";
+import Photo from "./Photo";
+import ReviewMain from "./Review";
+import CardLoad from "./CardLoad";
+import Overview from "./Overview";
+import Deal from "./Deal";
 
 const useStyle = makeStyles({
   logoWidth: {
@@ -22,36 +25,86 @@ const useStyle = makeStyles({
   },
 });
 
-const PrettoSlider = withStyles({
-  root: {
-    alignItems: "center",
-    padding: "12px 0",
+const p = {
+  name: "FabHotel Plaza Inn Andheri East",
+  star: 3,
+  img: [
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/53/58/535819614.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575472.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575488.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575498.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575502.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575466.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/10/04/1004082938.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575474.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/33/15/331521704.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/33/15/331521702.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/66/51/665134668.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575504.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575504.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/66/51/665134682.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/66/51/665134684.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/33/15/331521724.jpeg",
+    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/66/51/665134690.jpeg",
+  ],
+  about:
+    "FabHotel Atlas Plaza Andheri East is suitably located on Old Nagardas Road near Chinai College.Many corporate hubs and offices like Akruti Trade Centre, Times Square, SEEPZ, The Crescent Business Park, Excom House, Hyde Park, Mirchandani Business Park, Akruti Orchid Park, Logitech Park, Millenium Plaza, Ansa Industrial Estate, and Prime Corporate Park are located a few minutes away.",
+  review: {
+    location: 8.3,
+    room: 7.7,
+    services: 9.3,
+    facilities: 8.8,
+    vom: 8.4,
   },
-  thumb: {
-    height: 8,
-    width: 24,
-    backgroundColor: "transparent",
-    marginTop: 8,
-    marginLeft: 12,
-    "&:focus, &:hover, &$active": {
-      boxShadow: "inherit",
-    },
+  dist: 8.1,
+  reviewNum: 86,
+  redirect: "Agoda",
+  topAmenities: [1, 1, 0, 1, 1, 1, 0, 0],
+  allAmenities: {
+    hotel: [
+      "24-hour reception",
+      "24-hour room service",
+      "Airport shuttle",
+      "Breakfast",
+      "Business centre",
+      "Car park",
+      "Cashless payment",
+      "Concierge",
+      "Doctor on site",
+      "Express check-in",
+      "Free WiFi",
+      "Hotel bar",
+      "Masks provided",
+      "New safety protocols",
+      "Pets allowed",
+      "Pool bar",
+      "Restaurant",
+      "Safe distance",
+      "WiFi in public areas",
+    ],
+    room: [
+      "Air conditioning",
+      "Bathtub (upon inquiry)",
+      "Central heating",
+      "Cosmetic mirror",
+      "Free WiFi (rooms)",
+      "Hairdryer",
+      "Safe",
+      "Satellite TV",
+      "Shower",
+      "Television",
+      "WiFi",
+    ],
+    spa: ["Massage", "Sauna", "Whirlpool / Hot tub"],
+    accessability: ["Accessible parking", "Wheelchair accessible"],
+    children: ["Childcare", "Cot"],
   },
-  active: {},
-  valueLabel: {
-    left: "calc(-50% + 4px)",
-  },
-  track: {
-    height: 8,
-    borderRadius: 4,
-    color: "rgb(2,128,0)",
-  },
-  rail: {
-    height: 8,
-    borderRadius: 4,
-    color: "#b7d7f7",
-  },
-})(Slider);
+  deals: [1223, 1232, 1299, 1280, 1290],
+  map: ["latitude", "longitude"],
+  location: "Mumbai",
+  address: "Andheri East",
+};
+
 const hotImg = [
   "https://tse4.mm.bing.net/th?id=OIP.XA-4n_CHeMA-qteo0KWyiAHaGO&pid=Api&P=0&w=215&h=182",
   "https://tse2.mm.bing.net/th?id=OIP.8PsnrR9xKfvTQhHztUdEBQHaFc&pid=Api&P=0&w=207&h=1530",
@@ -92,14 +145,22 @@ const me = {
   children: ["a", "b", "c"],
 };
 const HotCard = () => {
-  const [map, setMap] = useState(false);
+  const [map, setMap] = useState(true);
   const [det, SetDet] = useState(false);
   const [over, SetOver] = useState(false);
   const [info, SetInfo] = useState(false);
   const [pic, SetPic] = useState(false);
   const [review, SetReview] = useState(false);
   const [deal, SetDeal] = useState(false);
+  const [ld, setLd] = useState(true);
+
   const cls = useStyle();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLd(false);
+    }, 3000);
+  }, []);
 
   const tog1 = () => {
     SetOver((p) => !p);
@@ -146,76 +207,78 @@ const HotCard = () => {
   };
   return (
     <div>
+      <div>{ld ? "true" : "false"}</div>
       <button onClick={() => setMap(true)}>Open map</button>
       <button onClick={() => setMap(false)}>Close map</button>
-      {map && (
-        <Cont onClick={big}>
-          <Imag>
-            <img
-              src="https://imgcy.trivago.com/c_lfill,d_dummy.jpeg,e_sharpen:60,f_auto,h_450,q_auto,w_450/itemimages/75/66/7566748_v1.jpeg"
-              alt=""
-            />
-            <Fav>
-              <FavoriteBorderOutlinedIcon className={cls.logoWidth} />
-            </Fav>
-          </Imag>
+      {map &&
+        (ld ? (
+          <CardLoad setLd={setLd} ld={ld} />
+        ) : (
+          <Cont onClick={big}>
+            <Imag>
+              <img
+                src="https://imgcy.trivago.com/c_lfill,d_dummy.jpeg,e_sharpen:60,f_auto,h_450,q_auto,w_450/itemimages/75/66/7566748_v1.jpeg"
+                alt=""
+              />
+              <Fav>
+                <FavoriteBorderOutlinedIcon className={cls.logoWidth} />
+              </Fav>
+            </Imag>
 
-          <Mid>
-            <div>
-              <h2>Conrad hotel</h2>
-            </div>
-            <Star>
-              {/* <StarRateOutlinedIcon className={cls.logoWidth} />
-              <StarRateOutlinedIcon className={cls.logoWidth} />
-              <StarRateOutlinedIcon className={cls.logoWidth} />
-              <StarRateOutlinedIcon className={cls.logoWidth} /> */}
-              <Rating value={4} readOnly />
-              <p>Hotel</p>
-            </Star>
-            <button>
+            <Mid>
               <div>
-                <RoomOutlinedIcon className={cls.logoWidth} />
-                <p>8.1 km from City Centre</p>
+                <h2>Conrad hotel</h2>
               </div>
-              <ExpandMoreIcon className={cls.logoWidth} />
-            </button>
-            <button>
+              <Star>
+                <Rating value={4} readOnly />
+                <p>Hotel</p>
+              </Star>
+              <button>
+                <div>
+                  <RoomOutlinedIcon className={cls.logoWidth} />
+                  <p>8.1 km from City Centre</p>
+                </div>
+                <ExpandMoreIcon className={cls.logoWidth} />
+              </button>
+              <button>
+                <div>
+                  <Grn> 8.6 </Grn>
+                  <b>Excellent</b> (86 reviews)
+                </div>
+                <ExpandMoreIcon className={cls.logoWidth} />
+              </button>
+            </Mid>
+            <Last>
+              <BigGrn>
+                <p>GoIibibo</p>
+                <div>
+                  <CheckCircleIcon className={cls.logoWidth} />
+                  <p> | Free Cancelation </p>
+                  <p> | Free BreakFast </p>
+                </div>
+                <div>
+                  <h2>₹7,580</h2>
+                  <button>View Deal > </button>
+                </div>
+              </BigGrn>
               <div>
-                <Grn> 8.6 </Grn>
-                <b>Excellent</b> (86 reviews)
+                <div>
+                  <h3>Conrad</h3>
+                  <h3>₹7,280</h3>
+                </div>
+                <div>
+                  <h3>Our Lowest Price</h3>
+                  <p>
+                    <b>₹6,384</b>
+                    <span> Trip.com</span>
+                  </p>
+                </div>
+                {/* <h2>₹7,580</h2>
+                <button>{`View Deal > `}</button> */}
               </div>
-              <ExpandMoreIcon className={cls.logoWidth} />
-            </button>
-          </Mid>
-          <Last>
-            <BigGrn>
-              <p>GoIibibo</p>
-              <div>
-                <CheckCircleIcon className={cls.logoWidth} />
-                <p> | Free Cancelation </p>
-                <p> | Free BreakFast </p>
-              </div>
-              <div>
-                <h2>₹7,580</h2>
-                <button>{`View Deal > `}</button>
-              </div>
-            </BigGrn>
-            <div>
-              <div>
-                <h3>Conrad</h3>
-                <h3>₹7,280</h3>
-              </div>
-              <div>
-                <h3>Our Lowest Price</h3>
-                <p>
-                  <b>₹6,384</b>
-                  <span> Trip.com</span>
-                </p>
-              </div>
-            </div>
-          </Last>
-        </Cont>
-      )}
+            </Last>
+          </Cont>
+        ))}
       {map && det && (
         <Bar>
           <div>
@@ -267,10 +330,7 @@ const HotCard = () => {
           </div>
         </Bar>
       )}
-      {map && over && <div>OverView
-      
-      
-      </div>}
+      {map && over && <Overview />}
       {map && info && (
         <>
           <Amenity
@@ -284,51 +344,9 @@ const HotCard = () => {
           <Clean />
         </>
       )}
-      {map && pic && (
-        <Pics>
-          {hotImg.map((it) => {
-            return <img src={it} alt="" />;
-          })}
-        </Pics>
-      )}
-      {map && review && (
-        <div className={cls.colo}>
-          <Tag>Rating Overview</Tag>
-          <Review>
-            <div>
-              <h2>8.6</h2>
-              <p>
-                <b>trivago Rating Index</b> based on <b>100</b> reviews across
-                the web
-              </p>
-            </div>
-            <div>
-              <div>
-                <p>Location</p>
-                <p>Rooms</p>
-                <p>Services</p>
-                <p>Facilities</p>
-                <p>Value for Money</p>
-              </div>
-              <div>
-                <PrettoSlider disabled defaultValue={8.4 * 10} />
-                <PrettoSlider disabled defaultValue={8.6 * 10} />
-                <PrettoSlider disabled defaultValue={8.3 * 10} />
-                <PrettoSlider disabled defaultValue={8.9 * 10} />
-                <PrettoSlider disabled defaultValue={9.1 * 10} />
-              </div>
-              <div>
-                <p>{8.4 > 8.5 ? "Excellent" : "Very Good"} (8.4/10)</p>
-                <p>{8.6 > 8.5 ? "Excellent" : "Very Good"} (8.6/10)</p>
-                <p>{8.3 > 8.5 ? "Excellent" : "Very Good"} (8.3/10)</p>
-                <p>{8.9 > 8.5 ? "Excellent" : "Very Good"} (8.9/10)</p>
-                <p>{9.1 > 8.5 ? "Excellent" : "Very Good"} (9.1/10)</p>
-              </div>
-            </div>
-          </Review>
-        </div>
-      )}
-      {map && deal && <div>Deal</div>}
+      {map && pic && <Photo hotImg={hotImg} />}
+      {map && review && <ReviewMain />}
+      {map && deal && <Deal />}
     </div>
   );
 };
@@ -510,73 +528,7 @@ const Bar = styled.div`
     background-color: rgb(235, 236, 237);
   }
 `;
-const Pics = styled.div`
-  width: 1000px;
-  display: flex;
-  margin: auto;
-  flex-wrap: wrap;
-  img {
-    width: 24%;
-    height: auto;
-    margin: 0.5%;
-    border-radius: 10px;
-  }
-`;
-const Review = styled.div`
-  width: 980px;
-  margin: 10px;
-  display: flex;
-  padding: 20px;
-  border: 1px solid rgb(205, 208, 210);
-  border-radius: 15px;
-  > :nth-child(1) {
-    flex: 1;
-    h2 {
-      background-color: rgb(0, 95, 0);
-      color: white;
-      width: 60px;
-      font-size: 26px;
-      text-align: center;
-      padding: 2px 5px;
-      border-radius: 20px;
-      margin-bottom: 15px;
-    }
-    p {
-      font-size: 13px;
-      :hover {
-        text-decoration: underline;
-      }
-    }
-  }
-  > :nth-child(2) {
-    flex: 2;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    > :nth-child(1) {
-      flex: 1.2;
-      border-left: 1px solid rgb(205, 208, 210);
-      padding-left: 10px;
-    }
-    > :nth-child(3) {
-      flex: 1;
-      text-align: end;
-    }
-    > :nth-child(2) {
-      width: 50px;
-      flex: 1.8;
-    }
-    p {
-      font-size: 14px;
-      padding: 6px;
-    }
-  }
-`;
-const Tag = styled.h2`
-  padding: 20px 15px 10px;
-  font-size: 18px;
-  font-weight: 600;
-`;
+
 const Fav = styled.button`
   position: relative;
   left: -210px;
