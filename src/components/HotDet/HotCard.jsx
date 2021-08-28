@@ -64,7 +64,7 @@ const HotCard = ({ x }) => {
   const [ld, setLd] = useState(true);
 
   const cls = useStyle();
-  const r =
+
     (x.review.location +
       x.review.room +
       x.review.services +
@@ -182,6 +182,8 @@ const HotCard = ({ x }) => {
                   {x.breakfast && <p> | Free BreakFast </p>}
                 </div>
                 <div>
+                  <h2>₹7,580</h2>
+                  <button>{`View Deal > `}</button>
                   <h2>₹{x.deals[ind]}</h2>
                   <button>View Deal > </button>
                 </div>

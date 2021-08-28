@@ -54,8 +54,6 @@ export const getAllDetails = (dispatch) => {
     });
 };
 
-/////////////Hotel Data//////////////////
-
 const hotelRequest = () => {
   return {
     type: HOTEL_REQUEST,
