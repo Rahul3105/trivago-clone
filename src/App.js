@@ -22,9 +22,11 @@ function App() {
       return (
             <div>
                   {login.isLoading && <Loading />}
+
                   {/* <HotCard /> */}
                   <BigHot />
                   <Routes />
+
                   {/* <ImageSlideShow slides={ImageSliderData} /> */}
                   {/* <MapComponent /> */}
 
@@ -35,6 +37,8 @@ function App() {
                   {/* <SearchBar />
 
       <FilterSearchBar /> */}
+
+                  <FilterSearchBar />
             </div>
       );
 }
