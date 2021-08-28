@@ -45,3 +45,5 @@ export const getAllDetails = (dispatch) => {
       dispatch(failureAction);
     });
 };
+
+
