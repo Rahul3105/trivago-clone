@@ -87,11 +87,11 @@ const hotelFailure = (err) => {
 //       dispatch(failureAction);
 //     });
 // };
-export const getAllHotel = (dispatch) => {
+export const getAllHotel = (query) => (dispatch) => {
   const requestAction = hotelRequest();
   dispatch(requestAction);
   axios
-    .get("http://localhost:8000/MainData")
+    .get(`http://localhost:8000/${query}`)
     .then((res) => {
       const successAction = hotelSuccess(res.data);
       dispatch(successAction);

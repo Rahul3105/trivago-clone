@@ -8,7 +8,7 @@ import { LocationCard } from "./components/material-ui-components/LocationCard";
 import { MoreFilterCard } from "./components/material-ui-components/MoreFilterCard";
 
 import Loading from "./components/material-ui-components/LoadingAnimation";
-import BigHot from "./components/HotDet/BigHot";
+// import BigHot from "./components/HotDet/BigHot";
 
 // import { CheckoutPage } from "./components/Checkout-Page/CheckoutPage";
 
@@ -24,7 +24,7 @@ function App() {
                   {login.isLoading && <Loading />}
 
                   {/* <HotCard /> */}
-                  <BigHot />
+                  {/* <BigHot /> */}
                   <Routes />
 
                   {/* <ImageSlideShow slides={ImageSliderData} /> */}
@@ -38,7 +38,7 @@ function App() {
 
       <FilterSearchBar /> */}
 
-                  <FilterSearchBar />
+                  {/* <FilterSearchBar /> */}
             </div>
       );
 }

@@ -16,6 +16,7 @@ const initState = {
 };
 
 export const RecentlyReducer = (state = initState, { type, payload }) => {
+  console.log("start")
   switch (type) {
     case GET_RECENTLY_DATA: {
       return {
@@ -39,12 +40,14 @@ export const RecentlyReducer = (state = initState, { type, payload }) => {
       };
     }
     case HOTEL_REQUEST: {
+      console.log("omkaohjio")
       return {
         ...state,
         hotLoad: true,
       };
     }
     case HOTEL_SUCCESS: {
+      console.log("success")
       return {
         ...state,
         hotLoad: false,
@@ -52,6 +55,7 @@ export const RecentlyReducer = (state = initState, { type, payload }) => {
       };
     }
     case HOTEL_FAILURE: {
+      console.log("Omkar")
       return {
         ...state,
         hotLoad: false,
