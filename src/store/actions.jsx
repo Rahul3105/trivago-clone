@@ -29,7 +29,7 @@ export const getDetails = (dispatch) => {
   const requestAction = getDataRequest();
   dispatch(requestAction);
   axios
-    .get("http://localhost:8000/recentlyVisited")
+    .get("/recentlyVisited")
     .then((res) => {
       const successAction = getDataSuccess(res.data);
       dispatch(successAction);
@@ -43,7 +43,7 @@ export const getAllDetails = (dispatch) => {
   const requestAction = getDataRequest();
   dispatch(requestAction);
   axios
-    .get("http://localhost:8000/recentlyViewed")
+    .get("/recentlyViewed")
     .then((res) => {
       const successAction = getDataSuccess(res.data);
       dispatch(successAction);
@@ -93,7 +93,7 @@ export const getAllHotel = (query = null) => dispatch => {
     const failureAction = hotelFailure("no results");
     dispatch(failureAction);
   }
-  return axios.get(`http://localhost:8000/MainData?q=${query}`)
+  return axios.get(`/MainData?q=${query}`)
     .then((res) => {
       const successAction = hotelSuccess(res.data);
       dispatch(successAction);
