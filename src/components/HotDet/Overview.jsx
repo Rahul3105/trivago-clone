@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Deal from "./Deal";
 import Map from "../Map/StaticMap";
 import Skeleton from "@material-ui/lab/Skeleton";
-import { makeStyles, withStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 
 const useStyle = makeStyles({
   logoWidth: {
