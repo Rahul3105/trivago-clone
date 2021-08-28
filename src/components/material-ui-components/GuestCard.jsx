@@ -10,42 +10,43 @@ import RemoveIcon from "@material-ui/icons/Remove";
 
 import { useState, useEffect } from "react";
 
-const useStyles = makeStyles({
-    root: {
-        position: "absolute",
-        minWidth: "300px",
-        maxWidth: "300px",
-        maxHeight: "auto",
-        top: "42rem",
-        right: "31rem",
-        boxShadow: "0px 0px 17px -2px black",
-    },
-    content: {
-        display: "grid",
-        gridTemplateColumns: "1fr",
-        alignItems: "center",
-        gridGap: "1rem",
-    },
-    content2: {
-        display: "grid",
-        gridTemplateColumns: "1fr",
-        alignItems: "center",
-        gridGap: "1rem",
-        borderTop: "1px solid black",
-    },
-    btnInput: {
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr",
-    },
-    title: {
-        fontSize: 14,
-    },
-    pos: {
-        marginBottom: 12,
-    },
-});
 
-export default function GuestCard({ setGuestNumber, setRoomsNumber }) {
+
+export default function GuestCard({ setGuestNumber, setRoomsNumber, top, right, position }) {
+    const useStyles = makeStyles({
+        root: {
+            position: position,
+            minWidth: "300px",
+            maxWidth: "300px",
+            maxHeight: "auto",
+            boxShadow: "0px 0px 17px -2px black",
+            top: top,
+            right: right,
+        },
+        content: {
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            alignItems: "center",
+            gridGap: "1rem",
+        },
+        content2: {
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            alignItems: "center",
+            gridGap: "1rem",
+            borderTop: "1px solid black",
+        },
+        btnInput: {
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+        },
+        title: {
+            fontSize: 14,
+        },
+        pos: {
+            marginBottom: 12,
+        },
+    });
     const classes = useStyles();
     const [adults, setAdults] = useState(2);
     const [children, setChildren] = useState(0);

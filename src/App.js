@@ -16,15 +16,17 @@ import BigHot from "./components/HotDet/BigHot";
 
 // import { ImageSlideShow } from "./components/Image SlideShow/ImageSlideShow";
 // import { ImageSliderData } from "./components/Image SlideShow/ImageSliderData";
-
+import { FilterSearchBar } from "./components/FilterSearchBar/FilterSearchBar";
 function App() {
   const login = useSelector((state) => state.login);
   return (
     <div>
       {login.isLoading && <Loading />}
+
       {/* <HotCard /> */}
       <BigHot />
       <Routes />
+
       {/* <ImageSlideShow slides={ImageSliderData} /> */}
       {/* <MapComponent /> */}
 
@@ -35,6 +37,8 @@ function App() {
       {/* <SearchBar />
 
       <FilterSearchBar /> */}
+
+      <FilterSearchBar />
     </div>
   );
 }

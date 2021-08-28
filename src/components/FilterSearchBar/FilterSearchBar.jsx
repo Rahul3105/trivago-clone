@@ -14,10 +14,15 @@ import placeholder from "../../Logos/placeholder.png";
 import { useState } from "react";
 import { useEffect } from "react";
 import styled from "styled-components";
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
 import { PrettoSlider } from "../material-ui-components/LocationCard";
 import addgroup from "../../Logos/addgroup.png";
+
+import { LocationCard } from "../material-ui-components/LocationCard";
+import { RatingCard } from "../material-ui-components/RatingCard";
+import { MoreFilterCard } from "../material-ui-components/MoreFilterCard";
+
 export function FilterSearchBar() {
     const [border, setBorder] = useState(false);
     const [datePicker, setDatePicker] = useState(false);
@@ -29,6 +34,15 @@ export function FilterSearchBar() {
     const [guestNumber, setGuestNumber] = useState(2);
     const [roomsNumber, setRoomsNumber] = useState(1);
 
+    const [showLocationCard, setShowLocationCard] = useState(false);
+    const [showRatingCard, setShowRatingCard] = useState(false);
+    const [showMoreFilterCard, setShowMoreFilterCard] = useState(false);
+
+    const [place, setPlace] = useState("City Center");
+    const [facilitiesforfilter, setFacilitiesforfilter] = useState({});
+    const [facilitieslength, setFacilitieslength] = useState(0);
+
+    const [price, setPrice] = useState(14100);
     const handleBorder = () => {
         setBorder(true);
         setDatePicker(false);
@@ -58,10 +72,37 @@ export function FilterSearchBar() {
         setClickedCheckOut(false);
         setGuestSelect(!guestSelect);
     };
+
+    const handleRatingCard = () => {
+        setShowRatingCard(true);
+        setShowLocationCard(false);
+        setShowMoreFilterCard(false);
+    };
+    const handleLocationCard = () => {
+        setShowLocationCard(true);
+        setShowMoreFilterCard(false);
+        setShowRatingCard(false);
+    };
+    const handleMoreFilterCard = () => {
+        setShowMoreFilterCard(true);
+        setShowRatingCard(false);
+        setShowLocationCard(false);
+    };
+    const hanldleAllCards = () => {
+        setShowMoreFilterCard(false);
+        setShowRatingCard(false);
+        setShowLocationCard(false);
+    };
+    const getPrice = (e, value) => {
+        setPrice(value);
+    };
     return (
         <>
             <FilterSearchBarWrapper>
-                <SearchBoxWrapper className="search-box-wrapper">
+                <SearchBoxWrapper
+                    onMouseEnter={hanldleAllCards}
+                    className="search-box-wrapper"
+                >
                     <SearchBarMainWrapper className="search-bar-main-wrapper">
                         <SelectLocationWrapper className="select-location-wrapper">
                             <div
@@ -135,31 +176,55 @@ export function FilterSearchBar() {
                 </SearchBoxWrapper>
                 {datePicker && (
                     <Search
+                        top="7rem"
+                        position="absolute"
+                        left="25%"
                         setCheckInDate={setCheckInDate}
                         setCheckOutDate={setCheckOutDate}
                     />
                 )}
                 {clickedCheckOut && (
                     <Search
+                        top="7rem"
+                        position="absolute"
+                        left="25%"
                         setCheckInDate={setCheckInDate}
                         setCheckOutDate={setCheckOutDate}
                     />
                 )}
                 {guestSelect && (
                     <GuestCard
+                        position="absolute"
+                        right="32rem"
+                        top="7rem"
                         setGuestNumber={setGuestNumber}
                         setRoomsNumber={setRoomsNumber}
                     />
                 )}
                 <FilterHotelsWrapper>
-                    <PriceNightWrapper>
+                    <PriceNightWrapper onMouseEnter={hanldleAllCards}>
                         <div className="priceNightText">
-                            <div><span>Price/Night</span></div>
-                            <div><span>23234</span></div>
+                            <div>
+                                <span>Price/Night</span>
+                            </div>
+                            <div>
+                                <span>Rs.{price}</span>
+                            </div>
                         </div>
-                        <div className="priceNightSlider">  <PrettoSlider min={2200} step={100} max={44000} aria-label="pretto slider" defaultValue={14100} /></div>
+                        <div className="priceNightSlider">
+                            {" "}
+                            <PrettoSlider
+                                value={price}
+                                onChange={getPrice}
+                                min={2200}
+                                step={100}
+                                max={44000}
+                                aria-label="pretto slider"
+                                defaultValue={14100}
+                            />
+                        </div>
                     </PriceNightWrapper>
-                    <PropertyTypeWrapper>
+                    <PropertyTypeWrapper onMouseEnter={hanldleAllCards}>
                         <div className="propertyTypeText">
                             <span>Property Type</span>
                         </div>
@@ -169,20 +234,61 @@ export function FilterSearchBar() {
                             <div>House/Apartment</div>
                         </div>
                     </PropertyTypeWrapper>
-                    <GuestRatingWrapper>
-                        <div><span>Guest Rating</span></div>
-                        <div className="downTextandArrow"><span>All</span><KeyboardArrowDownIcon /></div>
+                    <GuestRatingWrapper onMouseEnter={handleRatingCard}>
+                        <div>
+                            <span>Guest Rating</span>
+                        </div>
+                        <div className="downTextandArrow">
+                            <span>All</span>
+                            <KeyboardArrowDownIcon />
+                        </div>
                     </GuestRatingWrapper>
-                    <LocationFilteringWrapper>
-                        <div><span>Location</span></div>
-                        <div className="downTextandArrow"><span>City Center</span><KeyboardArrowDownIcon /></div>
+                    <LocationFilteringWrapper onMouseEnter={handleLocationCard}>
+                        <div>
+                            <span>Location</span>
+                        </div>
+                        <div className="downTextandArrow">
+                            <span>{place}</span>
+                            <KeyboardArrowDownIcon />
+                        </div>
                     </LocationFilteringWrapper>
-                    <MoreFilteringWrapper>
-                        <div><span>More filters</span></div>
-                        <div className="downTextandArrow"><span>Select</span><KeyboardArrowDownIcon /></div>
+                    <MoreFilteringWrapper onMouseEnter={handleMoreFilterCard}>
+                        <div>
+                            <span>More filters</span>
+                        </div>
+                        <div className="downTextandArrow">
+                            <span>
+                                {facilitieslength >= 1
+                                    ? `${facilitieslength} Applied`
+                                    : "Select"}
+                            </span>
+                            <KeyboardArrowDownIcon />
+                        </div>
                     </MoreFilteringWrapper>
                 </FilterHotelsWrapper>
             </FilterSearchBarWrapper>
+
+            {showLocationCard && (
+                <LocationCard
+                    className="animated fadeIn"
+                    setPlace={setPlace}
+                    onMouseEnter={handleLocationCard}
+                />
+            )}
+            {showRatingCard && (
+                <RatingCard
+                    className="animated fadeIn"
+                    onMouseEnter={handleRatingCard}
+                />
+            )}
+            {showMoreFilterCard && (
+                <MoreFilterCard
+                    setFacilitiesforfilter={setFacilitiesforfilter}
+                    setFacilitieslength={setFacilitieslength}
+                    className="animated fadeIn"
+                    onMouseEnter={handleMoreFilterCard}
+                />
+            )}
         </>
     );
 }
@@ -193,15 +299,19 @@ export const FilterSearchBarWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1rem;
+    background-color:rgb(243,243,243);
 
   .search-box-wrapper {
     height: 4rem !important;
     box-shadow: none !important;
+   background-color:rgb(243,243,243);
+
     .select-location-wrapper {
       border: 1px solid rgb(205, 208, 210);
       position: relative;
       left: -2rem;
       border-radius: 1rem;
+      background-color: white;
       & > div {
         img {
           top: 11px;
@@ -217,6 +327,8 @@ export const FilterSearchBarWrapper = styled.div`
       position: relative;
       left: -1rem !important;
       border-radius: 1rem;
+
+      background-color: white;
       .checkIndate,
       .checkOutdate {
         top: 0px;
@@ -231,49 +343,49 @@ export const FilterSearchBarWrapper = styled.div`
       border-radius: 1rem;
       padding-left: 9px;
       padding-top: 4px;
+
+      background-color: white;
     }
   }
 `;
 const FilterHotelsWrapper = styled.div`
-display: grid;
-grid-template-columns: 3fr 3fr 1fr 1fr 1fr;
-grid-gap:1rem;
-border: 1px solid red;
-font-size: 13px;
-font-weight: bold;
-padding: 1rem;
+  display: grid;
+  grid-template-columns: 3fr 3fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 1rem;
 
-`
+`;
 const PriceNightWrapper = styled.div`
-display: grid;
-border-right: 1px solid;
-padding-right:2rem;
-.priceNightText{
+  display: grid;
+  border-right:1px solid rgb(205, 208, 210) !important;
+  padding-right: 2rem;
+  .priceNightText {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    &>div:nth-child(1){
-        text-align: start;
+    & > div:nth-child(1) {
+      text-align: start;
     }
-     &>div:nth-child(2){
-        text-align: end;
+    & > div:nth-child(2) {
+      text-align: end;
     }
-}
-.priceNightSlider{
-.MuiSlider-root {
-    color:rgb(63,159,193);
-    width: 100%;
-    cursor: pointer;
-    height: 2px;
-    display: inline-block;
-    padding: 13px 0;
-    position: relative;
-    box-sizing: content-box;
-    touch-action: none;
-    -webkit-tap-highlight-color: transparent;
-}
-}
-
-`
+  }
+  .priceNightSlider {
+    .MuiSlider-root {
+      color: rgb(63, 159, 193);
+      width: 100%;
+      cursor: pointer;
+      height: 2px;
+      display: inline-block;
+      padding: 13px 0;
+      position: relative;
+      box-sizing: content-box;
+      touch-action: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+`;
 
 const PropertyTypeWrapper = styled.div`
 display: grid;
@@ -307,45 +419,43 @@ border-right: 1px solid rgb(205, 208, 210);
      }
 
 
-`
+`;
 const GuestRatingWrapper = styled.div`
-display: grid;
-padding-left:4px;
-.downTextandArrow{
+  display: grid;
+  padding-left: 4px;
+  .downTextandArrow {
     display: grid;
 
     grid-template-columns: 2fr 1fr;
-}
-:hover{
-   background-color: rgb(235,236,237);
-}
-
-
-
-`
+  }
+  :hover {
+    background-color: rgb(235, 236, 237);
+  }
+`;
 const LocationFilteringWrapper = styled.div`
-display: grid;
-padding-left:4px;
-.downTextandArrow{
+  display: grid;
+  padding-left: 4px;
+  .downTextandArrow {
     display: grid;
     grid-template-columns: 2fr 1fr;
-}
-:hover{
-   background-color: rgb(235,236,237);
-}
-
-
-`
+    span {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  :hover {
+    background-color: rgb(235, 236, 237);
+  }
+`;
 const MoreFilteringWrapper = styled.div`
-display: grid;
-padding-left:4px;
-.downTextandArrow{
+  display: grid;
+  padding-left: 4px;
+  .downTextandArrow {
     display: grid;
     grid-template-columns: 2fr 1fr;
-}
-:hover{
-   background-color: rgb(235,236,237);
-}
-
-
-`
+  }
+  :hover {
+    background-color: rgb(235, 236, 237);
+  }
+`;
