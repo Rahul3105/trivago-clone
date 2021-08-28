@@ -8,6 +8,7 @@ import { LocationCard } from "./components/material-ui-components/LocationCard";
 import { MoreFilterCard } from "./components/material-ui-components/MoreFilterCard";
 
 import Loading from "./components/material-ui-components/LoadingAnimation";
+import BigHot from "./components/HotDet/BigHot";
 
 // import { CheckoutPage } from "./components/Checkout-Page/CheckoutPage";
 
@@ -17,26 +18,25 @@ import Loading from "./components/material-ui-components/LoadingAnimation";
 // import { ImageSliderData } from "./components/Image SlideShow/ImageSliderData";
 import { FilterSearchBar } from "./components/FilterSearchBar/FilterSearchBar";
 function App() {
-  const login = useSelector((state) => state.login);
-  return (
-    <div>
+      const login = useSelector((state) => state.login);
+      return (
+            <div>
+                  {login.isLoading && <Loading />}
+                  {/* <HotCard /> */}
+                  <BigHot />
+                  <Routes />
+                  {/* <ImageSlideShow slides={ImageSliderData} /> */}
+                  {/* <MapComponent /> */}
 
-      {login.isLoading && <Loading />}
-      {/* <Routes /> */}
-      {/* <ImageSlideShow slides={ImageSliderData} /> */}
-      {/* <MapComponent /> */}
-
-      {/* <CheckoutPage /> */}
-      {/* <LocationCard />
+                  {/* <CheckoutPage /> */}
+                  {/* <LocationCard />
       <MoreFilterCard />
       <RatingCard /> */}
-      {/* <SearchBar />
+                  {/* <SearchBar />
 
       <FilterSearchBar /> */}
-      <FilterSearchBar />
-
-    </div>
-  );
+            </div>
+      );
 }
 
 export default App;
