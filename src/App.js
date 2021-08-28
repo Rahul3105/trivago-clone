@@ -4,19 +4,10 @@ import { useSelector } from "react-redux";
 import { Routes } from "./components/Route component/Routes";
 
 import HotCard from "./components/HotDet/HotCard";
-import { LocationCard } from "./components/material-ui-components/LocationCard";
-import { MoreFilterCard } from "./components/material-ui-components/MoreFilterCard";
 
 import Loading from "./components/material-ui-components/LoadingAnimation";
-import { SearchBar } from './components/Search-Bar/SearchBar';
-import { FilterSearchBar } from './components/FilterSearchBar/FilterSearchBar';
 
-// import { CheckoutPage } from "./components/Checkout-Page/CheckoutPage";
 
-// import { MapComponent } from "./components/Map/MapComponent";
-
-// import { ImageSlideShow } from "./components/Image SlideShow/ImageSlideShow";
-// import { ImageSliderData } from "./components/Image SlideShow/ImageSliderData";
 
 function App() {
   const login = useSelector((state) => state.login);
@@ -24,18 +15,8 @@ function App() {
     <div>
 
       {login.isLoading && <Loading />}
-      <HotCard />
-      {/* <Routes /> */}
-      {/* <ImageSlideShow slides={ImageSliderData} /> */}
-      {/* <MapComponent /> */}
-
-      {/* <CheckoutPage /> */}
-      {/* <LocationCard />
-      <MoreFilterCard />
-      <RatingCard /> */}
-      {/* <SearchBar /> */}
-
-      {/* <FilterSearchBar /> */}
+      {/* <HotCard /> */}
+      <Routes />
 
 
     </div>
