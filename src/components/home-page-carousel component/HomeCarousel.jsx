@@ -1,19 +1,22 @@
-import MuiCarousel from '../material-ui-components/MuiCarousel';
+
+
 import MuiTabs from '../material-ui-components/MuiTabs';
 
 import styled from 'styled-components';
 
+import { TopCities } from './TopCities';
+import { TopDestinations } from './TopDestinations';
+
 
 const HomeCarousel = () => {
     return (
-        <StyleCarousel>
+        <StyleHomeCarouselComponent>
             <h2>These top destinations are just a click away</h2>
-            <MuiTabs/>
-            <MuiCarousel />
-        </StyleCarousel>
+            <MuiTabs section={[<TopCities/>, <TopDestinations/>]} title={ ['Top Cities' , 'Top Destinations']}/>
+        </StyleHomeCarouselComponent>
     )
 }
-const StyleCarousel = styled.div`
+const StyleHomeCarouselComponent = styled.div`
     width:80%;
     margin:auto;
     & > h2 {
@@ -21,5 +24,5 @@ const StyleCarousel = styled.div`
         font-size:18px;
         margin-bottom: 15px;
     }
-`
-export {HomeCarousel}
+`;
+export { HomeCarousel }

@@ -7,8 +7,6 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-//normal import{}";
-import {TopCities} from '../home-page-carousel component/TopCities'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,29 +44,34 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
-        width: '100%',
-        margin: 'auto',
-        '& > .MuiAppBar-colorPrimary': {
-            backgroundColor: 'white !important',
-            boxShadow: 'none',
-        },
-  },
-  tab: {
-    fontSize: '11px',
-    fontWeight: '800',
-    color: '#697379'
-  },
-  tabPanel: {
-    '& > .MuiBox-root': {
-      padding: 0,
-      paddingTop: '20px',
+    backgroundColor: theme.palette.background.paper,
+    width: '100%',
+    margin: 'auto',
+    '& > .MuiAppBar-colorPrimary': {
+      backgroundColor: 'white !important',
+      boxShadow: 'none',
+    },
+    "& .MuiTabs-flexContainer ": {
+      borderBottom: '1px solid gainsboro',
+
     },
   },
+    tab: {
+      fontSize: '11px',
+      fontWeight: '800',
+      color: '#697379',
+    },
+    tabPanel: {
+      '& > .MuiBox-root': {
+        padding: 0,
+        paddingTop: '20px',
+      },
+      
+    },
 
 }));
 
-export default function MuiTabs() {
+export default function MuiTabs({section, title}) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -79,16 +82,14 @@ export default function MuiTabs() {
     <div className={classes.root}>
       <AppBar position="static" >
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab className={ classes.tab } label='Top Cities' {...a11yProps(0)} />
-          <Tab className={ classes.tab } label="Top Destinations" {...a11yProps(1)} />
+          {title.map((item, ind) => <Tab className={ classes.tab } label={item} {...a11yProps(ind)} />)}
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0} className={classes.tabPanel}>
-        <TopCities/>
-      </TabPanel>
-      <TabPanel value={value} index={1} className={classes.tabPanel}>
-        <TopCities/>
-      </TabPanel>
+      {section.map((item, ind) => {
+        return  <TabPanel value={value} index={ind} className={classes.tabPanel}>
+          {item}
+        </TabPanel>
+      })}
     </div>
   );
 }
