@@ -23,8 +23,8 @@ export function SearchBar() {
   const [clickedCheckOut, setClickedCheckOut] = useState(false);
   const [guestSelect, setGuestSelect] = useState(false);
   const [location, setLocation] = useState("");
-  const [checkInDate, setCheckInDate] = useState("____/____/____");
-  const [checkOutDate, setCheckOutDate] = useState("____/____/____");
+  const [checkInDate, setCheckInDate] = useState("-- /-- /----");
+  const [checkOutDate, setCheckOutDate] = useState("-- /-- /----");
   const [guestNumber, setGuestNumber] = useState(2)
   const [roomsNumber, setRoomsNumber] = useState(1)
 
@@ -146,10 +146,12 @@ export function SearchBar() {
                     <span>Check in</span>
                     <span>{checkInDate}</span>
                   </div>
-                  <div className="arrows-margin">
-                    <ArrowBackIosIcon style={{ cursor: "pointer" }} />
-                    <ArrowForwardIosIcon style={{ cursor: "pointer" }} />
-                  </div>
+                  {checkInDate !== "-- /-- /----" &&
+                    <div className="arrows-margin">
+                      <ArrowBackIosIcon style={{ cursor: "pointer" }} />
+                      <ArrowForwardIosIcon style={{ cursor: "pointer" }} />
+                    </div>
+                  }
                 </div>
                 <span className="partitionLine"></span>
                 <div onClick={handleClickedCheckOut} className="checkOutdate">
@@ -157,10 +159,10 @@ export function SearchBar() {
                     <span>Check out</span>
                     <span>{checkOutDate}</span>
                   </div>
-                  <div className="arrows-margin2">
+                  {checkInDate !== "-- /-- /----" && <div className="arrows-margin2">
                     <ArrowBackIosIcon style={{ cursor: "pointer" }} />
                     <ArrowForwardIosIcon style={{ cursor: "pointer" }} />
-                  </div>
+                  </div>}
                 </div>
               </div>
             </PickDateWrapper>
@@ -180,17 +182,23 @@ export function SearchBar() {
         </SearchBoxWrapper>
         {datePicker && (
           <Search
+            left="25%"
+            top="42rem"
+            position="absolute"
             setCheckInDate={setCheckInDate}
             setCheckOutDate={setCheckOutDate}
           />
         )}
         {clickedCheckOut && (
           <Search
+            left="25%"
+            top="42rem"
+            position="absolute"
             setCheckInDate={setCheckInDate}
             setCheckOutDate={setCheckOutDate}
           />
         )}
-        {guestSelect && <GuestCard setGuestNumber={setGuestNumber} setRoomsNumber={setRoomsNumber} />}
+        {guestSelect && <GuestCard top="42rem" position="absolute" right="30rem" setGuestNumber={setGuestNumber} setRoomsNumber={setRoomsNumber} />}
 
         <BookingLogosWrapper>
           <div className="booking-sites-text">
@@ -254,7 +262,7 @@ export function SearchBar() {
   );
 }
 
-const SearchBarWrapper = styled.div`
+export const SearchBarWrapper = styled.div`
   width: 100%;
   height: 300px;
   background-color: rgb(245, 245, 246);
@@ -268,12 +276,15 @@ const SearchBarWrapper = styled.div`
     grid-template-columns: 1fr;
   }
 `;
-const BookingLogosWrapper = styled.div`
+export const BookingLogosWrapper = styled.div`
   display: grid;
   width: 100%;
   align-items: center;
   padding-top: 1rem;
   .booking-sites-text {
+    h4{
+      font-size: 14px;
+    }
   }
   .booking-sites-logo {
     display: grid;
@@ -308,7 +319,7 @@ const BookingLogosWrapper = styled.div`
     }
   }
 `;
-const CategoryLinksWrapper = styled.div`
+export const CategoryLinksWrapper = styled.div`
   display: flex;
   .afterClick {
     background-color: white;
@@ -349,7 +360,7 @@ const CategoryLinksWrapper = styled.div`
     width: 135px;
   }
 `;
-const SearchBoxWrapper = styled.div`
+export const SearchBoxWrapper = styled.div`
   border-radius: 0 12px 12px 12px;
   width: 100%;
   height: 6rem;
@@ -359,12 +370,12 @@ const SearchBoxWrapper = styled.div`
   padding: 0rem 0.8rem;
   background-color: white;
 `;
-const SearchBarMainWrapper = styled.div`
+export const SearchBarMainWrapper = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
 `;
-const SelectLocationWrapper = styled.div`
+export const SelectLocationWrapper = styled.div`
   width: 32%;
   display: flex;
   align-items: center;
@@ -384,8 +395,10 @@ const SelectLocationWrapper = styled.div`
       border: none;
       position: relative;
       top: 4px;
+      font-size: 15px;
       ::placeholder {
         color: rgb(154, 161, 165);
+      
       }
     }
     .verticleAlign {
@@ -394,7 +407,7 @@ const SelectLocationWrapper = styled.div`
     }
   }
 `;
-const PickDateWrapper = styled.div`
+export const PickDateWrapper = styled.div`
   width: 36%;
   padding: 0rem 1rem;
   border-right: 1px solid rgb(205, 208, 210);
@@ -466,7 +479,7 @@ const PickDateWrapper = styled.div`
     }
   }
 `;
-const SelectGuestsWrapper = styled.div`
+export const SelectGuestsWrapper = styled.div`
   width: 32%;
   /* padding: 1rem; */
   padding-left: 1rem;
@@ -501,15 +514,17 @@ const SelectGuestsWrapper = styled.div`
       }
     }
     button {
-      width: 60%;
-      padding: 1rem;
-      background-color: #007fad;
-      border: 1px solid #007fad;
-      border-bottom-color: #005f81;
-      border-radius: 4rem;
-      color: white;
-      outline: none;
-      border: none;
+    width: 60%;
+    padding: 1rem;
+    background-color: #007fad;
+    border: 1px solid #007fad;
+    border-bottom-color: #005f81;
+    border-radius: 4rem;
+    color: white;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
       :hover {
         background-color: #005f81;
         cursor: pointer;

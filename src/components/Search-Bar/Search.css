@@ -1,14 +1,4 @@
 @import url("https://cdn.syncfusion.com/ej2/material.css");
-.search {
-  left: 25%;
-  width: 46vw;
-  background-color: white;
-  position: absolute;
-  top: 19rem;
-  box-shadow: 1px 7px 27px -3px black;
-  animation: 0.8s AnimateRight 0s forwards;
-  transform: translateX(-30%);
-}
 @keyframes AnimateRight {
   to {
     transform: translateX(0);
