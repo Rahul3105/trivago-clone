@@ -5,12 +5,12 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import styled from 'styled-components'
+import styled from "styled-components";
 const useStyles = makeStyles({
   root: {
-        minWidth: 200,
-        height: 250,
-        borderRadius: "10%"
+    minWidth: 180,
+    height: 225,
+    borderRadius: "15px",
   },
   bullet: {
     display: "inline-block",
@@ -18,75 +18,68 @@ const useStyles = makeStyles({
     transform: "scale(0.8)",
   },
   title: {
-      fontSize: 16,
-      fontWeight:500
+    fontSize: 13,
+    fontWeight: 500,
   },
   pos: {
-    marginBottom: 12,
+    marginBottom: 18,
   },
 });
 
-export const ComparePrice = () => {
-    const cancelation = true
-    const payProp = true
-    const breakfast = false
-    const price = 2349
-    const logo =
-      "https://imgcy.trivago.com/e_trim,w_4096/e_vectorize:30:1.0:1.0:100:25,f_svg/ar_3:1,b_white,bo_2px_solid_white,c_pad,f_png,h_26,q_auto,w_96/partnerlogos-s3/395";
+export const ComparePrice = (p) => {
+  //console.log(p);
+  const cancelation = true;
+  const payProp = true;
+  const breakfast = false;
+  const price = p.d;
+  const logo = p.src;
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
-    return (
-      <PriceBox>
-        <Card className={classes.root} variant="outlined">
-          <CardContent>
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              gutterBottom
-            >
-              Our Lowest Price
-            </Typography>
-            <p className="condition-data">
-              {cancelation && breakfast && payProp
-                ? "Free Cancellation , Pay at the property & Free Breakfast"
-                : cancelation && breakfast && !payProp
-                ? "Free Cancellation & Free Breakfast"
-                : cancelation && !breakfast && !payProp
-                ? "Free Cancellation"
-                : cancelation && !breakfast && payProp
-                ? "Free Cancellation & Pay at the property"
-                : !cancelation && breakfast && !payProp
-                ? "Free Breakfast"
-                : !cancelation && !breakfast && payProp
-                ? "Free Cancellation , Pay at the property"
-                : !cancelation && breakfast && payProp
-                ? "Pay at the property & Free Breakfast"
-                : ""}
-            </p>
+  return (
+    <PriceBox>
+      <Card className={classes.root} variant="outlined">
+        <CardContent>
+          <Typography
+            className={classes.title}
+            color="textSecondary"
+            gutterBottom
+          >
+            Our Lowest Price with
+          </Typography>
+          <p className="condition-data">
+            {cancelation && breakfast && payProp
+              ? "Free Cancellation , Pay at the property & Free Breakfast"
+              : cancelation && breakfast && !payProp
+              ? "Free Cancellation & Free Breakfast"
+              : cancelation && !breakfast && !payProp
+              ? "Free Cancellation"
+              : cancelation && !breakfast && payProp
+              ? "Free Cancellation & Pay at the property"
+              : !cancelation && breakfast && !payProp
+              ? "Free Breakfast"
+              : !cancelation && !breakfast && payProp
+              ? "Free Cancellation , Pay at the property"
+              : !cancelation && breakfast && payProp
+              ? "Pay at the property & Free Breakfast"
+              : ""}
+          </p>
 
-            <div className="price-logo">
-              <p className="price-value">₹{price}</p>
-              <p>{"/Night"}</p>
+          <div className="price-logo">
+            <p className="price-value">₹{price}</p>
+            <p>{"/Night"}</p>
 
-              <img
-                className="logo-img"
-                src={logo}
-                alt=""
-              />
-            </div>
-          </CardContent>
-        </Card>
-      </PriceBox>
-    );
+            <img className="logo-img" src={logo} alt="" />
+          </div>
+        </CardContent>
+      </Card>
+    </PriceBox>
+  );
 };
 
-
-
 const PriceBox = styled.div`
-  font-size: 16px;
-  width: 15%;
-  margin: 2%;
+  font-size: 14px;
+  width: 90%;
 
   & :hover {
     background-color: #e4e4e4;
@@ -101,11 +94,14 @@ const PriceBox = styled.div`
   }
   & .price-logo {
     float: right;
-    margin-top: 35%;
+    margin-top: 50px;
     text-align: right;
   }
   & .price-value {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
+  }
+  & .logo-img {
+    padding-top: 15px;
   }
 `;

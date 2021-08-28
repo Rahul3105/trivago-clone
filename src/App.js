@@ -17,6 +17,7 @@ function App() {
   return (
     <div>
       {login.isLoading && <Loading />}
+      <HotCard />
       <Routes />
       {/* <ImageSlideShow slides={ImageSliderData} /> */}
       {/* <MapComponent /> */}
