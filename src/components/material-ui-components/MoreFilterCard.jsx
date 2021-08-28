@@ -61,7 +61,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function MoreFilterCard() {
+export function MoreFilterCard() {
     const classes = useStyles();
     const [isChecked, setIschecked] = useState(false)
     const [facilities, setFacilities] = useState({})

@@ -33,7 +33,7 @@ const useStyles = makeStyles({
         marginBottom: 12,
     },
 });
-const PrettoSlider = withStyles({
+export const PrettoSlider = withStyles({
     root: {
         color: 'rgb(0,127,173)',
         height: 8,

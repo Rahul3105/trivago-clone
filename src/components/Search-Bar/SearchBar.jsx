@@ -256,7 +256,7 @@ export function SearchBar() {
   );
 }
 
-const SearchBarWrapper = styled.div`
+export const SearchBarWrapper = styled.div`
   width: 100%;
   height: 300px;
   background-color: rgb(245, 245, 246);
@@ -270,7 +270,7 @@ const SearchBarWrapper = styled.div`
     grid-template-columns: 1fr;
   }
 `;
-const BookingLogosWrapper = styled.div`
+export const BookingLogosWrapper = styled.div`
   display: grid;
   width: 100%;
   align-items: center;
@@ -313,7 +313,7 @@ const BookingLogosWrapper = styled.div`
     }
   }
 `;
-const CategoryLinksWrapper = styled.div`
+export const CategoryLinksWrapper = styled.div`
   display: flex;
   .afterClick {
     background-color: white;
@@ -354,7 +354,7 @@ const CategoryLinksWrapper = styled.div`
     width: 135px;
   }
 `;
-const SearchBoxWrapper = styled.div`
+export const SearchBoxWrapper = styled.div`
   border-radius: 0 12px 12px 12px;
   width: 100%;
   height: 6rem;
@@ -364,12 +364,12 @@ const SearchBoxWrapper = styled.div`
   padding: 0rem 0.8rem;
   background-color: white;
 `;
-const SearchBarMainWrapper = styled.div`
+export const SearchBarMainWrapper = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
 `;
-const SelectLocationWrapper = styled.div`
+export const SelectLocationWrapper = styled.div`
   width: 32%;
   display: flex;
   align-items: center;
@@ -401,7 +401,7 @@ const SelectLocationWrapper = styled.div`
     }
   }
 `;
-const PickDateWrapper = styled.div`
+export const PickDateWrapper = styled.div`
   width: 36%;
   padding: 0rem 1rem;
   border-right: 1px solid rgb(205, 208, 210);
@@ -473,7 +473,7 @@ const PickDateWrapper = styled.div`
     }
   }
 `;
-const SelectGuestsWrapper = styled.div`
+export const SelectGuestsWrapper = styled.div`
   width: 32%;
   /* padding: 1rem; */
   padding-left: 1rem;
