@@ -159,7 +159,7 @@ const HotCard = () => {
   useEffect(() => {
     setTimeout(() => {
       setLd(false);
-    }, 3000);
+    }, Math.random() * 3000);
   }, []);
 
   const tog1 = () => {
@@ -207,9 +207,6 @@ const HotCard = () => {
   };
   return (
     <div>
-      <div>{ld ? "true" : "false"}</div>
-      <button onClick={() => setMap(true)}>Open map</button>
-      <button onClick={() => setMap(false)}>Close map</button>
       {map &&
         (ld ? (
           <CardLoad setLd={setLd} ld={ld} />
