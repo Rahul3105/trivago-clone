@@ -24,12 +24,12 @@ const PaginationComponent = ({ currPage, setCurrPage }) => {
     
 }
 const StyledContainer = styled(Container)`
-    padding: 35px 0;
-    width: fit-content;
+    padding: 35px 0 !important;
+    width: fit-content !important;
     & * {
-        font-size:15px;
-        font-weight:700;
-        color: gray;
+        font-size:15px !important;
+        font-weight:700 !important;
+        color: gray !important;
     } 
 
 `;

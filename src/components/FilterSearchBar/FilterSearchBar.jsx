@@ -23,8 +23,11 @@ import { LocationCard } from "../material-ui-components/LocationCard";
 import { RatingCard } from "../material-ui-components/RatingCard";
 import { MoreFilterCard } from "../material-ui-components/MoreFilterCard";
 
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import Loading from "../material-ui-components/LoadingAnimation";
 
+
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { priceFilter } from "../../store/actions";
 import { useContext } from "react";
 import { SearchDataContext } from "../Context/SearchDataContext";
 export function FilterSearchBar() {
@@ -42,6 +45,9 @@ export function FilterSearchBar() {
     const [guestNumber, setGuestNumber] = useState(guestsData);
     const [roomsNumber, setRoomsNumber] = useState(roomsData);
 
+
+    const dispatch = useDispatch();
+
     const [showLocationCard, setShowLocationCard] = useState(false);
     const [showRatingCard, setShowRatingCard] = useState(false);
     const [showMoreFilterCard, setShowMoreFilterCard] = useState(false);
@@ -53,14 +59,29 @@ export function FilterSearchBar() {
     const [price, setPrice] = useState(14100);
 
 
-
-    let { hotel } = useSelector((state) => state.activities, shallowEqual);
+    const [loading, setLoading] = useState(false);
+    let hotelState = useSelector((state) => state.activities, shallowEqual);
+    let hotel = hotelState.hotel;
     // const location2 = hotel[0].location;
-    console.log(hotel, "hii from filter searchbar")
+
+    // filtering with price logic
+
+    useEffect(() => {
+        handlePriceChange();
+    }, [price])
+
+    const handlePriceChange = () => {
+        dispatch(priceFilter(price / roomsData, hotelState.query));
+        setLoading(true);
+    }
+    useEffect(() => {
+        setTimeout(() => { setLoading(false) }, 3000)
+    }, [loading])
+
+
     if (hotel.length === 0) {
         hotel = [{ location: "Mumbai" }]
     }
-    console.log(hotel[0])
 
 
     const handleBorder = () => {
@@ -118,6 +139,7 @@ export function FilterSearchBar() {
     };
     return (
         <>
+            {loading && <Loading />}
             <FilterSearchBarWrapper>
                 <SearchBoxWrapper
                     onMouseEnter={hanldleAllCards}
@@ -232,7 +254,6 @@ export function FilterSearchBar() {
                             </div>
                         </div>
                         <div className="priceNightSlider">
-                            {" "}
                             <PrettoSlider
                                 value={price}
                                 onChange={getPrice}

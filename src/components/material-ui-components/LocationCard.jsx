@@ -102,7 +102,7 @@ export function LocationCard({ setPlace, location }) {
                         return <option value={el}>{el}</option>
                     }) : location.toString().toLowerCase() === "delhi" ? delhi.map((el) => {
                         return <option value={el}>{el}</option>
-                    }) : location.toString().toLowerCase() === "dubai" ? dubai.maap((el) => {
+                    }) : location.toString().toLowerCase() === "dubai" ? dubai.map((el) => {
                         return <option value={el}>{el}</option>
                     }) : <><option value="india gate">India Gate</option>
 

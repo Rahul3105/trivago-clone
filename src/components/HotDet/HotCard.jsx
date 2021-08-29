@@ -47,12 +47,12 @@ const HotCard = ({ x }) => {
   const cls = useStyle();
 
   const r =
-    (x.review.location +
+    ((x.review.location +
       x.review.room +
       x.review.services +
       x.review.facilities +
       x.review.vom) /
-    5;
+      5).toFixed(1);
   const redirectTo = [
     "Agoda",
     "Booking.com",
@@ -176,9 +176,9 @@ const HotCard = ({ x }) => {
 
                 <div style={{ display: "grid" }}>
 
-                  <span style={{ fontSize: "13px" }}>{guestsData} guests {days} night for ₹{x.deals[ind] * guestsData * roomsData} </span>
+                  <span style={{ fontSize: "13px" }}>{guestsData} guests {days} night for ₹{x.deals[ind] * roomsData} </span>
                   <div className="viewDealbtn">
-                    <h2>₹{x.deals[ind] * guestsData * roomsData}</h2>
+                    <h2>₹{x.deals[ind] * roomsData}</h2>
                     <button
 
                       onClick={handleRedirect}
