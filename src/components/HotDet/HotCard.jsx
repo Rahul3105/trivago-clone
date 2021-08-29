@@ -13,8 +13,8 @@ import ReviewMain from "./Review";
 import CardLoad from "./CardLoad";
 import Overview from "./Overview";
 import Deal from "./Deal";
-import { useHistory } from 'react-router-dom';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import { useHistory } from "react-router-dom";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 const useStyle = makeStyles({
   logoWidth: {
     width: "20px",
@@ -35,15 +35,16 @@ const HotCard = ({ x }) => {
   const [review, SetReview] = useState(false);
   const [deal, SetDeal] = useState(false);
   const [ld, setLd] = useState(true);
-  const history = useHistory()
+  const history = useHistory();
 
   const cls = useStyle();
 
-  const r = (x.review.location +
-    x.review.room +
-    x.review.services +
-    x.review.facilities +
-    x.review.vom) /
+  const r =
+    (x.review.location +
+      x.review.room +
+      x.review.services +
+      x.review.facilities +
+      x.review.vom) /
     5;
   const redirectTo = [
     "Agoda",
@@ -112,18 +113,18 @@ const HotCard = ({ x }) => {
   ////this is for redirecting to other website
 
   const handleRedirect = () => {
-    history.push('/redirect/goibibo.com');
+    history.push("/redirect/goibibo.com");
     setTimeout(() => {
-      history.replace('/externalSide/goibibo.com');
-    },5000)
-  }
+      history.replace("/externalSide/goibibo.com");
+    }, 5000);
+  };
   return (
     <div>
       {map &&
         (ld ? (
           <CardLoad setLd={setLd} ld={ld} />
         ) : (
-          <Cont onClick={big} >
+          <Cont onClick={big}>
             <Imag>
               <img src={`${x.img[0]}`} alt="" />
               <Fav>
@@ -142,7 +143,9 @@ const HotCard = ({ x }) => {
               <button>
                 <div>
                   <RoomOutlinedIcon className={cls.logoWidth} />
-                  <p>{x.dist} km from {x.address}</p>
+                  <p>
+                    {x.dist} km from {x.address}
+                  </p>
                 </div>
                 <ExpandMoreIcon className={cls.logoWidth} />
               </button>
@@ -165,7 +168,12 @@ const HotCard = ({ x }) => {
                 </div>
                 <div>
                   <h2>₹{x.deals[ind]}</h2>
-                  <button style={{ display: 'flex', alignItems: "center" }} onClick={ handleRedirect }>View Deal <ArrowForwardIosIcon fontSize="small" /></button>
+                  <button
+                    style={{ display: "flex", alignItems: "center" }}
+                    onClick={handleRedirect}
+                  >
+                    View Deal <ArrowForwardIosIcon fontSize="small" />
+                  </button>
                 </div>
               </BigGrn>
               <div>

@@ -21,7 +21,7 @@ const useStyles = makeStyles({
         boxShadow: "1px 1px 20px black",
         borderradius: "1rem",
         position: "absolute",
-        top: "10rem",
+        top: "29rem",
         right: "29rem",
     },
     bullet: {
@@ -65,7 +65,7 @@ export const PrettoSlider = withStyles({
         borderRadius: 4,
     },
 })(Slider);
-export function LocationCard({ setPlace }) {
+export function LocationCard({ setPlace, location }) {
     const [distance, setDistance] = useState(20)
     const [selectLocation, setSelectLocation] = useState("city center")
     const [locationInput, setLocationInput] = useState("")

@@ -37,7 +37,7 @@ const useStyles = makeStyles({
     margin: "4rem auto",
     boxShadow: "1px 1px 20px black",
     position: "absolute",
-    top: "10rem",
+    top: "29rem",
     right: "21rem",
   },
   starsCont: {

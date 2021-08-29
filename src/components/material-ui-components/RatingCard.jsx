@@ -15,7 +15,7 @@ const useStyles = makeStyles({
         margin: "4rem auto",
         display: "grid",
         position: "absolute",
-        top: "10rem",
+        top: "-6rem",
         left: "87rem",
 
     },
@@ -136,9 +136,10 @@ width: 25px;
 `;
 
 const RatingWrapper = styled.div`
-width: 300px;
-height: 300px;
-margin: auto;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    position: absolute;
 
     .MuiSvgIcon-root {
     fill: currentColor;
