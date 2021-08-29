@@ -5,7 +5,7 @@ import {
   TimelineContent,
   TimelineDot,
   TimelineItem,
-    TimelineSeparator,
+  TimelineSeparator,
 } from "@material-ui/lab";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,10 +18,12 @@ import { Redirect, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-        padding: "6px 16px",
-        height: "13vh",
-        position: "relative",
-        top:"30%"
+    width: "40rem",
+    height: "8rem",
+    padding: "6px 16px",
+    position: "relative",
+    backgroundColor: "rgb(245,245,246)",
+    top: "3rem",
   },
   secondaryTail: {
     backgroundColor: theme.palette.secondary.main,
@@ -29,13 +31,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function RecentlyData({ data }) {
-    const classes = useStyles();
-    const history = useHistory()
+  const classes = useStyles();
+  const history = useHistory()
   const { date, location, checkin, checkout, room, guest } = data;
-    // console.log(data);
-    const handleRecentlyMain = () => {
-        return <Redirect to="/recentlyMain"></Redirect>
-    }
+  // console.log(data);
+  const handleRecentlyMain = () => {
+    return <Redirect to="/recentlyMain"></Redirect>
+  }
   return (
     <Activity>
       <Timeline>
@@ -69,7 +71,9 @@ export default function RecentlyData({ data }) {
                 </Typography>
               </div>
               <div className="data-button">
-                  <Button variant="outlined" onClick={handleRecentlyMain}>Search again</Button>
+                <button className="muiBtn1">
+                  Search again
+                </button>
               </div>
             </Paper>
           </TimelineContent>
@@ -88,7 +92,7 @@ const Activity = styled.div`
 
   
   & .timeline-date{
-      font-size:16px;
+      font-size:13px;
       position: relative;
       right:-15%;
       margin-top:.7%;
@@ -108,6 +112,26 @@ const Activity = styled.div`
       top:-40%;
       border-radius:5%;
     letter-spacing:-3px;
+      .muiBtn1 {
+  width: 11rem;
+    padding: 0.8rem;
+    background-color: white;
+    border: 1px solid rgb(10,17,33);
+    color: rgb(10,17,33);
+    border-radius: 10px;
+    outline: none;
+    font-size: 13px;
+    font-weight: bold;
+    position: relative;
+    top: -1rem;
+    left: 2rem;
+    :hover {
+      background-color: gray;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  }
   }
 `;
 

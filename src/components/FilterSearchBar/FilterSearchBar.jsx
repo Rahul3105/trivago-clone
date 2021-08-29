@@ -23,6 +23,7 @@ import { LocationCard } from "../material-ui-components/LocationCard";
 import { RatingCard } from "../material-ui-components/RatingCard";
 import { MoreFilterCard } from "../material-ui-components/MoreFilterCard";
 
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 export function FilterSearchBar() {
     const [border, setBorder] = useState(false);
     const [datePicker, setDatePicker] = useState(false);
@@ -43,6 +44,18 @@ export function FilterSearchBar() {
     const [facilitieslength, setFacilitieslength] = useState(0);
 
     const [price, setPrice] = useState(14100);
+
+
+
+    let { hotel } = useSelector((state) => state.activities, shallowEqual);
+    // const location2 = hotel[0].location;
+    console.log(hotel, "hii from filter searchbar")
+    if (hotel.length === 0) {
+        hotel = [{ location: "Mumbai" }]
+    }
+    console.log(hotel[0])
+
+
     const handleBorder = () => {
         setBorder(true);
         setDatePicker(false);
@@ -176,7 +189,7 @@ export function FilterSearchBar() {
                 </SearchBoxWrapper>
                 {datePicker && (
                     <Search
-                        top="7rem"
+                        top="26rem"
                         position="absolute"
                         left="25%"
                         setCheckInDate={setCheckInDate}
@@ -185,7 +198,7 @@ export function FilterSearchBar() {
                 )}
                 {clickedCheckOut && (
                     <Search
-                        top="7rem"
+                        top="26rem"
                         position="absolute"
                         left="25%"
                         setCheckInDate={setCheckInDate}
@@ -196,7 +209,7 @@ export function FilterSearchBar() {
                     <GuestCard
                         position="absolute"
                         right="32rem"
-                        top="7rem"
+                        top="26rem"
                         setGuestNumber={setGuestNumber}
                         setRoomsNumber={setRoomsNumber}
                     />
@@ -270,6 +283,7 @@ export function FilterSearchBar() {
 
             {showLocationCard && (
                 <LocationCard
+                    location={hotel[0].location}
                     className="animated fadeIn"
                     setPlace={setPlace}
                     onMouseEnter={handleLocationCard}
