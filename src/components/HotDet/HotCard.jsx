@@ -176,9 +176,9 @@ const HotCard = ({ x }) => {
 
                 <div style={{ display: "grid" }}>
 
-                  <span style={{ fontSize: "13px" }}>{guestsData} guests {days} night for ₹{x.deals[ind] * roomsData} </span>
+                  <span style={{ fontSize: "13px" }}>{guestsData} guests {days} night for ₹{x.deals[ind] * roomsData * days} </span>
                   <div className="viewDealbtn">
-                    <h2>₹{x.deals[ind] * roomsData}</h2>
+                    <h2>₹{x.deals[ind] * roomsData * days}</h2>
                     <button
 
                       onClick={handleRedirect}
@@ -440,8 +440,9 @@ const BigGrn = styled.div`
           display: flex;
     align-items: center;
     position: relative;
-    left: 100px;
-    top: -1rem;
+        left: 94px;
+    top: -5px;
+
 
       :hover {
         background-color: rgb(0, 95, 0);

@@ -37,7 +37,7 @@ export function FilterSearchBar() {
     const [guestSelect, setGuestSelect] = useState(false);
 
 
-    const { searchData, guestsData, roomsData, firstDate, secondDate } = useContext(SearchDataContext)
+    const { searchData, guestsData, roomsData, firstDate, secondDate, handleSearchData, days, handleRoomsData, handleDays, handleGuestsData, handleFirstDate, handleSecondDate } = useContext(SearchDataContext)
     const [location, setLocation] = useState(searchData);
     const [checkInDate, setCheckInDate] = useState(firstDate);
     const [checkOutDate, setCheckOutDate] = useState(secondDate);
@@ -71,7 +71,7 @@ export function FilterSearchBar() {
     }, [price])
 
     const handlePriceChange = () => {
-        dispatch(priceFilter(price / roomsData, hotelState.query));
+        dispatch(priceFilter((price / roomsData) / days, hotelState.query));
         setLoading(true);
     }
     useEffect(() => {
@@ -137,6 +137,50 @@ export function FilterSearchBar() {
     const getPrice = (e, value) => {
         setPrice(value);
     };
+
+
+    const handleSecondPageSearch = () => {
+        handleSearchData(location)
+        handleRoomsData(roomsNumber)
+        handleGuestsData(guestNumber)
+
+
+
+
+
+        handleFirstDate(checkInDate)
+        handleSecondDate(checkOutDate)
+
+        let first = Number(checkInDate.slice(8, 10))
+        let last = Number(checkOutDate.slice(8, 10))
+
+        let fmonth = checkInDate.slice(4, 7)
+        let smonth = checkOutDate.slice(4, 7)
+
+        if (fmonth === smonth) {
+            handleDays(last - first)
+        } else {
+            if (smonth === "Jan" || smonth === "Mar" || smonth === "May" || smonth === "Jul" || smonth === "Aug" || smonth === "Oct" || smonth === "Nov" || smonth === "Dec") {
+                if (last < first) {
+                    if (fmonth === "Jun" || fmonth === "Sep" || fmonth === "Nov" || fmonth === "Apr") {
+                        handleDays(30 - first + last)
+                    } else if (fmonth === "Jan" || fmonth === "Mar" || fmonth === "May" || fmonth === "Jul" || fmonth === "Aug" || fmonth === "Oct" || fmonth === "Nov" || fmonth === "Dec") {
+                        handleDays(31 - first + last)
+                    }
+                }
+            }
+            if (smonth === "Jun" || smonth === "Sep" || smonth === "Nov" || smonth === "Apr") {
+                if (last < first) {
+                    if (fmonth === "Jun" || fmonth === "Sep" || fmonth === "Nov" || fmonth === "Apr") {
+                        handleDays(30 - first + last)
+                    } else if (fmonth === "Jan" || fmonth === "Mar" || fmonth === "May" || fmonth === "Jul" || fmonth === "Aug" || fmonth === "Oct" || fmonth === "Nov" || fmonth === "Dec") {
+                        handleDays(31 - first + last)
+                    }
+                }
+            }
+        }
+
+    }
     return (
         <>
             {loading && <Loading />}
@@ -211,14 +255,14 @@ export function FilterSearchBar() {
                                         <span>{guestNumber} Guests</span>
                                     </div>
                                 </div>
-                                <button>Search</button>
+                                <button onClick={handleSecondPageSearch}>Search</button>
                             </div>
                         </SelectGuestsWrapper>
                     </SearchBarMainWrapper>
                 </SearchBoxWrapper>
                 {datePicker && (
                     <Search
-                        top="26rem"
+                        top="12rem"
                         position="absolute"
                         left="25%"
                         setCheckInDate={setCheckInDate}
@@ -227,7 +271,7 @@ export function FilterSearchBar() {
                 )}
                 {clickedCheckOut && (
                     <Search
-                        top="26rem"
+                        top="12rem"
                         position="absolute"
                         left="25%"
                         setCheckInDate={setCheckInDate}
@@ -238,7 +282,7 @@ export function FilterSearchBar() {
                     <GuestCard
                         position="absolute"
                         right="32rem"
-                        top="26rem"
+                        top="12rem"
                         setGuestNumber={setGuestNumber}
                         setRoomsNumber={setRoomsNumber}
                     />
