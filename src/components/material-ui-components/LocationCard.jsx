@@ -21,7 +21,7 @@ const useStyles = makeStyles({
         boxShadow: "1px 1px 20px black",
         borderradius: "1rem",
         position: "absolute",
-        top: "10rem",
+        top: "29rem",
         right: "29rem",
     },
     bullet: {
@@ -65,7 +65,7 @@ export const PrettoSlider = withStyles({
         borderRadius: 4,
     },
 })(Slider);
-export function LocationCard({ setPlace }) {
+export function LocationCard({ setPlace, location }) {
     const [distance, setDistance] = useState(20)
     const [selectLocation, setSelectLocation] = useState("city center")
     const [locationInput, setLocationInput] = useState("")
@@ -97,14 +97,21 @@ export function LocationCard({ setPlace }) {
 
                 <div><span>This popular site:</span></div>
                 <LocationSelectWrapper><select value={selectLocation} onChange={handleSelectLocation} defaultValue={selectLocation} name="location">
-                    <option value="india gate">India Gate</option>
-                    <option value="city center">City Center</option>
-                    <option value="delhi junction railway station">Delhi Junction Railway Station</option>
-                    <option value="jantar mantar">Jantar mantar</option>
-                    <option value="jama masjid">Jama masjid</option>
-                    <option value="lodi garderns">Lodi Gardens</option>
-                    <option value="national rail museum">National Rail Museum</option>
-                    <option value="presidential palace">Presidential Palace</option>
+                    {location.toString().toLowerCase() === "mumbai" ? Mumbai.map((el) => {
+                        return <option value={el}>{el}</option>
+                    }) : location.toString().toLowerCase() === "delhi" ? delhi.map((el) => {
+                        return <option value={el}>{el}</option>
+                    }) : location.toString().toLowerCase() === "dubai" ? dubai.maap((el) => {
+                        return <option value={el}>{el}</option>
+                    }) : <><option value="india gate">India Gate</option>
+
+                        <option value="delhi junction railway station">Delhi Junction Railway Station</option>
+                        <option value="jantar mantar">Jantar mantar</option>
+                        <option value="jama masjid">Jama masjid</option>
+                        <option value="lodi garderns">Lodi Gardens</option>
+                        <option value="national rail museum">National Rail Museum</option>
+                        <option value="presidential palace">Presidential Palace</option></>}
+
                 </select></LocationSelectWrapper>
             </CardContent>
             <CardContent>
@@ -196,3 +203,11 @@ height: 100%;
 
 
 `
+
+
+const Mumbai = ["city center", "Guru Nanak Nagar", "Sahar Airport", "Ghatkopar", "Juhu Tara", "Kurla", ""]
+
+
+const delhi = ["Aerocity", "indira Gandhi International Airport", "Rajiv Chowk Metro Station", "Bangla Sahib Gurdwara", "India Gate", " Red Fort - Lal Qila", "Lodhi Garder"]
+
+const dubai = ["Al Garhoud", "Al Barsha Dubai", "Bur Dubai"]

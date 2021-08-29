@@ -9,7 +9,51 @@ import  Button from '@material-ui/core/Button';
 import StarIcon from '@material-ui/icons/Star';
 
 import styled from 'styled-components';
+import { useState, useEffect ,useRef} from 'react';
+import {Redirect} from 'react-router-dom';
+//payment gateway stuff
+
+import StripeCheckout from "react-stripe-checkout";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const CheckoutPage = () => {
+    // payment gateway stuff
+    const [payment,setPayment] = useState(1500);;
+    const [form, setForm] = useState({});
+
+    toast.configure();
+
+    const [product,setProduct] = useState({
+        name: form.name,
+        price: payment,
+        description: "Hotel booking",
+        
+    });
+    
+    async function handleToken(token, addresses) {
+          const response = await axios.post(
+              "http://localhost:3002/payment",
+              { token, product }
+          ).then(({ data }) => {
+              if (data.token.id != "") {
+                  toast("Success! Check email for details", { type: "success" });
+                  setForm({});
+                  return (<Redirect to="/your/redirect/page" />);
+              }
+              else
+              {
+                  toast("Something went wrong", { type: "error" });
+              }
+          }).catch((err) => {
+              toast("Something went wrong", { type: "error" });
+          });
+      }
+    
+ 
+    
+
+
     return (
         <StyledCheckoutPage>
             <header>
@@ -25,11 +69,23 @@ export const CheckoutPage = () => {
                     <span>1</span>Enter your details
                 </header>
                     <h2>We will use these details to share your booking information</h2>
-                <form >
+                <form onSubmit={(e) => e.preventDefault()}>
                     <TextField label='input' variant='outlined' />
                     <TextField label='input' variant='outlined' />
                     <TextField label='input' variant='outlined' />
                     <Button variant='contained' color='secondary'>Proceed</Button>
+                    <StripeCheckout
+                        stripeKey="pk_test_51JTa73SBG37VySlEpREWj3nafDUedQKFoBVv9quV8pagoXvk0GSoz0VDwmUmGzJFukUlHgq8exfcWEpNhSwkR4Co00PDFIYJL1"
+                        token={handleToken}
+                        amount={payment*100}
+                        name={form.name}
+                        currency="INR"
+                        allowRememberMe
+                        billingAddress
+                        shippingAddress
+                        email={form.email}
+                        // disabled={disabledtab}
+                    />
                 </form>
             </StyledDetailsForm>
             

@@ -20,24 +20,16 @@
     {
       "id": 1,
       "date": "24 Aug. 2021",
-      "location": "Massourie",
+      "location": "Mumbai",
       "checkin": "25-08-21",
       "checkout": "27-08-21",
-      "room": "2",
-      "guest": "4"
+      "room": "4",
+      "guest": "8"
     },
     {
       "id": 2,
-      "date": "24 Aug. 2021",
+      "date": "28 Aug. 2021",
       "location": "Delhi",
-      "checkin": "25-08-21",
-      "checkout": "27-08-21",
-      "room": "2",
-      "guest": "4"
-    },
-    {
-      "date": "24 Aug. 2021",
-      "location": "Pakistan",
       "checkin": "25-08-21",
       "checkout": "27-08-21",
       "room": "2",
@@ -47,12 +39,12 @@
   "recentlyViewed": [
     {
       "id": 1,
-      "name":"Hôtel des Marronniers",
-      "img":"https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/73/86/738668388.jpeg",
+      "name": "Hôtel des Marronniers",
+      "img": "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/73/86/738668388.jpeg",
       "date": "24 Aug. 2021",
-      "star":"3",
-      "rating":"9.4",
-      "reviews":"2492",
+      "star": "3",
+      "rating": "9.4",
+      "reviews": "2492",
       "location": "dubai",
       "checkin": "25-08-21",
       "checkout": "27-08-21",
@@ -87,52 +79,50 @@
       "room": "2",
       "guest": "5"
     },
-     {
-       "id": 4,
-       "name": "Umaid Bhawan",
-       "img": "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/31/79/31799040.jpeg",
-       "date": "2 Aug. 2021",
-       "star": "3",
-       "rating": "7.3",
-       "reviews": "2492",
-       "location": "delhi",
-       "checkin": "27-07-21",
-       "checkout": "2-08-21",
-       "room": "6",
-       "guest": "23"
-     },
-      {
-        "id": 5,
-        "name": "The Claridges Nabha Residence",
-        "img": "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/27/03/270392342.jpeg",
-        "date": "24 Aug. 2021",
-        "star": "4",
-        "rating": "9.4",
-        "reviews": "2492",
-        "location": "Massourie",
-        "checkin": "25-08-21",
-        "checkout": "27-08-21",
-        "room": "2",
-        "guest": "4"
-      },
-       {
-         "id": 6,
-         "name": "The Prime Jaipur",
-         "img": "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/36/14/361425572.jpeg",
-         "date": "2 jul. 2021",
-         "star": "5",
-         "rating": "9.3",
-         "reviews": "6442",
-         "location": "Jaipur",
-         "checkin": "21-09-21",
-         "checkout": "22-09-21",
-         "room": "3",
-         "guest": "4"
-       }
-  ]
-  ,
-  
-  "MainData":[
+    {
+      "id": 4,
+      "name": "Umaid Bhawan",
+      "img": "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/31/79/31799040.jpeg",
+      "date": "2 Aug. 2021",
+      "star": "3",
+      "rating": "7.3",
+      "reviews": "2492",
+      "location": "delhi",
+      "checkin": "27-07-21",
+      "checkout": "2-08-21",
+      "room": "6",
+      "guest": "23"
+    },
+    {
+      "id": 5,
+      "name": "The Claridges Nabha Residence",
+      "img": "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/27/03/270392342.jpeg",
+      "date": "24 Aug. 2021",
+      "star": "4",
+      "rating": "9.4",
+      "reviews": "2492",
+      "location": "Massourie",
+      "checkin": "25-08-21",
+      "checkout": "27-08-21",
+      "room": "2",
+      "guest": "4"
+    },
+    {
+      "id": 6,
+      "name": "The Prime Jaipur",
+      "img": "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/36/14/361425572.jpeg",
+      "date": "2 jul. 2021",
+      "star": "5",
+      "rating": "9.3",
+      "reviews": "6442",
+      "location": "Jaipur",
+      "checkin": "21-09-21",
+      "checkout": "22-09-21",
+      "room": "3",
+      "guest": "4"
+    }
+  ],
+  "MainData": [
     {
       "name": "Holiday Inn Mumbai Internationl",
       "star": 4,
@@ -1071,7 +1061,7 @@
       "redirect": "GoIbibo",
       "topAmenities": [1, 1, 1, 1, 1, 0, 1, 1],
       "allAmenities": {
-       "hotel": [
+        "hotel": [
           "24-hour reception",
           "24-hour room service",
           "Airport shuttle",
@@ -1169,7 +1159,7 @@
       "redirect": "GoIbibo",
       "topAmenities": [1, 1, 1, 1, 1, 1, 1, 0],
       "allAmenities": {
-       "hotel": [
+        "hotel": [
           "24-hour reception",
           "24-hour room service",
           "Airport shuttle",
@@ -1544,7 +1534,7 @@
       "redirect": "GoIbibo",
       "topAmenities": [1, 1, 1, 1, 1, 0, 1, 1],
       "allAmenities": {
-       "hotel": [
+        "hotel": [
           "24-hour reception",
           "24-hour room service",
           "Airport shuttle",
@@ -1642,7 +1632,7 @@
       "redirect": "GoIbibo",
       "topAmenities": [1, 1, 1, 1, 1, 1, 1, 0],
       "allAmenities": {
-       "hotel": [
+        "hotel": [
           "24-hour reception",
           "24-hour room service",
           "Airport shuttle",
@@ -1973,7 +1963,7 @@
         "accessability": ["Accessible parking", "Wheelchair accessible"],
         "children": ["Childcare", "Cot"]
       },
-      "deals": [15636, 16160,16199, 15636, 15699],
+      "deals": [15636, 16160, 16199, 15636, 15699],
       "map": [25.0838, 55.2204],
       "cancelation": true,
       "payProp": true,
@@ -2072,7 +2062,7 @@
         "children": ["Childcare", "Cot"]
       },
       "deals": [5636, 6160, 6199, 5636, 5699],
-      "map": [25.2400, 55.3503],
+      "map": [25.24, 55.3503],
       "cancelation": true,
       "payProp": true,
       "breakfast": true,

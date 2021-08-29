@@ -29,7 +29,7 @@ export const getDetails = (dispatch) => {
   const requestAction = getDataRequest();
   dispatch(requestAction);
   axios
-    .get("http://localhost:8000/recentlyVisited")
+    .get("/recentlyVisited")
     .then((res) => {
       const successAction = getDataSuccess(res.data);
       dispatch(successAction);
@@ -43,7 +43,7 @@ export const getAllDetails = (dispatch) => {
   const requestAction = getDataRequest();
   dispatch(requestAction);
   axios
-    .get("http://localhost:8000/recentlyViewed")
+    .get("/recentlyViewed")
     .then((res) => {
       const successAction = getDataSuccess(res.data);
       dispatch(successAction);
@@ -71,30 +71,17 @@ const hotelFailure = (err) => {
     payload: err,
   };
 };
-// export const getDetails = (dispatch) => {
-//   const requestAction = getDataRequest();
-//   dispatch(requestAction);
-//   axios
-//     .get("http://localhost:8000/recentlyVisited")
-//     .then((res) => {
-//       const successAction = getDataSuccess(res.data);
-//       dispatch(successAction);
-//     })
-//     .catch((err) => {
-//       const failureAction = getDataFailure();
-//       dispatch(failureAction);
-//     });
-// };
-export const getAllHotel = (query = null) => dispatch => {
+
+export const getAllHotel = (query = null, currPage) => dispatch => {
   const requestAction = hotelRequest();
-  console.log(query, "query is here")
   dispatch(requestAction);
   if (!query) {
     const failureAction = hotelFailure("no results");
     dispatch(failureAction);
   }
-  return axios.get(`http://localhost:8000/MainData?q=${query}`)
+  return axios.get(`/MainData?q=${query}&_page=${currPage}`)
     .then((res) => {
+      console.log(res);
       const successAction = hotelSuccess(res.data);
       dispatch(successAction);
     })
@@ -104,20 +91,4 @@ export const getAllHotel = (query = null) => dispatch => {
     });
 };
 
-
-// export const fetchDataall = (query = null) => dispatch => {
-//   // dispatching request
-//   console.log(query)
-//   dispatch(getTodoRequest());
-//   if (!query) {
-//     dispatch(getTodoFailure("no query"))
-//   }
-//   console.log(query, "hiii")
-//   return axios.get(`http://localhost:3001/${query}`).then(res => {
-//     console.log(res.data, "hiiiiiiiii")
-//     return dispatch(getTodoSuccess(res.data));
-//   })
-//     .catch(err => dispatch(getTodoFailure(err)))
-
-// };
 

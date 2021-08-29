@@ -94,7 +94,7 @@ export function SearchBar() {
     handleSearchData(location)
     console.log(searchData)
 
-    history.push('/bigHot')
+    history.push('/hotel-booking')
   }
   // console.log(checkInDate)
   return (
@@ -200,7 +200,7 @@ export function SearchBar() {
         {datePicker && (
           <Search
             left="25%"
-            top="42rem"
+            top="36rem"
             position="absolute"
             setCheckInDate={setCheckInDate}
             setCheckOutDate={setCheckOutDate}
@@ -209,13 +209,13 @@ export function SearchBar() {
         {clickedCheckOut && (
           <Search
             left="25%"
-            top="42rem"
+            top="36rem"
             position="absolute"
             setCheckInDate={setCheckInDate}
             setCheckOutDate={setCheckOutDate}
           />
         )}
-        {guestSelect && <GuestCard top="42rem" position="absolute" right="30rem" setGuestNumber={setGuestNumber} setRoomsNumber={setRoomsNumber} />}
+        {guestSelect && <GuestCard top="36rem" position="absolute" right="30rem" setGuestNumber={setGuestNumber} setRoomsNumber={setRoomsNumber} />}
 
         <BookingLogosWrapper>
           <div className="booking-sites-text">
@@ -284,13 +284,14 @@ export const SearchBarWrapper = styled.div`
   height: 300px;
   background-color: rgb(245, 245, 246);
   /* border: 1px solid black; */
-  padding: 4% 18%;
+  padding: 7rem 18%;
   .dottedBorder {
     border: 1px dotted black;
   }
   .search-bar-cont {
     display: grid;
     grid-template-columns: 1fr;
+    width: 97rem;
   }
 `;
 export const BookingLogosWrapper = styled.div`
@@ -425,7 +426,7 @@ export const SelectLocationWrapper = styled.div`
   }
 `;
 export const PickDateWrapper = styled.div`
-  width: 36%;
+  width: 40%;
   padding: 0rem 1rem;
   border-right: 1px solid rgb(205, 208, 210);
 
@@ -475,11 +476,12 @@ export const PickDateWrapper = styled.div`
       display: grid;
 
       & > span:nth-child(1) {
-        font-size: 11px;
+        font-size: 12px;
+        font-weight: 100;
       }
       & > span:nth-child(2) {
         font-size: 12px;
-        font-weight: bold;
+        font-weight: 600;
       }
     }
     .checkOutdate {
@@ -532,6 +534,7 @@ export const SelectGuestsWrapper = styled.div`
     }
     button {
     width: 60%;
+    height:80%;
     padding: 1rem;
     background-color: #007fad;
     border: 1px solid #007fad;
@@ -540,8 +543,8 @@ export const SelectGuestsWrapper = styled.div`
     color: white;
     outline: none;
     border: none;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 700;
       :hover {
         background-color: #005f81;
         cursor: pointer;

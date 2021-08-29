@@ -60,7 +60,7 @@ const NavBar = () => {
   const classes = useStyles();
   //this function is to redirect to auth component for login and signup purpose
   const handleAuth = () => {
-    history.push('/auth/login')    
+    history.push('/auth/login')
   }
 
   return (
@@ -69,33 +69,33 @@ const NavBar = () => {
         {!tri && <img src="images/trivago.svg" alt="" width="170px" />}
         {med && (
           <First>
-            <button style={{ flexDirection: big ? "row" : "column" }}>
+            <button className="firstBtns" style={{ flexDirection: big ? "row" : "column", cursor: "pointer" }}>
               <KingBedOutlinedIcon className={classes.logoWidth} />
               Stays
             </button>
-            <button style={{ flexDirection: big ? "row" : "column" }}>
+            <button className="firstBtns" style={{ flexDirection: big ? "row" : "column", cursor: "pointer" }}>
               <LocationOnOutlinedIcon className={classes.logoWidth} />
               Weekend
             </button>
-            <button style={{ flexDirection: big ? "row" : "column" }}>
+            <button className="firstBtns" style={{ flexDirection: big ? "row" : "column", cursor: "pointer" }}>
               <DirectionsCarOutlinedIcon className={classes.logoWidth} />
               Cars
             </button>
-            <button style={{ flexDirection: big ? "row" : "column" }}>
+            <button className="firstBtns" style={{ flexDirection: big ? "row" : "column", cursor: "pointer" }}>
               <FlightIcon className={classes.logoWidth} />
               Flight
             </button>
-            <button style={{ flexDirection: big ? "row" : "column" }}>
+            <button className="firstBtns" style={{ flexDirection: big ? "row" : "column", cursor: "pointer" }}>
               <BusinessCenterOutlinedIcon className={classes.logoWidth} />
               Packages
             </button>
           </First>
         )}
         <Log>
-          { loginInfo.isAuth  ? <ShowProfile/> : <button onClick={handleAuth}>
+          {loginInfo.isAuth ? <ShowProfile /> : <button onClick={handleAuth}>
             <PersonOutlineOutlinedIcon className={classes.logoWidth} />
             {!mob ? "Log-In" : ""}
-          </button> }
+          </button>}
           {!med ? (
             <>
               <button onClick={() => setDraw(true)}>
@@ -122,8 +122,8 @@ const NavBar = () => {
                     <p>Booking Overview</p>
                     <NavigateNextOutlinedIcon className={classes.logoWidth} />
                   </One>
-                  <One>
-                    <p>Log-In</p>
+                  <One >
+                    <p >Log-In</p>
                     <NavigateNextOutlinedIcon className={classes.logoWidth} />
                   </One>
                   <One>
@@ -300,21 +300,40 @@ const NavBar = () => {
 export default NavBar;
 
 const Content = styled.div`
-  display: flex;
-  width: 900px;
-  margin: 25px auto;
-  font-size: 2rem;
+      display: flex;
+    width: 900px;
+    margin: 25px auto;
+    font-size: 2rem;
+    height: 9rem;
+    justify-content: center;
+    align-items: center;
+        position: relative;
+    left: -5rem;
+
   div {
+
+     padding-left: 1rem;
     border-left: 1px solid #ebeced;
     margin-left: 16px;
-    padding: 24px 16px 0;
+    display: grid;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    height: 8rem;
+
+
   }
   img {
     border: none;
+        border: none;
+    width: 180px;
+    height: 58px;
+  }
+  h1{
+    font-size: 2.5rem;
   }
   div > p {
     flex: 0 1 100%;
-    font-size: 1.3rem;
+    font-size: 1.7rem;
     font-weight: 400;
     display: block;
     margin-top: 8px;
@@ -337,7 +356,7 @@ const Second = styled.div`
 `;
 const Top = styled.div`
   display: flex;
-  padding-left: 2rem;
+  padding-left: 26rem;
   align-items: center;
   border-bottom: 1px solid rgb(235, 236, 237);
 `;
@@ -351,6 +370,9 @@ const First = styled.div`
     border: none;
     align-items: center;
     text-align: center;
+    :hover{
+      background-color:rgb(245,245,246);
+    }
   }
   button > * {
     padding: 2px 4px;
@@ -380,6 +402,8 @@ const One = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgb(235, 236, 237);
+
+ 
 `;
 const TopMenu = styled.div`
   display: flex;

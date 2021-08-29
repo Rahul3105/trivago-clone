@@ -27,11 +27,14 @@ export const RecentlyMain = () => {
           </Grid>
 
           <Grid item xs={8}>
+            <h1 className="account-heading">Recently viewed</h1>
             {data.map((item) => (
               <RecentlyViewed item={item} key={item.id} />
             ))}
             <ButtonPart>
-              <Button className="prm-btn" variant="outlined">Show Fewer</Button>
+              <Button className="prm-btn" variant="outlined">
+                Show Fewer
+              </Button>
               <Typography className="clear-link">
                 Clear recently viewed
               </Typography>
@@ -50,19 +53,23 @@ export const RecentlyMain = () => {
 }
 
 const RecentlyBox = styled.div`
-width:96%;
-margin:2% auto;
-`
+  width: 96%;
+  margin: 2% auto;
+  & .account-heading {
+    font-size: 26px;
+    margin: 4% 4%;
+  }
+`;
 export const ButtonPart = styled.div`
   width: 60%;
   margin: 4% 2%;
   display: flex;
-  & .prm-btn{
-    height:5vh;
-    color:black;
-    font-size:16px;
-    font-weight:600;
-    border:1px solid black;
+  & .prm-btn {
+    height: 5vh;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid black;
   }
   & .clear-link {
     margin-left: 50%;

@@ -2,6 +2,7 @@ import { TextField } from '@material-ui/core';
 import React from 'react'
 import styled from 'styled-components'
 export const BookingOverview = () => {
+  
     return (
       <BookinBox>
         <h1 className="account-heading">Booking Overview</h1>
@@ -10,7 +11,6 @@ export const BookingOverview = () => {
           id="outlined-multiline-static"
           multiline
           rows={40}
-          defaultValue="Default Value"
           variant="outlined"
         />
       </BookinBox>
