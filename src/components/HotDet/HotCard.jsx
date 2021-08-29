@@ -13,7 +13,8 @@ import ReviewMain from "./Review";
 import CardLoad from "./CardLoad";
 import Overview from "./Overview";
 import Deal from "./Deal";
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import { useHistory } from "react-router-dom";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 const useStyle = makeStyles({
   logoWidth: {
     width: "20px",
@@ -34,14 +35,16 @@ const HotCard = ({ x }) => {
   const [review, SetReview] = useState(false);
   const [deal, SetDeal] = useState(false);
   const [ld, setLd] = useState(true);
+  const history = useHistory();
 
   const cls = useStyle();
 
-  const r = (x.review.location +
-    x.review.room +
-    x.review.services +
-    x.review.facilities +
-    x.review.vom) /
+  const r =
+    (x.review.location +
+      x.review.room +
+      x.review.services +
+      x.review.facilities +
+      x.review.vom) /
     5;
   const redirectTo = [
     "Agoda",
@@ -107,6 +110,14 @@ const HotCard = ({ x }) => {
     SetReview(false);
     SetDeal(false);
   };
+  ////this is for redirecting to other website
+
+  const handleRedirect = () => {
+    history.push("/redirect/goibibo.com");
+    setTimeout(() => {
+      history.replace("/externalSide/goibibo.com");
+    }, 5000);
+  };
   return (
     <div>
       {map &&
@@ -132,7 +143,9 @@ const HotCard = ({ x }) => {
               <button>
                 <div>
                   <RoomOutlinedIcon className={cls.logoWidth} />
-                  <p>{x.dist} km from {x.address}</p>
+                  <p>
+                    {x.dist} km from {x.address}
+                  </p>
                 </div>
                 <ExpandMoreIcon className={cls.logoWidth} />
               </button>
@@ -155,7 +168,12 @@ const HotCard = ({ x }) => {
                 </div>
                 <div>
                   <h2>₹{x.deals[ind]}</h2>
-                  <button style={{ display: 'flex', alignItems: "center" }}>View Deal <ArrowForwardIosIcon fontSize="small" /></button>
+                  <button
+                    style={{ display: "flex", alignItems: "center" }}
+                    onClick={handleRedirect}
+                  >
+                    View Deal <ArrowForwardIosIcon fontSize="small" />
+                  </button>
                 </div>
               </BigGrn>
               <div>
@@ -255,6 +273,9 @@ const Cont = styled.div`
   border-radius: 20px;
   padding: 3px;
   margin: auto;
+  background-color: white;
+  box-shadow: 0 1px 4px rgb(41 51 57 / 50%);
+  margin-bottom: 8px;
   border: 1px solid rgb(235, 236, 237);
   * {
     white-space: pre;

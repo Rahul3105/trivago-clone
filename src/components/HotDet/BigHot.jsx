@@ -13,8 +13,12 @@ const BigHot = () => {
   const [map, setMap] = useState(false);
   console.log(searchData, "searchData is Here");
 
+const BigHot = ({currPage}) => {
+  const { searchData } = useContext(SearchDataContext)
+  const [list, setList] = useState([]);
   const dispatch = useDispatch();
   const { hotel } = useSelector((state) => state.activities, shallowEqual);
+  
   useEffect(() => {
     handleAllDetails();
   }, [searchData]);
@@ -23,6 +27,12 @@ const BigHot = () => {
   };
 
   console.log(hotel, "hotel");
+  }, [searchData, currPage]);
+
+  const handleAllDetails = () => {
+    dispatch(getAllHotel(searchData,currPage));
+
+  };
   return (
     <>
       <button

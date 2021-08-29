@@ -1,13 +1,22 @@
 
 import React, { useState } from 'react';
-import { ImageSliderData } from './ImageSliderData';
+
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 import styled from 'styled-components';
 import { Modal } from '@material-ui/core';
-const ImageSlideShow = ({ slides }) => {
-  const [current, setCurrent] = useState(0);
-  const length = slides.length;
 
+////////////////////////////////////////////////////////////////
+import CloseIcon from '@material-ui/icons/Close';
+
+import { useEffect } from 'react';
+
+
+const ImageSlideShow = ({ ImageSliderData, open, onClose , currPos   }) => {
+  const [current, setCurrent] = useState(0);
+  const length = ImageSliderData?.length;
+  useEffect(() => {
+    setCurrent(currPos)
+  },[currPos])
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
@@ -16,28 +25,29 @@ const ImageSlideShow = ({ slides }) => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
 
-  if (!Array.isArray(slides) || slides.length <= 0) {
+  if (!Array.isArray(ImageSliderData) || ImageSliderData.length <= 0) {
     return null;
   }
 
     return (
-      <Modal open={true}>
-            <StyledSlider >
+      <Modal open={open} >
+        <StyledSlider >
+          <StyledCloseIcon onClick={onClose}/>
             <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide} />
             <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide} />
-            {ImageSliderData.map((slide, index) => {
+            {ImageSliderData.map((src, index) => {
                 return (
                 <div
                     className={index === current ? 'slide active' : 'slide'}
                     key={index}
                 >
                     {index === current && (
-                    <img src={slide.image} alt='travel image' className='image' />
+                    <img src={src} alt={'hotel-img'} className='image' />
                     )}
                 </div>
                 );
             })}
-            </StyledSlider>
+        </StyledSlider>
     </Modal>
   );
 
@@ -78,7 +88,6 @@ const StyledSlider = styled.div`
   }
   
   .slide {
-    opacity: 0;
     transition-duration: 1s ease;
   }
   
@@ -101,3 +110,19 @@ export {ImageSlideShow};
 
 
 
+
+
+const StyledCloseIcon = styled(CloseIcon)`
+  position: absolute;
+  right:50px;
+  top: 10px;
+  font-size:50px;
+  color: white;
+  transition: 0.5s;
+  &:hover {
+    color: lime;
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: 0.5s;
+  }
+`;
