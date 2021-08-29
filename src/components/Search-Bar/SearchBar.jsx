@@ -6,6 +6,7 @@ import addgroup from "../../Logos/addgroup.png";
 
 import { Button } from "@material-ui/core";
 
+import { useContext } from "react";
 import ClearIcon from "@material-ui/icons/Clear";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
@@ -14,7 +15,15 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Search } from "./Search";
 
+import { useHistory } from "react-router-dom";
+
+
+import { SearchDataContext } from "../Context/SearchDataContext";
+
+
 export function SearchBar() {
+  const { searchData, handleSearchData } = useContext(SearchDataContext)
+  console.log(searchData)
   const [show, setShow] = useState(false);
   const [hotelClass, setHotelClass] = useState(false);
   const [houseClass, setHouseClass] = useState(false);
@@ -28,6 +37,7 @@ export function SearchBar() {
   const [guestNumber, setGuestNumber] = useState(2)
   const [roomsNumber, setRoomsNumber] = useState(1)
 
+  const history = useHistory()
   useEffect(() => {
     setShow(true);
   }, []);
@@ -78,6 +88,13 @@ export function SearchBar() {
     setClickedCheckOut(false);
     setGuestSelect(!guestSelect)
 
+  }
+  const handleSearchButton = () => {
+
+    handleSearchData(location)
+    console.log(searchData)
+
+    history.push('/bigHot')
   }
   // console.log(checkInDate)
   return (
@@ -175,24 +192,30 @@ export function SearchBar() {
                     <span>{guestNumber} Guests</span>
                   </div>
                 </div>
-                <button>Search</button>
+                <button onClick={handleSearchButton}>Search</button>
               </div>
             </SelectGuestsWrapper>
           </SearchBarMainWrapper>
         </SearchBoxWrapper>
         {datePicker && (
           <Search
+            left="25%"
+            top="42rem"
+            position="absolute"
             setCheckInDate={setCheckInDate}
             setCheckOutDate={setCheckOutDate}
           />
         )}
         {clickedCheckOut && (
           <Search
+            left="25%"
+            top="42rem"
+            position="absolute"
             setCheckInDate={setCheckInDate}
             setCheckOutDate={setCheckOutDate}
           />
         )}
-        {guestSelect && <GuestCard setGuestNumber={setGuestNumber} setRoomsNumber={setRoomsNumber} />}
+        {guestSelect && <GuestCard top="42rem" position="absolute" right="30rem" setGuestNumber={setGuestNumber} setRoomsNumber={setRoomsNumber} />}
 
         <BookingLogosWrapper>
           <div className="booking-sites-text">

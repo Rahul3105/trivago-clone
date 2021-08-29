@@ -6,9 +6,9 @@ import AcUnitSharpIcon from "@material-ui/icons/AcUnitSharp";
 import LiveTvSharpIcon from "@material-ui/icons/LiveTvSharp";
 import PoolSharpIcon from "@material-ui/icons/PoolSharp";
 import LocalParkingSharpIcon from "@material-ui/icons/LocalParkingSharp";
-export const OverBelow = () => {
-  const rating = 8.3;
-  const reviews = 2400;
+export const OverBelow = ({ x, r }) => {
+  const rating = r;
+  const reviews = x.reviewNum;
   return (
     <BelowBox>
       <Container className="container">

@@ -13,7 +13,7 @@ import ReviewMain from "./Review";
 import CardLoad from "./CardLoad";
 import Overview from "./Overview";
 import Deal from "./Deal";
-
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 const useStyle = makeStyles({
   logoWidth: {
     width: "20px",
@@ -25,126 +25,7 @@ const useStyle = makeStyles({
   },
 });
 
-const p = {
-  name: "FabHotel Plaza Inn Andheri East",
-  star: 3,
-  img: [
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/53/58/535819614.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575472.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575488.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575498.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575502.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575466.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/10/04/1004082938.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575474.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/33/15/331521704.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/33/15/331521702.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/66/51/665134668.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575504.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//uploadimages/35/57/35575504.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/66/51/665134682.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/66/51/665134684.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/33/15/331521724.jpeg",
-    "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/66/51/665134690.jpeg",
-  ],
-  about:
-    "FabHotel Atlas Plaza Andheri East is suitably located on Old Nagardas Road near Chinai College.Many corporate hubs and offices like Akruti Trade Centre, Times Square, SEEPZ, The Crescent Business Park, Excom House, Hyde Park, Mirchandani Business Park, Akruti Orchid Park, Logitech Park, Millenium Plaza, Ansa Industrial Estate, and Prime Corporate Park are located a few minutes away.",
-  review: {
-    location: 8.3,
-    room: 7.7,
-    services: 9.3,
-    facilities: 8.8,
-    vom: 8.4,
-  },
-  dist: 8.1,
-  reviewNum: 86,
-  redirect: "Agoda",
-  topAmenities: [1, 1, 0, 1, 1, 1, 0, 0],
-  allAmenities: {
-    hotel: [
-      "24-hour reception",
-      "24-hour room service",
-      "Airport shuttle",
-      "Breakfast",
-      "Business centre",
-      "Car park",
-      "Cashless payment",
-      "Concierge",
-      "Doctor on site",
-      "Express check-in",
-      "Free WiFi",
-      "Hotel bar",
-      "Masks provided",
-      "New safety protocols",
-      "Pets allowed",
-      "Pool bar",
-      "Restaurant",
-      "Safe distance",
-      "WiFi in public areas",
-    ],
-    room: [
-      "Air conditioning",
-      "Bathtub (upon inquiry)",
-      "Central heating",
-      "Cosmetic mirror",
-      "Free WiFi (rooms)",
-      "Hairdryer",
-      "Safe",
-      "Satellite TV",
-      "Shower",
-      "Television",
-      "WiFi",
-    ],
-    spa: ["Massage", "Sauna", "Whirlpool / Hot tub"],
-    accessability: ["Accessible parking", "Wheelchair accessible"],
-    children: ["Childcare", "Cot"],
-  },
-  deals: [1223, 1232, 1299, 1280, 1290],
-  map: ["latitude", "longitude"],
-  location: "Mumbai",
-  address: "Andheri East",
-};
-
-const hotImg = [
-  "https://tse4.mm.bing.net/th?id=OIP.XA-4n_CHeMA-qteo0KWyiAHaGO&pid=Api&P=0&w=215&h=182",
-  "https://tse2.mm.bing.net/th?id=OIP.8PsnrR9xKfvTQhHztUdEBQHaFc&pid=Api&P=0&w=207&h=1530",
-  "https://tse2.mm.bing.net/th?id=OIP.uqbFoCqk2k_VOjUdTVXbBwHaE8&pid=Api&P=0&w=228&h=153",
-  "https://tse4.mm.bing.net/th?id=OIP.jDVX474QtM5qBBJxCKO2jQHaFC&pid=Api&P=0&w=251&h=172",
-  "https://tse2.mm.bing.net/th?id=OIP.Mzwn784IH-ER8H-HxFSLtQHaD5&pid=Api&P=0&w=306&h=162",
-  "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/59/00/590027658.jpeg",
-  "https://imgcy.trivago.com/d_dummy.jpeg,f_auto,q_auto/if_iw_lte_ih,c_scale,w_236/if_else,c_scale,h_160/e_improve,q_auto:low//partnerimages/59/00/590027688.jpeg",
-  "https://tse3.mm.bing.net/th?id=OIP.Dcxhjsri6r0YALxfeXqXOgHaEK&pid=Api&P=0&w=287&h=162",
-];
-const a = [0, 1, 1, 1, 1, 0, 0, 1, 1.0];
-const me = {
-  hotel: [
-    "a",
-    "b",
-    "c",
-    "d",
-    "a",
-    "b",
-    "c",
-    "d",
-    "a",
-    "b",
-    "c",
-    "d",
-    "a",
-    "b",
-    "c",
-    "d",
-    "a",
-    "b",
-    "c",
-    "d",
-  ],
-  room: ["b", "c", "d", "a", "b", "c", "d", "a", "b", "c", "d", "a", "b"],
-  spa: ["a", "b", "c", "d", "a"],
-  accessability: ["a", "b", "c"],
-  children: ["a", "b", "c"],
-};
-const HotCard = () => {
+const HotCard = ({ x }) => {
   const [map, setMap] = useState(true);
   const [det, SetDet] = useState(false);
   const [over, SetOver] = useState(false);
@@ -155,12 +36,32 @@ const HotCard = () => {
   const [ld, setLd] = useState(true);
 
   const cls = useStyle();
-  
 
+  const r = (x.review.location +
+    x.review.room +
+    x.review.services +
+    x.review.facilities +
+    x.review.vom) /
+    5;
+  const redirectTo = [
+    "Agoda",
+    "Booking.com",
+    "GoIbibo",
+    "Destinia",
+    "Trip.com",
+  ];
+  let c = Infinity,
+    ind = 0;
+  for (let i = 0; i < 5; i++) {
+    if (c > x.deals[i]) {
+      ind = i;
+      c = x.deals[i];
+    }
+  }
   useEffect(() => {
     setTimeout(() => {
       setLd(false);
-    }, 3000);
+    }, Math.random() * 3000);
   }, []);
 
   const tog1 = () => {
@@ -208,19 +109,13 @@ const HotCard = () => {
   };
   return (
     <div>
-      <div>{ld ? "true" : "false"}</div>
-      <button onClick={() => setMap(true)}>Open map</button>
-      <button onClick={() => setMap(false)}>Close map</button>
       {map &&
         (ld ? (
           <CardLoad setLd={setLd} ld={ld} />
         ) : (
           <Cont onClick={big}>
             <Imag>
-              <img
-                src="https://imgcy.trivago.com/c_lfill,d_dummy.jpeg,e_sharpen:60,f_auto,h_450,q_auto,w_450/itemimages/75/66/7566748_v1.jpeg"
-                alt=""
-              />
+              <img src={`${x.img[0]}`} alt="" />
               <Fav>
                 <FavoriteBorderOutlinedIcon className={cls.logoWidth} />
               </Fav>
@@ -228,50 +123,55 @@ const HotCard = () => {
 
             <Mid>
               <div>
-                <h2>Conrad hotel</h2>
+                <h2>{x.name}</h2>
               </div>
               <Star>
-                <Rating value={4} readOnly />
+                <Rating value={x.star} readOnly />
                 <p>Hotel</p>
               </Star>
               <button>
                 <div>
                   <RoomOutlinedIcon className={cls.logoWidth} />
-                  <p>8.1 km from City Centre</p>
+                  <p>{x.dist} km from {x.address}</p>
                 </div>
                 <ExpandMoreIcon className={cls.logoWidth} />
               </button>
               <button>
                 <div>
-                  <Grn> 8.6 </Grn>
-                  <b>Excellent</b> (86 reviews)
+                  <Grn>{r}</Grn>
+                  <b>{r < 8.5 ? "Good" : "Excellent"}</b> ({x.reviewNum}{" "}
+                  reviews)
                 </div>
                 <ExpandMoreIcon className={cls.logoWidth} />
               </button>
             </Mid>
             <Last>
               <BigGrn>
-                <p>GoIibibo</p>
+                <p>{x.redirect}</p>
                 <div>
                   <CheckCircleIcon className={cls.logoWidth} />
-                  <p> | Free Cancelation </p>
-                  <p> | Free BreakFast </p>
+                  {x.cancelation && <p> | Free Cancelation </p>}
+                  {x.breakfast && <p> | Free BreakFast </p>}
                 </div>
                 <div>
-                  <h2>₹7,580</h2>
-                  <button>{`View Deal > `}</button>
+                  <h2>₹{x.deals[ind]}</h2>
+                  <button style={{ display: 'flex', alignItems: "center" }}>View Deal <ArrowForwardIosIcon fontSize="small" /></button>
                 </div>
               </BigGrn>
               <div>
                 <div>
-                  <h3>Conrad</h3>
-                  <h3>₹7,280</h3>
+                  <h3>
+                    {redirectTo[ind + 1]
+                      ? redirectTo[ind + 1]
+                      : redirectTo[ind]}
+                  </h3>
+                  <h3>₹{x.deals[ind + 1] ? x.deals[ind + 1] : x.deals[ind]}</h3>
                 </div>
                 <div>
                   <h3>Our Lowest Price</h3>
                   <p>
-                    <b>₹6,384</b>
-                    <span> Trip.com</span>
+                    <b>₹{x.deals[ind]}</b>
+                    <span> {redirectTo[ind]}</span>
                   </p>
                 </div>
                 {/* <h2>₹7,580</h2>
@@ -331,23 +231,16 @@ const HotCard = () => {
           </div>
         </Bar>
       )}
-      {map && over && <Overview />}
+      {map && over && <Overview x={x} r={r} />}
       {map && info && (
         <>
-          <Amenity
-            a={a}
-            name={"Conrad"}
-            about={
-              "Located in Andheri East, The Leela Mumbai is a perfect starting point from which to explore Mumbai. The hotel offers guests a range of services and amenities designed to provide comfort and convenience. To be found at the hotel are 24-hour room service, 24-hour security, daily housekeeping, portable wi-fi rental, postal service. Guestrooms are designed to provide an optimal level of comfort with welcoming decor and some offering convenient amenities like locker, closet, towels, carpeting,clothes rack. Access to the hotel's hot tub, fitness center, sauna, outdoor pool, spa will further enhance your satisfying stay. Discover all Mumbai has to offer by making The Leela Mumbai your base."
-            }
-            me={me}
-          />
+          <Amenity x={x} />
           <Clean />
         </>
       )}
-      {map && pic && <Photo hotImg={hotImg} />}
-      {map && review && <ReviewMain />}
-      {map && deal && <Deal />}
+      {map && pic && <Photo hotImg={x.img} />}
+      {map && review && <ReviewMain x={x} r={r} />}
+      {map && deal && <Deal x={x} />}
     </div>
   );
 };
@@ -476,6 +369,7 @@ const BigGrn = styled.div`
   padding: 5px;
   background-color: rgb(241, 248, 234);
   border-radius: 15px;
+  border: 1px solid white;
   > p {
     font-size: 14px;
     padding: 5px 10px;
@@ -533,7 +427,7 @@ const Bar = styled.div`
 const Fav = styled.button`
   position: relative;
   left: -210px;
-  top: -165px;
+  top: -150px;
   margin: 0;
   padding: 0;
   background-color: white;

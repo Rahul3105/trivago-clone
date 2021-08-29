@@ -7,13 +7,16 @@ import CardContent from '@material-ui/core/CardContent';
 import styled from 'styled-components'
 const useStyles = makeStyles({
     root: {
-        minWidth: "200px",
-        maxWidth: "240px",
+        minWidth: "250px",
+        maxWidth: "250px",
         maxHeight: "200px",
-        minHeight: "180px",
+        minHeight: "200px",
         boxShadow: "1px 1px 20px black",
         margin: "4rem auto",
         display: "grid",
+        position: "absolute",
+        top: "10rem",
+        left: "87rem",
 
     },
     ratingContent: {

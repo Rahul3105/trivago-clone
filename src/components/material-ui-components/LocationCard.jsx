@@ -19,7 +19,10 @@ const useStyles = makeStyles({
         fontSize: "13px",
         fontWeight: "bold",
         boxShadow: "1px 1px 20px black",
-        borderradius: "1rem"
+        borderradius: "1rem",
+        position: "absolute",
+        top: "10rem",
+        right: "29rem",
     },
     bullet: {
         display: 'inline-block',
@@ -62,7 +65,7 @@ export const PrettoSlider = withStyles({
         borderRadius: 4,
     },
 })(Slider);
-export function LocationCard() {
+export function LocationCard({ setPlace }) {
     const [distance, setDistance] = useState(20)
     const [selectLocation, setSelectLocation] = useState("city center")
     const [locationInput, setLocationInput] = useState("")
@@ -81,6 +84,9 @@ export function LocationCard() {
     }
     const handleSelectLocation = (e) => {
         setSelectLocation(e.target.value)
+    }
+    const handlePlace = () => {
+        setPlace(selectLocation)
     }
     return (
         <Card className={classes.root}>
@@ -121,7 +127,7 @@ export function LocationCard() {
                         </button>
                     </div>
                     <div>
-                        <button className="muiBtn2">Done</button>
+                        <button className="muiBtn2" onClick={handlePlace}>Done</button>
                     </div>
                 </BtnsWrapper>
 
