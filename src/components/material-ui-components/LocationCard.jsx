@@ -21,8 +21,9 @@ const useStyles = makeStyles({
         boxShadow: "1px 1px 20px black",
         borderradius: "1rem",
         position: "absolute",
-        top: "29rem",
+        top: "15rem",
         right: "29rem",
+        zIndex: "1",
     },
     bullet: {
         display: 'inline-block',
@@ -101,7 +102,7 @@ export function LocationCard({ setPlace, location }) {
                         return <option value={el}>{el}</option>
                     }) : location.toString().toLowerCase() === "delhi" ? delhi.map((el) => {
                         return <option value={el}>{el}</option>
-                    }) : location.toString().toLowerCase() === "dubai" ? dubai.maap((el) => {
+                    }) : location.toString().toLowerCase() === "dubai" ? dubai.map((el) => {
                         return <option value={el}>{el}</option>
                     }) : <><option value="india gate">India Gate</option>
 

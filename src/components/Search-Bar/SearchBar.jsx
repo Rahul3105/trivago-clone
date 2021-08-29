@@ -22,7 +22,7 @@ import { SearchDataContext } from "../Context/SearchDataContext";
 
 
 export function SearchBar() {
-  const { searchData, handleSearchData } = useContext(SearchDataContext)
+  const { searchData, handleSearchData, handleGuestsData, guestsData, handleRoomsData, handleDays, handleFirstDate, handleSecondDate } = useContext(SearchDataContext)
   console.log(searchData)
   const [show, setShow] = useState(false);
   const [hotelClass, setHotelClass] = useState(false);
@@ -37,6 +37,8 @@ export function SearchBar() {
   const [guestNumber, setGuestNumber] = useState(2)
   const [roomsNumber, setRoomsNumber] = useState(1)
 
+
+  const [daysNum, setDaysNum] = useState(null)
   const history = useHistory()
   useEffect(() => {
     setShow(true);
@@ -92,7 +94,43 @@ export function SearchBar() {
   const handleSearchButton = () => {
 
     handleSearchData(location)
-    console.log(searchData)
+    handleGuestsData(guestNumber)
+    handleRoomsData(roomsNumber)
+
+    handleFirstDate(checkInDate)
+    handleSecondDate(checkOutDate)
+
+    let first = Number(checkInDate.slice(8, 10))
+    let last = Number(checkOutDate.slice(8, 10))
+
+    let fmonth = checkInDate.slice(4, 7)
+    let smonth = checkOutDate.slice(4, 7)
+
+    if (fmonth === smonth) {
+      handleDays(last - first)
+    } else {
+      if (smonth === "Jan" || smonth === "Mar" || smonth === "May" || smonth === "Jul" || smonth === "Aug" || smonth === "Oct" || smonth === "Nov" || smonth === "Dec") {
+        if (last < first) {
+          if (fmonth === "Jun" || fmonth === "Sep" || fmonth === "Nov" || fmonth === "Apr") {
+            handleDays(30 - first + last)
+          } else if (fmonth === "Jan" || fmonth === "Mar" || fmonth === "May" || fmonth === "Jul" || fmonth === "Aug" || fmonth === "Oct" || fmonth === "Nov" || fmonth === "Dec") {
+            handleDays(31 - first + last)
+          }
+        }
+      }
+      if (smonth === "Jun" || smonth === "Sep" || smonth === "Nov" || smonth === "Apr") {
+        if (last < first) {
+          if (fmonth === "Jun" || fmonth === "Sep" || fmonth === "Nov" || fmonth === "Apr") {
+            handleDays(30 - first + last)
+          } else if (fmonth === "Jan" || fmonth === "Mar" || fmonth === "May" || fmonth === "Jul" || fmonth === "Aug" || fmonth === "Oct" || fmonth === "Nov" || fmonth === "Dec") {
+            handleDays(31 - first + last)
+          }
+        }
+      }
+    }
+
+
+
 
     history.push('/hotel-booking')
   }

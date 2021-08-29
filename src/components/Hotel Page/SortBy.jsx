@@ -1,24 +1,30 @@
 import styled from 'styled-components';
+import { sortHotelData } from '../../store/actions';
+import {useDispatch} from 'react-redux';
+import { useState } from 'react';
 const SortBy = () => {
+    const [sort, setSort] = useState('recommendations');
+    const handleSort = (e) => {
+        const { value } = e.target;
+        console.log(value);
+    }
     return (
         <StyledSortBy>
             <label>
                 <span>Sort by</span>
-                <StyledOption>
-                    
-                    <option value="1">Our recommendations</option>
-                    <option value="2">Rating & Recommended</option>
-                    <option value="3">Price & Recommended</option>
-                    <option value="4">Distance & Recommended</option>
-                    <option value="5">Rating only</option>
-                    <option value="6">Price only</option>
-                    <option value="7">Distance only</option>
-                
+                <StyledOption onChange={handleSort}>
+                    <option value="recommendations">Our recommendations</option>
+                    <option value="Rating">Rating & Recommended</option>
+                    <option value="Price">Price & Recommended</option>
+                    <option value="Distance">Distance & Recommended</option>
+                    <option value="Rating">Rating only</option>
+                    <option value="Price">Price only</option>
+                    <option value="Distance">Distance only</option>
                 </StyledOption>
             </label>
         </StyledSortBy>
     )
-}
+};
 
 
 const StyledSortBy = styled.div`

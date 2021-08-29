@@ -23,17 +23,30 @@ import { LocationCard } from "../material-ui-components/LocationCard";
 import { RatingCard } from "../material-ui-components/RatingCard";
 import { MoreFilterCard } from "../material-ui-components/MoreFilterCard";
 
+import Loading from "../material-ui-components/LoadingAnimation";
+
+
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { priceFilter } from "../../store/actions";
+import { useContext } from "react";
+import { SearchDataContext } from "../Context/SearchDataContext";
 export function FilterSearchBar() {
     const [border, setBorder] = useState(false);
     const [datePicker, setDatePicker] = useState(false);
     const [clickedCheckOut, setClickedCheckOut] = useState(false);
     const [guestSelect, setGuestSelect] = useState(false);
-    const [location, setLocation] = useState("");
-    const [checkInDate, setCheckInDate] = useState("-- /-- /----");
-    const [checkOutDate, setCheckOutDate] = useState("-- /-- /----");
-    const [guestNumber, setGuestNumber] = useState(2);
-    const [roomsNumber, setRoomsNumber] = useState(1);
+
+
+    const { searchData, guestsData, roomsData, firstDate, secondDate, handleSearchData, days, handleRoomsData, handleDays, handleGuestsData, handleFirstDate, handleSecondDate } = useContext(SearchDataContext)
+    const [location, setLocation] = useState(searchData);
+    const [checkInDate, setCheckInDate] = useState(firstDate);
+    const [checkOutDate, setCheckOutDate] = useState(secondDate);
+
+    const [guestNumber, setGuestNumber] = useState(guestsData);
+    const [roomsNumber, setRoomsNumber] = useState(roomsData);
+
+
+    const dispatch = useDispatch();
 
     const [showLocationCard, setShowLocationCard] = useState(false);
     const [showRatingCard, setShowRatingCard] = useState(false);
@@ -46,14 +59,29 @@ export function FilterSearchBar() {
     const [price, setPrice] = useState(14100);
 
 
-
-    let { hotel } = useSelector((state) => state.activities, shallowEqual);
+    const [loading, setLoading] = useState(false);
+    let hotelState = useSelector((state) => state.activities, shallowEqual);
+    let hotel = hotelState.hotel;
     // const location2 = hotel[0].location;
-    console.log(hotel, "hii from filter searchbar")
+
+    // filtering with price logic
+
+    useEffect(() => {
+        handlePriceChange();
+    }, [price])
+
+    const handlePriceChange = () => {
+        dispatch(priceFilter((price / roomsData) / days, hotelState.query));
+        setLoading(true);
+    }
+    useEffect(() => {
+        setTimeout(() => { setLoading(false) }, 3000)
+    }, [loading])
+
+
     if (hotel.length === 0) {
         hotel = [{ location: "Mumbai" }]
     }
-    console.log(hotel[0])
 
 
     const handleBorder = () => {
@@ -109,8 +137,53 @@ export function FilterSearchBar() {
     const getPrice = (e, value) => {
         setPrice(value);
     };
+
+
+    const handleSecondPageSearch = () => {
+        handleSearchData(location)
+        handleRoomsData(roomsNumber)
+        handleGuestsData(guestNumber)
+
+
+
+
+
+        handleFirstDate(checkInDate)
+        handleSecondDate(checkOutDate)
+
+        let first = Number(checkInDate.slice(8, 10))
+        let last = Number(checkOutDate.slice(8, 10))
+
+        let fmonth = checkInDate.slice(4, 7)
+        let smonth = checkOutDate.slice(4, 7)
+
+        if (fmonth === smonth) {
+            handleDays(last - first)
+        } else {
+            if (smonth === "Jan" || smonth === "Mar" || smonth === "May" || smonth === "Jul" || smonth === "Aug" || smonth === "Oct" || smonth === "Nov" || smonth === "Dec") {
+                if (last < first) {
+                    if (fmonth === "Jun" || fmonth === "Sep" || fmonth === "Nov" || fmonth === "Apr") {
+                        handleDays(30 - first + last)
+                    } else if (fmonth === "Jan" || fmonth === "Mar" || fmonth === "May" || fmonth === "Jul" || fmonth === "Aug" || fmonth === "Oct" || fmonth === "Nov" || fmonth === "Dec") {
+                        handleDays(31 - first + last)
+                    }
+                }
+            }
+            if (smonth === "Jun" || smonth === "Sep" || smonth === "Nov" || smonth === "Apr") {
+                if (last < first) {
+                    if (fmonth === "Jun" || fmonth === "Sep" || fmonth === "Nov" || fmonth === "Apr") {
+                        handleDays(30 - first + last)
+                    } else if (fmonth === "Jan" || fmonth === "Mar" || fmonth === "May" || fmonth === "Jul" || fmonth === "Aug" || fmonth === "Oct" || fmonth === "Nov" || fmonth === "Dec") {
+                        handleDays(31 - first + last)
+                    }
+                }
+            }
+        }
+
+    }
     return (
         <>
+            {loading && <Loading />}
             <FilterSearchBarWrapper>
                 <SearchBoxWrapper
                     onMouseEnter={hanldleAllCards}
@@ -182,14 +255,14 @@ export function FilterSearchBar() {
                                         <span>{guestNumber} Guests</span>
                                     </div>
                                 </div>
-                                <button>Search</button>
+                                <button onClick={handleSecondPageSearch}>Search</button>
                             </div>
                         </SelectGuestsWrapper>
                     </SearchBarMainWrapper>
                 </SearchBoxWrapper>
                 {datePicker && (
                     <Search
-                        top="26rem"
+                        top="12rem"
                         position="absolute"
                         left="25%"
                         setCheckInDate={setCheckInDate}
@@ -198,7 +271,7 @@ export function FilterSearchBar() {
                 )}
                 {clickedCheckOut && (
                     <Search
-                        top="26rem"
+                        top="12rem"
                         position="absolute"
                         left="25%"
                         setCheckInDate={setCheckInDate}
@@ -209,7 +282,7 @@ export function FilterSearchBar() {
                     <GuestCard
                         position="absolute"
                         right="32rem"
-                        top="26rem"
+                        top="12rem"
                         setGuestNumber={setGuestNumber}
                         setRoomsNumber={setRoomsNumber}
                     />
@@ -225,7 +298,6 @@ export function FilterSearchBar() {
                             </div>
                         </div>
                         <div className="priceNightSlider">
-                            {" "}
                             <PrettoSlider
                                 value={price}
                                 onChange={getPrice}
@@ -237,7 +309,12 @@ export function FilterSearchBar() {
                             />
                         </div>
                     </PriceNightWrapper>
-                    <PropertyTypeWrapper onMouseEnter={hanldleAllCards}>
+                    <PropertyTypeWrapper onMouseEnter={() => {
+                        hanldleAllCards();
+                        setDatePicker(false);
+                        setClickedCheckOut(false);
+                        setGuestSelect(false);
+                    }}>
                         <div className="propertyTypeText">
                             <span>Property Type</span>
                         </div>
@@ -247,7 +324,12 @@ export function FilterSearchBar() {
                             <div>House/Apartment</div>
                         </div>
                     </PropertyTypeWrapper>
-                    <GuestRatingWrapper onMouseEnter={handleRatingCard}>
+                    <GuestRatingWrapper onMouseEnter={() => {
+                        handleRatingCard()
+                        setDatePicker(false);
+                        setClickedCheckOut(false);
+                        setGuestSelect(false);
+                    }}>
                         <div>
                             <span>Guest Rating</span>
                         </div>
@@ -256,7 +338,12 @@ export function FilterSearchBar() {
                             <KeyboardArrowDownIcon />
                         </div>
                     </GuestRatingWrapper>
-                    <LocationFilteringWrapper onMouseEnter={handleLocationCard}>
+                    <LocationFilteringWrapper onMouseEnter={() => {
+                        handleLocationCard()
+                        setDatePicker(false);
+                        setClickedCheckOut(false);
+                        setGuestSelect(false);
+                    }}>
                         <div>
                             <span>Location</span>
                         </div>
@@ -265,7 +352,12 @@ export function FilterSearchBar() {
                             <KeyboardArrowDownIcon />
                         </div>
                     </LocationFilteringWrapper>
-                    <MoreFilteringWrapper onMouseEnter={handleMoreFilterCard}>
+                    <MoreFilteringWrapper onMouseEnter={() => {
+                        handleMoreFilterCard()
+                        setDatePicker(false);
+                        setClickedCheckOut(false);
+                        setGuestSelect(false);
+                    }}>
                         <div>
                             <span>More filters</span>
                         </div>

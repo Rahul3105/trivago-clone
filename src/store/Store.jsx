@@ -1,11 +1,13 @@
 import { RecentlyReducer } from './Reducer';
-import {Reducer as LoginReducer} from './login/Reducer'
+import { Reducer as LoginReducer } from './login/Reducer';
+import {Reducer as redirectData} from './Redirect/Reducer'
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
     activities: RecentlyReducer,
-    login :LoginReducer
+    login: LoginReducer,
+    redirectData
 })
 
 const composedEnhancer =

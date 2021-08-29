@@ -14,6 +14,8 @@ const useStyle = makeStyles({
   colo: {
     maxWidth: "1000px",
     margin: "auto",
+    backgroundColor: "white",
+    paddingBottom: "15px",
   },
 });
 
@@ -103,7 +105,7 @@ const Overview = ({ x, r }) => {
       </Tag>
     </div>
   ) : (
-    <>
+    <div className={cls.colo}>
       <Imag>
         <img src={x.img[0]} alt="" />
         <img src={x.img[1]} alt="" />
@@ -122,7 +124,7 @@ const Overview = ({ x, r }) => {
           <Map w={400} h={380} lat={x.map[0]} long={x.map[1]} />
         </h1>
       </Over>
-    </>
+    </div>
   );
 };
 

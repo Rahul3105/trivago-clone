@@ -1,8 +1,15 @@
 
 
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 const Redirect = () => {
+    const {data} = useSelector((state) => state.redirectData);
+    const logoObj = {
+        goibibo: 'https://cdn.freelogovectors.net/wp-content/uploads/2019/02/goibibo-logo.png',
+        agoda: 'https://e7.pngegg.com/pngimages/542/120/png-clipart-logo-agoda-com-hotel-brand-travel-agent-hotel-emblem-text.png',
+    }
+
     return <StyledRedirect>
         <div className="cont">
             <div>
@@ -14,9 +21,9 @@ const Redirect = () => {
                     <span></span>
                     <span></span>
                 </div>
-                <img src="https://cdn.freelogovectors.net/wp-content/uploads/2019/02/goibibo-logo.png" alt='img'/>
+                <img src={data.redirect === 'GoIbibo' ? logoObj.goibibo : logoObj.agoda} alt='img'/>
             </div>
-            <h1>You found a great deal on trivago Taking you to the Goibibo.com website</h1>
+            <h1>You found a great deal on trivago Taking you to the {data.redirect} website</h1>
         </div>
     </StyledRedirect>
 }

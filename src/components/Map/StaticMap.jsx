@@ -13,14 +13,16 @@ const useStyle = makeStyles({
 
 export default function Map({ w, h, lat, long }) {
   const cls = useStyle();
+  console.log(lat, long, "Here");
   const [port, setPort] = useState({
     width: w,
     height: h,
-    latitude: 19.07283,
-    longitude: 72.88261,
+    latitude: lat,
+    longitude: long,
     zoom: 8,
   });
   const [sel, setSel] = useState(null);
+  console.log(port.latitude, port.longitude, "Loats");
   return (
     <div>
       <ReactMapGl
@@ -29,12 +31,12 @@ export default function Map({ w, h, lat, long }) {
         onViewportChange={(p) => setPort(p)}
         mapStyle="mapbox://styles/akshaykumar24/cksum88qz319v18o2jzl25kao/draft"
       >
-        <Marker latitude={19.07283} longitude={72.88261}>
+        <Marker latitude={lat} longitude={long}>
           <RoomIcon
             className={cls.logo}
             onClick={(e) => {
               e.preventDefault();
-              setSel([37.7577, -122.4376]);
+              setSel([lat, long]);
             }}
           />
         </Marker>
