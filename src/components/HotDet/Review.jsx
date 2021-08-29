@@ -42,6 +42,8 @@ const useStyle = makeStyles({
   colo: {
     maxWidth: "1000px",
     margin: "auto",
+    backgroundColor: "white",
+    paddingBottom: "15px",
   },
 });
 const ReviewMain = ({ x, r }) => {

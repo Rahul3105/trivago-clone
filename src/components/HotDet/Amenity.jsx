@@ -114,7 +114,7 @@ const Amenity = ({ x }) => {
   ) : (
     <>
       <Big>
-        <Map w={980} h={300} />
+        <Map w={980} h={300} lat={x.map[0]} long={x.map[1]} />
         <h3>About {x.name} </h3>
         <p>{x.about}</p>
         <h3>Top Amenities</h3>
@@ -285,6 +285,7 @@ const Poll = styled.div`
 const Big = styled.div`
   max-width: 1000px;
   padding: 10px;
+  background-color: white;
   border: 1px solid rgb(205, 208, 210);
   margin: 10px auto;
   border-radius: 15px;
