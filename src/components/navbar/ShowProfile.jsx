@@ -45,6 +45,13 @@ const ShowProfile = () => {
       </h2> */}
       <Select value="Name" className={classes.pad}>
         <MenuItem value="Name">
+          <img
+            src={
+              userInfo.iamgeUrl ||
+              "https://image.flaticon.com/icons/png/128/725/725105.png"
+            }
+            alt=""
+          />
           {userInfo?.firstName} {userInfo?.lastName} {userInfo?.name}
         </MenuItem>
         <MenuItem value="recently">Recentyly Viewed</MenuItem>

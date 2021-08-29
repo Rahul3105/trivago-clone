@@ -73,7 +73,10 @@ const NavBar = () => {
   return (
     <>
       <Top>
-        {!med && <img src="images/trivago.svg" alt="" width="120px" />}
+        {history.location.pathname !== "/" && big && (
+          <img src="images/trivago.svg" alt="" width="135px" />
+        )}
+        {!big && <img src="images/trivago.svg" alt="" width="135px" />}
         {med && (
           <First>
             {loginInfo.isAuth && (
@@ -83,7 +86,7 @@ const NavBar = () => {
               className="firstBtns"
               style={{
                 flexDirection: big ? "row" : "column",
-                paddingLeft: big ? "15em" : "0",
+                marginLeft: tri ? "15em" : "0",
                 cursor: "pointer",
               }}
             >
@@ -380,8 +383,7 @@ const Content = styled.div`
   height: 9rem;
   justify-content: center;
   align-items: center;
-  position: relative;
-  left: -15rem;
+  /* position: relative; */
 
   div {
     padding-left: 2vw;
@@ -415,7 +417,7 @@ const Second = styled.div`
   border-bottom: 1px solid gray;
   display: flex;
   button {
-    padding: 10px 15px;
+    padding: 15px 15px;
     background-color: transparent;
     border: none;
   }
@@ -423,11 +425,19 @@ const Second = styled.div`
     background: #b3d4fc;
     text-shadow: none;
   }
+  > button:nth-child(1) {
+    color: rgb(0, 124, 194);
+    font-weight: 600;
+    border-bottom: 3px solid rgb(0, 124, 194);
+  }
 `;
 const Top = styled.div`
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgb(235, 236, 237);
+  > img {
+    padding: 15px !important;
+  }
 `;
 const First = styled.div`
   align-items: center;
@@ -445,6 +455,14 @@ const First = styled.div`
   }
   button > * {
     padding: 2px 4px;
+  }
+  > button:nth-child(1) {
+    color: rgb(0, 124, 194);
+    font-weight: 600;
+    border-bottom: 3px solid rgb(0, 124, 194);
+  }
+  > img {
+    padding: 15px !important;
   }
 `;
 const Log = styled.div`
