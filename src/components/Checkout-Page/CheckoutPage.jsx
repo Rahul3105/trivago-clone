@@ -12,16 +12,20 @@ import styled from 'styled-components';
 import { useState, useEffect ,useRef} from 'react';
 import {Redirect} from 'react-router-dom';
 //payment gateway stuff
-
+import { useSelector } from 'react-redux';
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export const CheckoutPage = () => {
     // payment gateway stuff
+    const {data} = useSelector((state) => state.redirectData);
     const [payment,setPayment] = useState(1500);;
     const [form, setForm] = useState({});
-
+    const logoObj = {
+        goibibo: 'https://cdn.freelogovectors.net/wp-content/uploads/2019/02/goibibo-logo.png',
+        agoda: 'https://e7.pngegg.com/pngimages/542/120/png-clipart-logo-agoda-com-hotel-brand-travel-agent-hotel-emblem-text.png',
+    }
     toast.configure();
 
     const [product,setProduct] = useState({
@@ -59,7 +63,7 @@ export const CheckoutPage = () => {
             <header>
                 <AppBar position="static" className='navBar'>
                     <Toolbar>
-                        <h1>LOGO</h1>
+                        <img src={data.redirect === 'GoIbibo' ? logoObj.goibibo : logoObj.agoda} alt="img" />
                     </Toolbar>
                 </AppBar>
             </header>
@@ -70,9 +74,9 @@ export const CheckoutPage = () => {
                 </header>
                     <h2>We will use these details to share your booking information</h2>
                 <form onSubmit={(e) => e.preventDefault()}>
-                    <TextField label='input' variant='outlined' />
-                    <TextField label='input' variant='outlined' />
-                    <TextField label='input' variant='outlined' />
+                    <TextField label='Full Name' variant='outlined' />
+                    <TextField label='Email' variant='outlined' />
+                    <TextField label='Mobile no.' variant='outlined' />
                     <Button variant='contained' color='secondary'>Proceed</Button>
                     <StripeCheckout
                         stripeKey="pk_test_51JTa73SBG37VySlEpREWj3nafDUedQKFoBVv9quV8pagoXvk0GSoz0VDwmUmGzJFukUlHgq8exfcWEpNhSwkR4Co00PDFIYJL1"
@@ -93,8 +97,8 @@ export const CheckoutPage = () => {
             <StyledOrderSummary>
                 <div className='hotel-name'>
                     <div>
-                        <h1>OYO 309 The Royal Residency</h1>
-                        <div className="new">NEW</div>
+                        <h1>{data.name}</h1>
+                        <div className="new"><StarIcon/>{data.star} </div>
                     </div>
                     <img src="https://images.oyoroomscdn.com/uploads/hotel_image/37/thumb/c7702d8af149b9f8.jpg" alt='hotel-img' />
                 </div>
@@ -105,7 +109,7 @@ export const CheckoutPage = () => {
                 </div>
                 <div className='flex-space-btw'>
                     <h5>Room price for 1 Night X 2 Guests</h5>
-                    <p>$2413</p>
+                    <p>${data.deals[0]}</p>
                 </div>
 
                 <div className='flex-space-btw'>
@@ -336,5 +340,8 @@ const StyledDetailsForm = styled.div`
 const StyledCheckoutPage = styled.div`
     & .navBar {
         background-color:white;
+    }
+    & header img {
+        width:100px;
     }
 `;

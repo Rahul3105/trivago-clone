@@ -15,10 +15,10 @@ import Overview from "./Overview";
 import Deal from "./Deal";
 import { useHistory } from "react-router-dom";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-
-
-import { useContext } from "react";
+import { useContext} from "react";
 import { SearchDataContext } from "../Context/SearchDataContext";
+import { useDispatch } from 'react-redux';
+import {redirectSuccess} from '../../store/Redirect/actions'
 const useStyle = makeStyles({
   logoWidth: {
     width: "20px",
@@ -30,10 +30,14 @@ const useStyle = makeStyles({
   },
 });
 
+
+
+
+
 const HotCard = ({ x }) => {
   const { guestsData, roomsData, days } = useContext(SearchDataContext)
-  console.log(guestsData, roomsData, "hiii from cartd")
-
+  
+  const dispatch = useDispatch();
   const [map, setMap] = useState(true);
   const [det, SetDet] = useState(false);
   const [over, SetOver] = useState(false);
@@ -118,11 +122,11 @@ const HotCard = ({ x }) => {
     SetDeal(false);
   };
   ////this is for redirecting to other website
-
   const handleRedirect = () => {
-    history.push("/redirect/goibibo.com");
+    history.push(`/redirect/${x.redirect}.com`);
+    dispatch(redirectSuccess(x));
     setTimeout(() => {
-      history.replace("/externalSide/goibibo.com");
+      history.replace(`/externalSide/${x.redirect}.com`);
     }, 5000);
   };
   return (
