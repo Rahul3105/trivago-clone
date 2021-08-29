@@ -51,12 +51,13 @@ const Flx = styled.div`
   width: 100vw;
   justify-content: space-around;
   margin: auto;
-  :nth-child(2) {
-    height: 100%;
-    width: 100%;
-
+  > :nth-child(2) {
+    height: 600px;
+    width: 500px;
+    /* position: relative; */
     z-index: 1;
     top: 0;
     right: 0;
+    border: 1px solid red;
   }
 `;
