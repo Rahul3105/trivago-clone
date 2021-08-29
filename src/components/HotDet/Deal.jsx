@@ -60,7 +60,9 @@ export default Deal;
 
 const Dl = styled.div`
   max-width: 1000px;
-  margin: 35px auto;
+  margin: 5px auto 10px;
+  background-color: white;
+  padding: 15px;
   display: flex;
   gap: 0.8%;
   justify-content: space-between;
