@@ -22,6 +22,7 @@ const BigHot = ({currPage}) => {
   useEffect(() => {
     handleAllDetails();
   }, [searchData]);
+
   const handleAllDetails = () => {
     dispatch(getAllHotel(searchData));
   };
@@ -31,7 +32,6 @@ const BigHot = ({currPage}) => {
 
   const handleAllDetails = () => {
     dispatch(getAllHotel(searchData,currPage));
-
   };
   return (
     <>
