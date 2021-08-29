@@ -360,7 +360,8 @@ const NavBar = () => {
               </h1>
             ) : (
               <h1>
-                Good Day, {userInfo.firstName} {userInfo.lastName}
+                Good Day, {userInfo?.firstName} {userInfo?.lastName}
+                {userInfo?.name}
               </h1>
             )}
             <p>
