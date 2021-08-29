@@ -39,6 +39,7 @@ const useStyles = makeStyles({
     position: "absolute",
     top: "29rem",
     right: "21rem",
+    zIndex: "1",
   },
   starsCont: {
     display: "grid",

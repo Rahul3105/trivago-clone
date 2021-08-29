@@ -8,7 +8,7 @@ import {
   PRICE_FILTER
 } from "./actionTypes";
 import axios from "axios";
-import { useSelector , shallowEqual} from "react-redux";
+import { useSelector, shallowEqual } from "react-redux";
 
 
 const getDataRequest = () => {
@@ -62,7 +62,7 @@ const hotelRequest = () => {
     type: HOTEL_REQUEST,
   };
 };
-const hotelSuccess = (payload,currPage, query) => {
+const hotelSuccess = (payload, currPage, query) => {
   return {
     type: HOTEL_SUCCESS,
     payload: payload,
@@ -70,7 +70,7 @@ const hotelSuccess = (payload,currPage, query) => {
     query
   };
 };
-const hotelFailure = (err,currPage, query) => {
+const hotelFailure = (err, currPage, query) => {
   return {
     type: HOTEL_FAILURE,
     payload: err,
@@ -88,15 +88,15 @@ export const getAllHotel = (query = null, currPage = 1) => dispatch => {
   }
   return axios.get(`/MainData?q=${query}&_page=${currPage}`)
     .then((res) => {
-        dispatch(hotelSuccess(res.data,currPage, query));
+      dispatch(hotelSuccess(res.data, currPage, query));
     })
     .catch((err) => {
-      const failureAction = hotelFailure(err,currPage, query);
+      const failureAction = hotelFailure(err, currPage, query);
       dispatch(failureAction);
     });
 };
 
-export const priceFilter = (payload, query)  => dispatch => {
+export const priceFilter = (payload, query) => dispatch => {
   dispatch(hotelRequest());
   //  if (!query) {
   //   const failureAction = hotelFailure("no results");
@@ -105,7 +105,7 @@ export const priceFilter = (payload, query)  => dispatch => {
   axios.get(`/MainData?q=${query}`).then((res) => {
     let { data } = res;
     let filtered = data.filter(item => item.deals[0] <= payload);
-    dispatch(hotelSuccess(filtered , 1 , query));
+    dispatch(hotelSuccess(filtered, 1, query));
   }).catch(err => {
     dispatch(hotelFailure(err, 1, query));
   })

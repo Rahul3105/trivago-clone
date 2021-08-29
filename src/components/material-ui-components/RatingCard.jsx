@@ -17,6 +17,8 @@ const useStyles = makeStyles({
         position: "absolute",
         top: "-6rem",
         left: "87rem",
+        zIndex: "1"
+
 
     },
     ratingContent: {
