@@ -266,6 +266,7 @@ export default Clean;
 const Big = styled.div`
   max-width: 1000px;
   padding: 10px;
+  background-color: white;
   border: 1px solid rgb(205, 208, 210);
   margin: 10px auto;
   border-radius: 15px;

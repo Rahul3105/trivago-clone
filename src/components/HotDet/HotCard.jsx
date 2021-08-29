@@ -160,7 +160,7 @@ const HotCard = ({ x }) => {
             </Mid>
             <Last>
               <BigGrn>
-                <p>{x.redirect}</p>
+                <p>{redirectTo[ind]}</p>
                 <div>
                   <CheckCircleIcon className={cls.logoWidth} />
                   {x.cancelation && <p> | Free Cancelation </p>}
