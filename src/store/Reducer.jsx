@@ -5,18 +5,21 @@ import {
   HOTEL_REQUEST,
   HOTEL_SUCCESS,
   HOTEL_FAILURE,
+  PRICE_FILTER
 } from "./actionTypes";
 const initState = {
   data: [],
   isLoading: false,
   isError: false,
   hotel: [],
-  hotLoad: false,
+  hotLoad:false,
   hotErr: false,
+  currPage: 1,
+  currQuery: null
 };
 
-export const RecentlyReducer = (state = initState, { type, payload }) => {
-  console.log("start")
+export const RecentlyReducer = (state = initState, { type, payload,currPage, query }) => {
+
   switch (type) {
     case GET_RECENTLY_DATA: {
       return {
@@ -40,26 +43,30 @@ export const RecentlyReducer = (state = initState, { type, payload }) => {
       };
     }
     case HOTEL_REQUEST: {
-      console.log("omkaohjio")
+      
       return {
         ...state,
         hotLoad: true,
       };
     }
     case HOTEL_SUCCESS: {
-      console.log("success")
+      
       return {
         ...state,
         hotLoad: false,
         hotel: payload,
+        currPage: currPage,
+        query: query
+
       };
     }
-    case HOTEL_FAILURE: {
-      console.log("Omkar")
+    case HOTEL_FAILURE: {    
       return {
         ...state,
         hotLoad: false,
         hotErr: true,
+        currPage: currPage,
+        query: query
       };
     }
     default:

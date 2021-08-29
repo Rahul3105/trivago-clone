@@ -23,7 +23,13 @@ import { LocationCard } from "../material-ui-components/LocationCard";
 import { RatingCard } from "../material-ui-components/RatingCard";
 import { MoreFilterCard } from "../material-ui-components/MoreFilterCard";
 
+import Loading from "../material-ui-components/LoadingAnimation";
+
+
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
+
+import { priceFilter } from '../../store/actions';
+
 export function FilterSearchBar() {
     const [border, setBorder] = useState(false);
     const [datePicker, setDatePicker] = useState(false);
@@ -34,6 +40,7 @@ export function FilterSearchBar() {
     const [checkOutDate, setCheckOutDate] = useState("-- /-- /----");
     const [guestNumber, setGuestNumber] = useState(2);
     const [roomsNumber, setRoomsNumber] = useState(1);
+    const dispatch = useDispatch();
 
     const [showLocationCard, setShowLocationCard] = useState(false);
     const [showRatingCard, setShowRatingCard] = useState(false);
@@ -46,14 +53,29 @@ export function FilterSearchBar() {
     const [price, setPrice] = useState(14100);
 
 
-
-    let { hotel } = useSelector((state) => state.activities, shallowEqual);
+    const [loading, setLoading] = useState(false);
+    let hotelState = useSelector((state) => state.activities, shallowEqual);
+    let hotel = hotelState.hotel;
     // const location2 = hotel[0].location;
-    console.log(hotel, "hii from filter searchbar")
+        
+    // filtering with price logic
+
+    useEffect(() => {
+        handlePriceChange();
+    }, [price])
+    
+    const handlePriceChange = () => {
+        dispatch(priceFilter(price, hotelState.query));
+        setLoading(true);
+    }
+    useEffect(() => {
+        setTimeout(() => {setLoading(false)} , 3000)
+    } ,[loading])
+
+
     if (hotel.length === 0) {
         hotel = [{ location: "Mumbai" }]
     }
-    console.log(hotel[0])
 
 
     const handleBorder = () => {
@@ -111,6 +133,7 @@ export function FilterSearchBar() {
     };
     return (
         <>
+            {loading && <Loading/>}
             <FilterSearchBarWrapper>
                 <SearchBoxWrapper
                     onMouseEnter={hanldleAllCards}
@@ -225,7 +248,6 @@ export function FilterSearchBar() {
                             </div>
                         </div>
                         <div className="priceNightSlider">
-                            {" "}
                             <PrettoSlider
                                 value={price}
                                 onChange={getPrice}
