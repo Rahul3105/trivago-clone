@@ -22,6 +22,7 @@ export default function GuestCard({ setGuestNumber, setRoomsNumber, top, right, 
             boxShadow: "0px 0px 17px -2px black",
             top: top,
             right: right,
+            zIndex: "1"
         },
         content: {
             display: "grid",

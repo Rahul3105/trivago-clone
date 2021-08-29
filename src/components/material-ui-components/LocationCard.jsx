@@ -23,6 +23,7 @@ const useStyles = makeStyles({
         position: "absolute",
         top: "29rem",
         right: "29rem",
+        zIndex: "1",
     },
     bullet: {
         display: 'inline-block',

@@ -24,16 +24,23 @@ import { RatingCard } from "../material-ui-components/RatingCard";
 import { MoreFilterCard } from "../material-ui-components/MoreFilterCard";
 
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
+
+import { useContext } from "react";
+import { SearchDataContext } from "../Context/SearchDataContext";
 export function FilterSearchBar() {
     const [border, setBorder] = useState(false);
     const [datePicker, setDatePicker] = useState(false);
     const [clickedCheckOut, setClickedCheckOut] = useState(false);
     const [guestSelect, setGuestSelect] = useState(false);
-    const [location, setLocation] = useState("");
-    const [checkInDate, setCheckInDate] = useState("-- /-- /----");
-    const [checkOutDate, setCheckOutDate] = useState("-- /-- /----");
-    const [guestNumber, setGuestNumber] = useState(2);
-    const [roomsNumber, setRoomsNumber] = useState(1);
+
+
+    const { searchData, guestsData, roomsData, firstDate, secondDate } = useContext(SearchDataContext)
+    const [location, setLocation] = useState(searchData);
+    const [checkInDate, setCheckInDate] = useState(firstDate);
+    const [checkOutDate, setCheckOutDate] = useState(secondDate);
+
+    const [guestNumber, setGuestNumber] = useState(guestsData);
+    const [roomsNumber, setRoomsNumber] = useState(roomsData);
 
     const [showLocationCard, setShowLocationCard] = useState(false);
     const [showRatingCard, setShowRatingCard] = useState(false);
@@ -237,7 +244,12 @@ export function FilterSearchBar() {
                             />
                         </div>
                     </PriceNightWrapper>
-                    <PropertyTypeWrapper onMouseEnter={hanldleAllCards}>
+                    <PropertyTypeWrapper onMouseEnter={() => {
+                        hanldleAllCards();
+                        setDatePicker(false);
+                        setClickedCheckOut(false);
+                        setGuestSelect(false);
+                    }}>
                         <div className="propertyTypeText">
                             <span>Property Type</span>
                         </div>
@@ -247,7 +259,12 @@ export function FilterSearchBar() {
                             <div>House/Apartment</div>
                         </div>
                     </PropertyTypeWrapper>
-                    <GuestRatingWrapper onMouseEnter={handleRatingCard}>
+                    <GuestRatingWrapper onMouseEnter={() => {
+                        handleRatingCard()
+                        setDatePicker(false);
+                        setClickedCheckOut(false);
+                        setGuestSelect(false);
+                    }}>
                         <div>
                             <span>Guest Rating</span>
                         </div>
@@ -256,7 +273,12 @@ export function FilterSearchBar() {
                             <KeyboardArrowDownIcon />
                         </div>
                     </GuestRatingWrapper>
-                    <LocationFilteringWrapper onMouseEnter={handleLocationCard}>
+                    <LocationFilteringWrapper onMouseEnter={() => {
+                        handleLocationCard()
+                        setDatePicker(false);
+                        setClickedCheckOut(false);
+                        setGuestSelect(false);
+                    }}>
                         <div>
                             <span>Location</span>
                         </div>
@@ -265,7 +287,12 @@ export function FilterSearchBar() {
                             <KeyboardArrowDownIcon />
                         </div>
                     </LocationFilteringWrapper>
-                    <MoreFilteringWrapper onMouseEnter={handleMoreFilterCard}>
+                    <MoreFilteringWrapper onMouseEnter={() => {
+                        handleMoreFilterCard()
+                        setDatePicker(false);
+                        setClickedCheckOut(false);
+                        setGuestSelect(false);
+                    }}>
                         <div>
                             <span>More filters</span>
                         </div>

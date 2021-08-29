@@ -15,6 +15,10 @@ import Overview from "./Overview";
 import Deal from "./Deal";
 import { useHistory } from "react-router-dom";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+
+
+import { useContext } from "react";
+import { SearchDataContext } from "../Context/SearchDataContext";
 const useStyle = makeStyles({
   logoWidth: {
     width: "20px",
@@ -27,6 +31,9 @@ const useStyle = makeStyles({
 });
 
 const HotCard = ({ x }) => {
+  const { guestsData, roomsData, days } = useContext(SearchDataContext)
+  console.log(guestsData, roomsData, "hiii from cartd")
+
   const [map, setMap] = useState(true);
   const [det, SetDet] = useState(false);
   const [over, SetOver] = useState(false);
@@ -161,19 +168,25 @@ const HotCard = ({ x }) => {
             <Last>
               <BigGrn>
                 <p>{x.redirect}</p>
-                <div>
+                <div className="facilitiespar">
                   <CheckCircleIcon className={cls.logoWidth} />
                   {x.cancelation && <p> | Free Cancelation </p>}
                   {x.breakfast && <p> | Free BreakFast </p>}
                 </div>
-                <div>
-                  <h2>₹{x.deals[ind]}</h2>
-                  <button
-                    style={{ display: "flex", alignItems: "center" }}
-                    onClick={handleRedirect}
-                  >
-                    View Deal <ArrowForwardIosIcon fontSize="small" />
-                  </button>
+
+                <div style={{ display: "grid" }}>
+
+                  <span style={{ fontSize: "13px" }}>{guestsData} guests {days} night for ₹{x.deals[ind] * guestsData * roomsData} </span>
+                  <div className="viewDealbtn">
+                    <h2>₹{x.deals[ind] * guestsData * roomsData}</h2>
+                    <button
+
+                      onClick={handleRedirect}
+                    >
+
+                      View Deal <ArrowForwardIosIcon fontSize="small" />
+                    </button>
+                  </div>
                 </div>
               </BigGrn>
               <div>
@@ -311,7 +324,7 @@ const Mid = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   h2 {
-    font-size: 22px;
+    font-size: 19px;
     font-weight: 700;
   }
   button {
@@ -379,9 +392,12 @@ const Grn = styled.p`
 `;
 const Star = styled.div`
   display: flex;
-  flex-direction: row;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
   p {
-    font-size: 16px;
+        font-size: 15px;
+    margin-left: 1rem;
   }
 `;
 const BigGrn = styled.div`
@@ -391,6 +407,11 @@ const BigGrn = styled.div`
   background-color: rgb(241, 248, 234);
   border-radius: 15px;
   border: 1px solid white;
+  .facilitiespar{
+    p{
+      font-size:13px;
+    }
+  }
   > p {
     font-size: 14px;
     padding: 5px 10px;
@@ -409,12 +430,19 @@ const BigGrn = styled.div`
     button {
       background-color: rgb(2, 128, 0);
       border: none;
-      height: 40px;
+          height: 35px;
+    width: 115px;
       color: white;
       padding: 2px 15px;
       font-size: 16px;
       font-weight: 600;
       border-radius: 20px;
+          display: flex;
+    align-items: center;
+    position: relative;
+    left: 100px;
+    top: -1rem;
+
       :hover {
         background-color: rgb(0, 95, 0);
       }
@@ -446,12 +474,17 @@ const Bar = styled.div`
 `;
 
 const Fav = styled.button`
-  position: relative;
-  left: -210px;
-  top: -150px;
-  margin: 0;
-  padding: 0;
-  background-color: white;
-  border: none;
-  border-radius: 25%;
+
+    position: relative;
+    left: -215px;
+    top: -16rem;
+    height: 2.5rem;
+    margin: 0;
+    width: 2rem;
+    padding: 0;
+    background-color: rgb(27,38,69);
+    border: none;
+    border-radius: 25%;
+    color: white;
+
 `;
