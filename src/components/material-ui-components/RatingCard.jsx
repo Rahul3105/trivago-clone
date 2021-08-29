@@ -5,6 +5,8 @@ import Card from '@material-ui/core/Card';
 import { useState } from 'react';
 import CardContent from '@material-ui/core/CardContent';
 import styled from 'styled-components'
+import { priceFilter } from '../../store/actions';
+import {useDispatch} from 'react-redux';
 const useStyles = makeStyles({
     root: {
         minWidth: "250px",
@@ -17,7 +19,8 @@ const useStyles = makeStyles({
         position: "absolute",
         top: "-6rem",
         left: "87rem",
-        zIndex: "1"
+        zIndex: "1",
+        border:'1px solid lime'
 
 
     },
@@ -52,6 +55,7 @@ export function RatingCard() {
     const [lightgreentick, setLightgreentick] = useState(false)
     const [coraltick, setCoraltick] = useState(false)
     const [redtick, setRedtick] = useState(false)
+    const dispatch = useDispatch();
     const handledarkGreenHover = () => {
         setDarkgreentick(true)
     }
@@ -82,32 +86,34 @@ export function RatingCard() {
     //     setCoraltick(false)
     //     setLightgreentick(false)
     //     setGreenTick(false)
-
     // }
+    const handleRatingSort = (rating) => {
+        dispatch(priceFilter(rating, 'mumbai' , 'rating'))
+    }
     return (
         <RatingWrapper>
             <Card className={classes.root} >
-                <CardContent onMouseEnter={handledarkGreenHover} className={darkgreentick ? `greenTicked ${classes.ratingContent}` : `${classes.ratingContent}`}>
+                <CardContent onMouseEnter={handledarkGreenHover} onClick={() => handleRatingSort(8.5)} className={darkgreentick ? `greenTicked ${classes.ratingContent}` : `${classes.ratingContent}`}>
                     <Grn backgroundColor="darkgreen" ><span>8.5</span></Grn>
                     <span>Excellent</span>
                     <CheckIcon />
                 </CardContent>
-                <CardContent onMouseEnter={handlegreenHover} className={greenTick ? `greenTicked ${classes.ratingContent}` : `${classes.ratingContent}`}>
+                <CardContent onMouseEnter={handlegreenHover} onClick={() => handleRatingSort(8.0)} className={greenTick ? `greenTicked ${classes.ratingContent}` : `${classes.ratingContent}`}>
                     <Grn backgroundColor="green" ><span>8.0</span></Grn>
                     <span>Very good</span>
                     <CheckIcon />
                 </CardContent>
-                <CardContent onMouseEnter={handlelightgreyHover} className={lightgreentick ? `greenTicked ${classes.ratingContent}` : `${classes.ratingContent}`}>
+                <CardContent onMouseEnter={handlelightgreyHover} onClick={() => handleRatingSort(7.5)} className={lightgreentick ? `greenTicked ${classes.ratingContent}` : `${classes.ratingContent}`}>
                     <Grn backgroundColor="lightgreen"><span>7.5</span></Grn>
                     <span>Good</span>
                     <CheckIcon />
                 </CardContent>
-                <CardContent onMouseEnter={handlecoralHover} className={coraltick ? `greenTicked ${classes.ratingContent}` : `${classes.ratingContent}`} >
+                <CardContent onMouseEnter={handlecoralHover} onClick={() => handleRatingSort(7.0)} className={coraltick ? `greenTicked ${classes.ratingContent}` : `${classes.ratingContent}`} >
                     <Grn backgroundColor="rgb(252,158,21)" ><span>7.0</span></Grn>
                     <span>Fair</span>
                     <CheckIcon />
                 </CardContent>
-                <CardContent onMouseEnter={handleredHover} className={redtick ? `greenTicked ${classes.ratingContent}` : `${classes.ratingContent}`} >
+                <CardContent onMouseEnter={handleredHover} onClick={() => handleRatingSort(0)} className={redtick ? `greenTicked ${classes.ratingContent}` : `${classes.ratingContent}`} >
                     <Grn backgroundColor="red"><span>0</span></Grn>
                     <span>Okay</span>
                     <CheckIcon />
