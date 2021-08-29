@@ -77,6 +77,45 @@
         "description": "Hotel booking"
       },
       "id": 2
+    },
+    {
+      "token": {
+        "id": "tok_1JThZOSBG37VySlE7AGJBhc8",
+        "object": "token",
+        "card": {
+          "id": "card_1JThZOSBG37VySlEnYs5rlfc",
+          "object": "card",
+          "address_city": "Floral Park",
+          "address_country": "United States",
+          "address_line1": "q",
+          "address_line1_check": "unchecked",
+          "address_line2": null,
+          "address_state": "NY",
+          "address_zip": "110059",
+          "address_zip_check": "unchecked",
+          "brand": "Visa",
+          "country": "US",
+          "cvc_check": "unchecked",
+          "dynamic_last4": null,
+          "exp_month": 9,
+          "exp_year": 2021,
+          "funding": "credit",
+          "last4": "4242",
+          "name": "rahul",
+          "tokenization_method": null
+        },
+        "client_ip": "103.70.80.197",
+        "created": 1630218762,
+        "email": "rahulrajput7358@gmail.com",
+        "livemode": false,
+        "type": "card",
+        "used": false
+      },
+      "product": {
+        "price": 1500,
+        "description": "Hotel booking"
+      },
+      "id": 3
     }
   ]
 }

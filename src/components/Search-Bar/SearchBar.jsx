@@ -94,7 +94,7 @@ export function SearchBar() {
     handleSearchData(location)
     console.log(searchData)
 
-    history.push('/bigHot')
+    history.push('/hotel-booking')
   }
   // console.log(checkInDate)
   return (
