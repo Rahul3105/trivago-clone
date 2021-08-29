@@ -47,10 +47,13 @@ export function FilterSearchBar() {
 
 
 
-    const { hotel } = useSelector((state) => state.activities, shallowEqual);
+    let { hotel } = useSelector((state) => state.activities, shallowEqual);
     // const location2 = hotel[0].location;
     console.log(hotel, "hii from filter searchbar")
-    console.log(hotel[0].location)
+    if (hotel.length === 0) {
+        hotel = [{ location: "Mumbai" }]
+    }
+    console.log(hotel[0])
 
 
     const handleBorder = () => {
@@ -280,7 +283,7 @@ export function FilterSearchBar() {
 
             {showLocationCard && (
                 <LocationCard
-                    location={location}
+                    location={hotel[0].location}
                     className="animated fadeIn"
                     setPlace={setPlace}
                     onMouseEnter={handleLocationCard}
