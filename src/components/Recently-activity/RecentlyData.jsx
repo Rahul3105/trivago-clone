@@ -15,6 +15,8 @@ import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import PeopleIcon from "@material-ui/icons/People";
 import { Redirect, useHistory } from "react-router-dom";
 
+import { useContext } from "react";
+import { SearchDataContext } from "../Context/SearchDataContext";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -31,9 +33,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function RecentlyData({ data }) {
-  const classes = useStyles();
+  const { handleSearchData } = useContext(SearchDataContext)
   const history = useHistory()
+  const classes = useStyles();
+
   const { date, location, checkin, checkout, room, guest } = data;
+  const handleSearchAgain = () => {
+    handleSearchData(location)
+    history.push('/hotel-booking')
+  }
   // console.log(data);
   const handleRecentlyMain = () => {
     return <Redirect to="/recentlyMain"></Redirect>
@@ -71,7 +79,7 @@ export default function RecentlyData({ data }) {
                 </Typography>
               </div>
               <div className="data-button">
-                <button className="muiBtn1">
+                <button onClick={handleSearchAgain} className="muiBtn1">
                   Search again
                 </button>
               </div>

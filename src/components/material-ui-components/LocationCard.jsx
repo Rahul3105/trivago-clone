@@ -21,7 +21,7 @@ const useStyles = makeStyles({
         boxShadow: "1px 1px 20px black",
         borderradius: "1rem",
         position: "absolute",
-        top: "29rem",
+        top: "15rem",
         right: "29rem",
         zIndex: "1",
     },
