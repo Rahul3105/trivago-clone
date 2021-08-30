@@ -167,7 +167,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="carPark"
+              value="car park"
               name="carPark"
               type="checkbox"
             />
@@ -189,7 +189,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="familyFriendly"
+              value="family friendly"
               name="familyFriendly"
               type="checkbox"
             />
@@ -200,7 +200,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="whirlPool"
+              value="whirlpool"
               name="whirlPool"
               type="checkbox"
             />
@@ -225,7 +225,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="excellentValue"
+              value="excellent value"
               name="excellentValue"
               type="checkbox"
             />
@@ -236,7 +236,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="freeBreakfast"
+              value="Free breakfast"
               name="freeBreakfast"
               type="checkbox"
             />
@@ -258,7 +258,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="airConditioning"
+              value="Airconditoning"
               name="airConditioning"
               type="checkbox"
             />
@@ -269,7 +269,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="petsFriendly"
+              value="Pets friendly"
               name="petsFriendly"
               type="checkbox"
             />
@@ -280,7 +280,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="payAttheproperty"
+              value="Pay at the property"
               name="payAttheproperty"
               type="checkbox"
             />
@@ -302,7 +302,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="wheelchairAccessible"
+              value="Wheelchair Accessible"
               name="wheelchairAccessible"
               type="checkbox"
             />

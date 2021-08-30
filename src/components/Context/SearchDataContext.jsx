@@ -9,6 +9,7 @@ export const SearchDataProvider = ({ children }) => {
     const [days, setDays] = useState(1)
     const [firstDate, setFirstDate] = useState(null)
     const [secondDate, setSecondDate] = useState(null)
+    const [filterData, setFilterData] = useState([])
     const handleGuestsData = (el) => {
         setGuestsData(el)
     }
@@ -30,6 +31,9 @@ export const SearchDataProvider = ({ children }) => {
     const handleSecondDate = (el) => {
         setSecondDate(el)
     }
-    return <SearchDataContext.Provider value={{ searchData, handleSearchData, handleGuestsData, guestsData, handleRoomsData, roomsData, handleDays, days, firstDate, secondDate, handleFirstDate, handleSecondDate }}>{children}</SearchDataContext.Provider>
+    const handleFilterData = (el) => {
+        setFilterData(el)
+    }
+    return <SearchDataContext.Provider value={{ searchData, handleSearchData, handleGuestsData, guestsData, handleRoomsData, roomsData, handleDays, days, firstDate, secondDate, handleFirstDate, handleSecondDate, handleFilterData, filterData }}>{children}</SearchDataContext.Provider>
 }
 

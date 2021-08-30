@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { sortHotelData } from '../../store/actions';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 const SortBy = () => {
     const [sort, setSort] = useState('recommendations');
@@ -30,9 +30,11 @@ const SortBy = () => {
 const StyledSortBy = styled.div`
     padding: 20px 0;
     & > label {
-        font-size: 15px;
-        font-weight:700;
-        margin-left:170px;
+       font-size: 15px;
+    font-weight: 700;
+    margin-left: 170px;
+    position: relative;
+    left: 10rem;
         
     }
     & > label > span {
