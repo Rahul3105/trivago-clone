@@ -13,13 +13,13 @@ const useStyle = makeStyles({
 
 export default function MultiMap({ w, h, x }) {
   const cls = useStyle();
-  console.log(x, "Here");
+  //console.log(x, "Here");
   const [port, setPort] = useState({
     width: w,
     height: h,
     latitude: x[0].map[0],
     longitude: x[0].map[1],
-    zoom: 10,
+    zoom: 11,
   });
   const [sel, setSel] = useState(null);
   //console.log(port.latitude, port.longitude, "Loats");

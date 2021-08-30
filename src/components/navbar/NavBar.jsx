@@ -76,18 +76,33 @@ const NavBar = () => {
         {/* {history.location.pathname !== "/" && big && (
           <img src="images/trivago.svg" alt="" width="135px" />
         )} */}
-        {!big && <img src="images/trivago.svg" alt="" width="135px" />}
+        {!big && (
+          <img
+            src="images/trivago.svg"
+            alt=""
+            width="135px"
+            onClick={() => history.push("/")}
+          />
+        )}
         {med && (
           <First>
             {loginInfo.isAuth && (
-              <img src="images/trivago.svg" alt="" width="120px" />
+              <img
+                src="images/trivago.svg"
+                alt=""
+                width="120px"
+                onClick={() => history.push("/")}
+              />
             )}
             <button
               className="firstBtns"
               style={{
                 flexDirection: big ? "row" : "column",
-                marginLeft: tri ? "15em" : "0",
+                marginLeft: tri ? "12em" : "0",
                 cursor: "pointer",
+                color: "rgb(0, 124, 194)",
+                fontWeight: 600,
+                borderBottom: "3px solid rgb(0, 124, 194)",
               }}
             >
               <KingBedOutlinedIcon className={classes.logoWidth} />

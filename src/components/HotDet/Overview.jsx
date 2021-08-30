@@ -144,8 +144,9 @@ const Over = styled.div`
 `;
 const Imag = styled.div`
   max-width: 960px;
-  margin: 10px auto 30px;
+  margin: 0 auto 30px;
   display: flex;
+  padding-top: 15px;
   gap: 0.25%;
   > img {
     width: 24.5%;

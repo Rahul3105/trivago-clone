@@ -287,7 +287,7 @@ const Big = styled.div`
   padding: 10px;
   background-color: white;
   border: 1px solid rgb(205, 208, 210);
-  margin: 10px auto;
+  margin: 0 auto;
   border-radius: 15px;
   > h3 {
     padding: 10px;
@@ -319,7 +319,7 @@ const Big = styled.div`
 const Amen = styled.div`
   display: flex;
   width: 18%;
-  margin: 1%;
+  margin: 0%;
   padding: 10px;
 
   > p {

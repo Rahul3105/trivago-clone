@@ -286,7 +286,7 @@ const Cont = styled.div`
   margin: auto;
   background-color: white;
   box-shadow: 0 1px 4px rgb(41 51 57 / 50%);
-  /* margin-bottom: 8px; */
+  margin-top: 8px;
   border: 1px solid rgb(235, 236, 237);
   * {
     white-space: pre;
@@ -475,12 +475,15 @@ const Fav = styled.button`
   position: relative;
   left: -215px;
   top: -16rem;
-  height: 2.5rem;
+  height: 2.3rem;
   margin: 0;
-  width: 2rem;
+  width: 2.3rem;
   padding: 0;
   background-color: rgb(27, 38, 69);
   border: none;
   border-radius: 25%;
   color: white;
+  * {
+    margin: 1px;
+  }
 `;

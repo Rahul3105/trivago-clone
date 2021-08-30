@@ -19,10 +19,10 @@ export default function Map({ w, h, lat, long }) {
     height: h,
     latitude: lat,
     longitude: long,
-    zoom: 8,
+    zoom: 11,
   });
   const [sel, setSel] = useState(null);
-  console.log(port.latitude, port.longitude, "Loats");
+  //console.log(port.latitude, port.longitude, "Loats");
   return (
     <div>
       <ReactMapGl
