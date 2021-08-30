@@ -17,8 +17,8 @@ import { useHistory } from "react-router-dom";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { useContext } from "react";
 import { SearchDataContext } from "../Context/SearchDataContext";
-import { useDispatch } from "react-redux";
-import { redirectSuccess } from "../../store/Redirect/actions";
+import { useDispatch } from 'react-redux';
+import { redirectSuccess } from '../../store/Redirect/actions'
 const useStyle = makeStyles({
   logoWidth: {
     width: "20px",
@@ -31,7 +31,7 @@ const useStyle = makeStyles({
 });
 
 const HotCard = ({ x }) => {
-  const { guestsData, roomsData, days } = useContext(SearchDataContext);
+  const { guestsData, roomsData, days } = useContext(SearchDataContext)
 
   const dispatch = useDispatch();
   const [map, setMap] = useState(true);
@@ -176,12 +176,15 @@ const HotCard = ({ x }) => {
                 </div>
 
                 <div style={{ display: "grid" }}>
-                  <span style={{ fontSize: "13px" }}>
-                    {guestsData} guests {days} night for{" "}
-                  </span>
+
+                  <span style={{ fontSize: "13px" }}>{roomsData > 0 && days > 0 ? `${guestsData} guests ${days} night for ₹${x.deals[ind] * roomsData * days}` : `₹${x.deals[ind] * 1 * 1}`} </span>
                   <div className="viewDealbtn">
-                    <h2>₹{x.deals[ind] * roomsData * days}</h2>
-                    <button onClick={handleRedirect}>
+                    <h2>{roomsData > 0 && days > 0 ? ` ₹${x.deals[ind] * roomsData * days}` : `₹${x.deals[ind] * 1 * 1}`}</h2>
+                    <button
+
+                      onClick={handleRedirect}
+                    >
+
                       View Deal <ArrowForwardIosIcon fontSize="small" />
                     </button>
                   </div>

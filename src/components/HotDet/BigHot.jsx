@@ -30,7 +30,7 @@ const BigHot = ({ currPage }) => {
           setMap((p) => !p);
         }}
       >
-        {map ? "Close" : "Show"} Map
+        {map ? "Close" : "View"} Map
       </MapBut>
       <Flx>
         <div>
@@ -63,16 +63,16 @@ const Flx = styled.div`
   }
 `;
 const MapBut = styled.button`
-  background: url("https://media.gettyimages.com/vectors/abstract-city-map-vector-id165792741?k=20&m=165792741&s=612x612&w=0&h=9rZbvv7tW-Hivpno3lZ8CodMu4ZbFZVCfQFK5-58OBI=");
-  height: 80px;
-  width: 200px;
-  font-size: 30px;
-  font-weight: 700;
-  color: rgb(0, 127, 173);
-  border: none;
-  position: absolute;
-  top: 250px;
-  right: 0;
-  z-index: 2;
-  border-radius: 10px;
+background: url(https://media.gettyimages.com/vectors/abstract-city-map-vector-id165792741?k=20&m=165792741&s=612x612&w=0&h=9rZbvv7tW-Hivpno3lZ8CodMu4ZbFZVCfQFK5-58OBI=);
+    height: 34px;
+    width: 200px;
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(0,127,173);
+    border: none;
+    position: absolute;
+    top: 243px;
+    right: 29rem;
+    z-index: 0;
+    border-radius: 10px;
 `;

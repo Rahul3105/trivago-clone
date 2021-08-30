@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { sortHotelData } from '../../store/actions';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch , useSelector} from 'react-redux';
 import { useState } from 'react';
 import Loading from '../material-ui-components/LoadingAnimation'
 const SortBy = () => {
@@ -38,9 +38,11 @@ const SortBy = () => {
 const StyledSortBy = styled.div`
     padding: 20px 0;
     & > label {
-        font-size: 15px;
-        font-weight:700;
-        margin-left:170px;
+       font-size: 15px;
+    font-weight: 700;
+    margin-left: 170px;
+    position: relative;
+    left: 10rem;
         
     }
     & > label > span {
