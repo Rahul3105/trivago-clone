@@ -73,9 +73,9 @@ const NavBar = () => {
   return (
     <>
       <Top>
-        {history.location.pathname !== "/" && big && (
+        {/* {history.location.pathname !== "/" && big && (
           <img src="images/trivago.svg" alt="" width="135px" />
-        )}
+        )} */}
         {!big && <img src="images/trivago.svg" alt="" width="135px" />}
         {med && (
           <First>
