@@ -96,43 +96,79 @@ export const getAllHotel = (query = null, currPage = 1) => dispatch => {
     });
 };
 
-export const priceFilter = (payload, query, filterType= 'price') => dispatch => {
+export const priceFilter = (payload, query, filterType = 'price') => dispatch => {
   dispatch(hotelRequest());
-  //  if (!query) {
-  //   const failureAction = hotelFailure("no results");
-  //   dispatch(failureAction);
-  // }
-  axios.get(`/MainData?q=${query}`).then((res) => {
+  if (query === null) {
+    axios.get(`/MainData`).then((res) => {
     let { data } = res;
     let filtered;
     if (filterType === 'price') {
       filtered = data.filter(item => item.deals[0] <= payload);
-    } else if(filterType === 'rating') {
+    } else if (filterType === 'rating') {
       filtered = data.filter(item => item.star >= payload);
+    } else if (filterType === 'star') {
+      filtered = data.filter(item => item.star === payload);
     }
     dispatch(hotelSuccess(filtered, 1, query));
-  }).catch(err => {
-    dispatch(hotelFailure(err, 1, query));
-  })
+    }).catch(err => {
+      dispatch(hotelFailure(err, 1, query));
+    })  
+  } else {
+    axios.get(`/MainData?q=${query}`).then((res) => {
+    let { data } = res;
+    let filtered;
+    if (filterType === 'price') {
+      filtered = data.filter(item => item.deals[0] <= payload);
+    } else if (filterType === 'rating') {
+      filtered = data.filter(item => item.star >= payload);
+    } else if (filterType === 'star') {
+      filtered = data.filter(item => item.star === payload);
+    }
+    dispatch(hotelSuccess(filtered, 1, query));
+    }).catch(err => {
+      dispatch(hotelFailure(err, 1, query));
+    })  
+  }
+  
 }
 
 
-export const sortHotelData = (payload, query, sortType= 'price') => dispatch => {
+
+
+export const sortHotelData = (query, sortType= 'price') => dispatch => {
   dispatch(hotelRequest());
-  //  if (!query) {
-  //   const failureAction = hotelFailure("no results");
-  //   dispatch(failureAction);
-  // }
-  axios.get(`/MainData?q=${query}`).then((res) => {
-    let { data } = res;
-    let sorted;
-    if (sortType === 'price') {
-      sorted = [...data].sort((a,b) => a.deals[0] - b.deals[0])
-    } else if(sortType === 'rating') {
-      sortType = data.filter(item => item.star >= payload);
-    }
-    dispatch(hotelSuccess(sorted, 1, query));
-  }).catch(err => {
-    dispatch(hotelFailure(err, 1, query));
-  })
+
+  if (query === null) {
+    axios.get(`/MainData`).then((res) => {
+      let { data } = res;
+      let sorted;
+      if (sortType === 'price') {
+        sorted = [...data].sort((a,b) => a.deals[0] - b.deals[0])
+      } else if(sortType === 'rating') {
+        sorted = [...data].sort((a, b) => b.star - a.star);
+      } else {
+        sorted = data;
+      }
+      dispatch(hotelSuccess(sorted, 1, query));
+    }).catch(err => {
+      dispatch(hotelFailure(err, 1, query));
+    })   
+  } else {
+     axios.get(`/MainData?q=${query}`).then((res) => {
+      let { data } = res;
+      let sorted;
+      if (sortType === 'price') {
+        sorted = [...data].sort((a,b) => a.deals[0] - b.deals[0])
+      } else if(sortType === 'rating') {
+        sorted = [...data].sort((a, b) => b.star - a.star);
+      } else {
+        sorted = data;
+      }
+      dispatch(hotelSuccess(sorted, 1, query));
+    }).catch(err => {
+      dispatch(hotelFailure(err, 1, query));
+    })
+  }
+
+ 
 }

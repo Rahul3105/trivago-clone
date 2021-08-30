@@ -27,6 +27,15 @@ import SpaIcon from "@material-ui/icons/Spa";
 import AccessibleForwardIcon from "@material-ui/icons/AccessibleForward";
 import { useState, useEffect } from "react";
 import { set } from "date-fns/esm";
+
+
+
+//////////filtering with stars
+
+import { priceFilter } from '../../store/actions';
+
+import { useSelector , useDispatch } from 'react-redux';
+
 const useStyles = makeStyles({
   root: {
     maxWidth: "600px",
@@ -72,7 +81,8 @@ export function MoreFilterCard({
   const classes = useStyles();
   const [isChecked, setIschecked] = useState(false);
   const [facilities, setFacilities] = useState({});
-
+  const hotelState = useSelector((state) => state.activities);
+  const dispatch = useDispatch(); 
   const handleChange = (event) => {
     setIschecked(false);
     if (event.target.checked) {
@@ -109,6 +119,9 @@ export function MoreFilterCard({
     setFacilitieslength(Object.keys(facilities).length);
     setFacilitiesforfilter(facilities);
   }, [facilities]);
+  const handleStarFilter = (star) => {
+    dispatch( priceFilter(star, hotelState.currQuery, 'star') ) 
+  } 
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent className={classes.starsCont}>
@@ -116,20 +129,20 @@ export function MoreFilterCard({
           <span>Hotel class</span>
         </div>
         <HotelstarsWrapper>
-          <div className="starBox">
+          <div className="starBox" onClick={() => handleStarFilter(1)}>
             <img className="onestar" src={star} alt="" />
           </div>
-          <div className="starBox">
+          <div className="starBox" onClick={() => handleStarFilter(2)}>
             <img className="twostar" src={twostars} alt="" />
           </div>
-          <div className="starBox">
-            {" "}
+          <div className="starBox" onClick={() => handleStarFilter(3)}>
+          
             <img src={threestars} alt="" />
           </div>
-          <div className="starBox">
+          <div className="starBox" onClick={() => handleStarFilter(4)}>
             <img src={fourstars} alt="" />
           </div>
-          <div className="starBox">
+          <div className="starBox" onClick={() => handleStarFilter(5)}>
             <img src={fivestars} alt="" />
           </div>
           <div></div>
@@ -167,7 +180,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="carPark"
+              value="car park"
               name="carPark"
               type="checkbox"
             />
@@ -189,7 +202,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="familyFriendly"
+              value="family friendly"
               name="familyFriendly"
               type="checkbox"
             />
@@ -200,7 +213,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="whirlPool"
+              value="whirlpool"
               name="whirlPool"
               type="checkbox"
             />
@@ -225,7 +238,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="excellentValue"
+              value="excellent value"
               name="excellentValue"
               type="checkbox"
             />
@@ -236,7 +249,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="freeBreakfast"
+              value="Free breakfast"
               name="freeBreakfast"
               type="checkbox"
             />
@@ -258,7 +271,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="airConditioning"
+              value="Airconditoning"
               name="airConditioning"
               type="checkbox"
             />
@@ -269,7 +282,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="petsFriendly"
+              value="Pets friendly"
               name="petsFriendly"
               type="checkbox"
             />
@@ -280,7 +293,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="payAttheproperty"
+              value="Pay at the property"
               name="payAttheproperty"
               type="checkbox"
             />
@@ -302,7 +315,7 @@ export function MoreFilterCard({
             <input
               checked={isChecked ? false : null}
               onChange={handleChange}
-              value="wheelchairAccessible"
+              value="Wheelchair Accessible"
               name="wheelchairAccessible"
               type="checkbox"
             />

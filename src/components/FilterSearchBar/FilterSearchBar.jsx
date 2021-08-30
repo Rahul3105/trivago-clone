@@ -37,13 +37,14 @@ export function FilterSearchBar() {
     const [guestSelect, setGuestSelect] = useState(false);
 
 
-    const { searchData, guestsData, roomsData, firstDate, secondDate, handleSearchData, days, handleRoomsData, handleDays, handleGuestsData, handleFirstDate, handleSecondDate } = useContext(SearchDataContext)
+    const { searchData, guestsData, roomsData, firstDate, secondDate, handleSearchData, days, handleRoomsData, handleDays, handleGuestsData, handleFirstDate, handleSecondDate, handleFilterData } = useContext(SearchDataContext)
     const [location, setLocation] = useState(searchData);
     const [checkInDate, setCheckInDate] = useState(firstDate);
     const [checkOutDate, setCheckOutDate] = useState(secondDate);
 
     const [guestNumber, setGuestNumber] = useState(guestsData);
     const [roomsNumber, setRoomsNumber] = useState(roomsData);
+
 
 
     const dispatch = useDispatch();
@@ -82,8 +83,6 @@ export function FilterSearchBar() {
     if (hotel.length === 0) {
         hotel = [{ location: "Mumbai" }]
     }
-
-
     const handleBorder = () => {
         setBorder(true);
         setDatePicker(false);
@@ -139,6 +138,7 @@ export function FilterSearchBar() {
     };
 
 
+
     const handleSecondPageSearch = () => {
         handleSearchData(location)
         handleRoomsData(roomsNumber)
@@ -150,12 +150,19 @@ export function FilterSearchBar() {
 
         handleFirstDate(checkInDate)
         handleSecondDate(checkOutDate)
+        let first;
+        let last;
+        let fmonth;
+        let smonth
+        if (checkInDate != null && checkOutDate != null) {
+            first = Number(checkInDate.slice(8, 10))
+            last = Number(checkOutDate.slice(8, 10))
 
-        let first = Number(checkInDate.slice(8, 10))
-        let last = Number(checkOutDate.slice(8, 10))
-
-        let fmonth = checkInDate.slice(4, 7)
-        let smonth = checkOutDate.slice(4, 7)
+            fmonth = checkInDate.slice(4, 7)
+            smonth = checkOutDate.slice(4, 7)
+        } else {
+            handleDays(1)
+        }
 
         if (fmonth === smonth) {
             handleDays(last - first)
@@ -181,6 +188,8 @@ export function FilterSearchBar() {
         }
 
     }
+
+
     return (
         <>
             {loading && <Loading />}
@@ -303,9 +312,9 @@ export function FilterSearchBar() {
                                 onChange={getPrice}
                                 min={2200}
                                 step={100}
-                                max={44000}
+                                max={60000}
                                 aria-label="pretto slider"
-                                defaultValue={14100}
+                                defaultValue={44000}
                             />
                         </div>
                     </PriceNightWrapper>
