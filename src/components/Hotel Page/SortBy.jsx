@@ -1,25 +1,33 @@
 import styled from 'styled-components';
 import { sortHotelData } from '../../store/actions';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { useState } from 'react';
+import Loading from '../material-ui-components/LoadingAnimation'
 const SortBy = () => {
+    
     const [sort, setSort] = useState('recommendations');
+    const dispatch = useDispatch();
+    const hotelData = useSelector( (state) => state.activities)
+    const {currQuery} = hotelData
+    
     const handleSort = (e) => {
         const { value } = e.target;
-        console.log(value);
+        dispatch(sortHotelData(currQuery, value));
     }
     return (
+
         <StyledSortBy>
+            {hotelData.hotLoad && <Loading/>}
             <label>
                 <span>Sort by</span>
                 <StyledOption onChange={handleSort}>
                     <option value="recommendations">Our recommendations</option>
-                    <option value="Rating">Rating & Recommended</option>
-                    <option value="Price">Price & Recommended</option>
-                    <option value="Distance">Distance & Recommended</option>
-                    <option value="Rating">Rating only</option>
-                    <option value="Price">Price only</option>
-                    <option value="Distance">Distance only</option>
+                    <option value="rating">Rating & Recommended</option>
+                    <option value="price">Price & Recommended</option>
+                    <option value="distance">Distance & Recommended</option>
+                    <option value="rating">Rating only</option>
+                    <option value="price">Price only</option>
+                    <option value="distance">Distance only</option>
                 </StyledOption>
             </label>
         </StyledSortBy>
