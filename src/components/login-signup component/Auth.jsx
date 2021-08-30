@@ -1,11 +1,10 @@
-
 import styled from "styled-components";
-import { loginUser } from '../../store/login/actions';
-import {  useHistory, useParams } from "react-router-dom";
-import { useSelector , useDispatch} from "react-redux";
+import { loginUser } from "../../store/login/actions";
+import { useHistory, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 // material ui imports
-import Alert from '@material-ui/lab/Alert';
+import Alert from "@material-ui/lab/Alert";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 //react-google component
@@ -16,19 +15,18 @@ const Auth = ({ children }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const loginStore = useSelector((state) => state.login);
-  const handleAuthLogin = ({profileObj}) => {
+  const handleAuthLogin = ({ profileObj }) => {
     let payload = {
       ...profileObj,
-      googleAuth: true
-    }
-    dispatch(loginUser(payload))
-
+      googleAuth: true,
+    };
+    dispatch(loginUser(payload));
   };
   const handleAuthFailure = (response) => {
     console.log(response);
   };
   if (loginStore.isAuth) {
-    history.push('/')
+    history.push("/");
   }
   return (
     <>
@@ -41,16 +39,19 @@ const Auth = ({ children }) => {
             <img src="/images/trivago.svg" width="200" alt="trivago-logo" />
           </div>
         </header>
-          {loginStore.error && <Alert className='alert' variant="filled" severity="error">
-              {loginStore.error}
-            </Alert>
-          }
+        {loginStore.error && (
+          <Alert className="alert" variant="filled" severity="error">
+            {loginStore.error}
+          </Alert>
+        )}
         <section className="Auth-section">
           <div className="auth-route">{children}</div>
           <div className="goggle-auth">
             <h2>Or use trivago with another account</h2>
             <GoogleLogin
-              clientId={process.env?.REACT_APP_GOOGLE_API_KEY}
+              clientId={
+                "214132727180-jurfse2h9060p5foq65qd9j817clv0i0.apps.googleusercontent.com"
+              }
               buttonText="Continue with Google"
               onSuccess={handleAuthLogin}
               onFailure={handleAuthFailure}
@@ -111,7 +112,7 @@ const StyledAuth = styled.div`
     font-size: 16px;
   }
   & .alert {
-    font-size:15px;
+    font-size: 15px;
   }
 
   //header css

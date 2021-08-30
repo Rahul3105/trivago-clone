@@ -30,10 +30,6 @@ const useStyle = makeStyles({
   },
 });
 
-
-
-
-
 const HotCard = ({ x }) => {
   const { guestsData, roomsData, days } = useContext(SearchDataContext)
 
@@ -50,13 +46,14 @@ const HotCard = ({ x }) => {
 
   const cls = useStyle();
 
-  const r =
-    ((x.review.location +
+  const r = (
+    (x.review.location +
       x.review.room +
       x.review.services +
       x.review.facilities +
       x.review.vom) /
-      5).toFixed(1);
+    5
+  ).toFixed(1);
   const redirectTo = [
     "Agoda",
     "Booking.com",
@@ -292,7 +289,7 @@ const Cont = styled.div`
   margin: auto;
   background-color: white;
   box-shadow: 0 1px 4px rgb(41 51 57 / 50%);
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
   border: 1px solid rgb(235, 236, 237);
   * {
     white-space: pre;
@@ -396,11 +393,11 @@ const Grn = styled.p`
 `;
 const Star = styled.div`
   display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
   p {
-        font-size: 15px;
+    font-size: 15px;
     margin-left: 1rem;
   }
 `;
@@ -411,9 +408,9 @@ const BigGrn = styled.div`
   background-color: rgb(241, 248, 234);
   border-radius: 15px;
   border: 1px solid white;
-  .facilitiespar{
-    p{
-      font-size:13px;
+  .facilitiespar {
+    p {
+      font-size: 13px;
     }
   }
   > p {
@@ -434,19 +431,18 @@ const BigGrn = styled.div`
     button {
       background-color: rgb(2, 128, 0);
       border: none;
-          height: 35px;
-    width: 115px;
+      height: 35px;
+      width: 115px;
       color: white;
       padding: 2px 15px;
       font-size: 16px;
       font-weight: 600;
       border-radius: 20px;
-          display: flex;
-    align-items: center;
-    position: relative;
-        left: 94px;
-    top: -5px;
-
+      display: flex;
+      align-items: center;
+      position: relative;
+      left: 94px;
+      top: -5px;
 
       :hover {
         background-color: rgb(0, 95, 0);
@@ -479,17 +475,15 @@ const Bar = styled.div`
 `;
 
 const Fav = styled.button`
-
-    position: relative;
-    left: -215px;
-    top: -16rem;
-    height: 2.5rem;
-    margin: 0;
-    width: 2rem;
-    padding: 0;
-    background-color: rgb(27,38,69);
-    border: none;
-    border-radius: 25%;
-    color: white;
-
+  position: relative;
+  left: -215px;
+  top: -16rem;
+  height: 2.5rem;
+  margin: 0;
+  width: 2rem;
+  padding: 0;
+  background-color: rgb(27, 38, 69);
+  border: none;
+  border-radius: 25%;
+  color: white;
 `;
