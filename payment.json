@@ -1,5 +1,82 @@
 {
   "payment": [
-    
+    {
+      "token": {
+        "id": "tok_1JTpnjSBG37VySlECwkbLJxH",
+        "object": "token",
+        "card": {
+          "id": "card_1JTpnjSBG37VySlEttNrSU12",
+          "object": "card",
+          "address_city": "Bangalore",
+          "address_country": "India",
+          "address_line1": "NNRI 514 MSRIT boys hostel, Mar nagar mattikere yeshwantpur",
+          "address_line1_check": "unchecked",
+          "address_line2": null,
+          "address_state": "19",
+          "address_zip": "560054",
+          "address_zip_check": "unchecked",
+          "brand": "Visa",
+          "country": "US",
+          "cvc_check": "unchecked",
+          "dynamic_last4": null,
+          "exp_month": 5,
+          "exp_year": 2025,
+          "funding": "credit",
+          "last4": "4242",
+          "name": "AKSHAYKUMAR PURAD",
+          "tokenization_method": null
+        },
+        "client_ip": "106.66.133.234",
+        "created": 1630250403,
+        "email": "akshaykumarpurad99@gmail.com",
+        "livemode": false,
+        "type": "card",
+        "used": false
+      },
+      "product": {
+        "price": 1500,
+        "description": "Hotel booking"
+      },
+      "id": 1
+    },
+    {
+      "token": {
+        "id": "tok_1JTpt7SBG37VySlE4mDTivzj",
+        "object": "token",
+        "card": {
+          "id": "card_1JTpt7SBG37VySlEJYJYn1sB",
+          "object": "card",
+          "address_city": "Bangalore",
+          "address_country": "India",
+          "address_line1": "NNRI 514 MSRIT boys hostel, Mar nagar mattikere yeshwantpur",
+          "address_line1_check": "unchecked",
+          "address_line2": null,
+          "address_state": "19",
+          "address_zip": "560054",
+          "address_zip_check": "unchecked",
+          "brand": "Visa",
+          "country": "US",
+          "cvc_check": "unchecked",
+          "dynamic_last4": null,
+          "exp_month": 5,
+          "exp_year": 2025,
+          "funding": "credit",
+          "last4": "4242",
+          "name": "AKSHAYKUMAR PURAD",
+          "tokenization_method": null
+        },
+        "client_ip": "106.66.133.234",
+        "created": 1630250737,
+        "email": "akshaykumarpurad99@gmail.com",
+        "livemode": false,
+        "type": "card",
+        "used": false
+      },
+      "product": {
+        "price": 1500,
+        "description": "Hotel booking"
+      },
+      "id": 2
+    }
   ]
 }

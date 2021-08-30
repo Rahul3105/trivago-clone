@@ -13,6 +13,7 @@ const useStyles = makeStyles({
     borderBottom: "none",
     fontSize: "1.6rem",
     padding: "2px 5px",
+    alignItems: "center",
     hover: {
       borderBottom: "none",
     },
@@ -44,13 +45,14 @@ const ShowProfile = () => {
         {userInfo?.firstName} {userInfo?.lastName} {userInfo?.name}
       </h2> */}
       <Select value="Name" className={classes.pad}>
-        <MenuItem value="Name">
+        <MenuItem value="Name" style={{ alignItems: "center" }}>
           <img
             src={
               userInfo.iamgeUrl ||
               "https://image.flaticon.com/icons/png/128/725/725105.png"
             }
             alt=""
+            style={{ width: "20px" }}
           />
           {userInfo?.firstName} {userInfo?.lastName} {userInfo?.name}
         </MenuItem>
