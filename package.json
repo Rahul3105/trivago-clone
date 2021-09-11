@@ -70,5 +70,5 @@
     "concurrently": "^6.2.1",
     "json-server": "^0.16.3"
   },
-  "proxy": "http://localhost:8000"
+  "proxy": "https://first-server24.herokuapp.com/"
 }

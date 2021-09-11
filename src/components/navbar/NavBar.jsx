@@ -76,7 +76,7 @@ const NavBar = () => {
         {/* {history.location.pathname !== "/" && big && (
           <img src="images/trivago.svg" alt="" width="135px" />
         )} */}
-        {!big && (
+        {big && (
           <img
             src="images/trivago.svg"
             alt=""
@@ -86,14 +86,14 @@ const NavBar = () => {
         )}
         {med && (
           <First>
-            {loginInfo.isAuth && (
+            {/* {loginInfo.isAuth && (
               <img
                 src="images/trivago.svg"
                 alt=""
                 width="120px"
                 onClick={() => history.push("/")}
               />
-            )}
+            )} */}
             <button
               className="firstBtns"
               style={{

@@ -20,7 +20,7 @@
     {
       "id": 1,
       "date": "24 Aug. 2021",
-      "location": "Massourie",
+      "location": "Mumbai",
       "checkin": "25-08-21",
       "checkout": "27-08-21",
       "room": "2",
@@ -30,14 +30,6 @@
       "id": 2,
       "date": "24 Aug. 2021",
       "location": "Delhi",
-      "checkin": "25-08-21",
-      "checkout": "27-08-21",
-      "room": "2",
-      "guest": "4"
-    },
-    {
-      "date": "24 Aug. 2021",
-      "location": "Pakistan",
       "checkin": "25-08-21",
       "checkout": "27-08-21",
       "room": "2",

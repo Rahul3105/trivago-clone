@@ -1,37 +1,35 @@
-import { Typography } from '@material-ui/core';
-import React, { useEffect } from 'react'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { getDetails } from '../../store/actions';
-import RecentlyData from './RecentlyData';
-import styled from 'styled-components'
-import { useHistory } from 'react-router-dom';
+import { Typography } from "@material-ui/core";
+import React, { useEffect } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { getDetails } from "../../store/actions";
+import RecentlyData from "./RecentlyData";
+import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 export const RecentlyHome = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const dispatch = useDispatch();
   const { data, isLoading, isError } = useSelector(
     (state) => state.activities,
     shallowEqual
   );
   const handleActivities = () => {
-    dispatch(getDetails)
-  }
+    dispatch(getDetails);
+  };
   useEffect(() => {
-    handleActivities()
-  }, [])
+    handleActivities();
+  }, []);
 
   const handleRecentlyMain = () => {
     history.push("/recentlyMain");
-  }
+  };
 
   if (isLoading) {
     return (
       <div>
-        <Typography>
-          ...Loading the data
-        </Typography>
+        <Typography>...Loading the data</Typography>
       </div>
-    )
+    );
   }
   if (isError) {
     return (
@@ -53,19 +51,20 @@ export const RecentlyHome = () => {
       </Typography>
     </ActivityHome>
   );
-}
+};
 
 const ActivityHome = styled.div`
   width: 55%;
   min-width: 500px;
   padding-left: 9rem;
+  background-color: transparent;
   & .activity-heading {
     margin: 4% 25%;
     font-size: 20px;
   }
   & .dataa {
-    margin:4% ;
-    margin-left:-20%;
+    margin: 4%;
+    margin-left: -20%;
   }
   & .activity-seeAll {
     margin: 2% 25%;
