@@ -42,9 +42,9 @@ export const RecentlyHome = () => {
     <ActivityHome>
       <h2 className="activity-heading">Your recent activity</h2>
       <div className="dataa">
-        {data.map((item) => (
+        {/* {data.map((item) => (
           <RecentlyData data={item} key={item.id} />
-        ))}
+        ))} */}
       </div>
       <Typography onClick={handleRecentlyMain} className="activity-seeAll">
         See all
