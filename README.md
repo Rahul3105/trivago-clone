@@ -37,6 +37,11 @@ This is a clone of Hotel comparing website called Trivago.in where you can compa
 - All details with live comparison
 - Payment Gateway to book hotel
 
+## How to run project locally?
+After cloning the repository, just have to run these two commands on the outer most of the repository. 
+- npm run build
+- json-server payment.json --port 3002
+
   
 ## Screenshots
 
