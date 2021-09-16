@@ -39,7 +39,7 @@ export const CheckoutPage = () => {
 
   async function handleToken(token, addresses) {
     const response = await axios
-      .post("http://localhost:3002/payment", { token, product })
+      .post("https://first-server24.herokuapp.com/payment", { token, product })
       .then(({ data }) => {
         if (data.token.id != "") {
           toast("Success! Check email for details", { type: "success" });
