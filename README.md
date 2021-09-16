@@ -5,7 +5,7 @@
 # Trivago-Clone
 
 This is a clone of Hotel comparing website called Trivago.in where you can compare hotels from different websites and pick the best option for you.
-
+- Demo of our Website [Trivago.in](https://trivago24-acp24.vercel.app/)
 
 
 
