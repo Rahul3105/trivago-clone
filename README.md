@@ -17,8 +17,8 @@ This is a clone of Hotel comparing website called Trivago.in where you can compa
   <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/css3-logo.png"  height="150"/> 
   <img src="https://i.pinimg.com/originals/50/a6/42/50a6428d99f98e808074cceaf4c755e7.png"  height="150"/>
   <img src="https://easybase.io/assets/images/posts_images/5-great-react-libraries-1.png" height="150"/>
-  <img src="https://img.icons8.com/color/50/000000/redux.png"/>
-  <img src="https://img.icons8.com/color/48/000000/material-ui.png"/>
+  <img src="https://img.icons8.com/color/50/000000/redux.png" height="150"/>
+  <img src="https://img.icons8.com/color/48/000000/material-ui.png" height="150"/>
 </p>
 
   
