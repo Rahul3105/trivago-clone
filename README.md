@@ -13,12 +13,12 @@ This is a clone of Hotel comparing website called Trivago.in where you can compa
 ## Technologies Used
 
 <p float="left">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png" height="150"/>
-  <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/css3-logo.png"  height="150"/> 
-  <img src="https://i.pinimg.com/originals/50/a6/42/50a6428d99f98e808074cceaf4c755e7.png"  height="150"/>
-  <img src="https://easybase.io/assets/images/posts_images/5-great-react-libraries-1.png" height="150"/>
-  <img src="https://img.icons8.com/color/50/000000/redux.png" height="150"/>
-  <img src="https://img.icons8.com/color/48/000000/material-ui.png" height="150"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png" height="144"/>
+  <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/css3-logo.png"  height="144"/> 
+ <img src="https://img.icons8.com/color/144/000000/javascript--v1.png"/>
+  <img src="https://easybase.io/assets/images/posts_images/5-great-react-libraries-1.png" height="144"/>
+ <img src="https://img.icons8.com/color/144/000000/redux.png"/>
+<img src="https://img.icons8.com/color/144/000000/material-ui.png"/>
 </p>
 
   
