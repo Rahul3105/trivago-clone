@@ -57,7 +57,7 @@ After cloning the repository, just have to run these two commands on the outer m
 <h4>Here is the landing page with daterangepicker </h4>
 <img   style="width:100%" src="https://i.ibb.co/t3cwt5y/landingpagewithdatepicker.png" width="400"/>
 
-<h1>2.Hotel Comparison page </h1>
+<h1>2.Hotels Comparison page </h1>
 
 <h4>After searching from the landing page with location or hotel name user will be redirected to this page where user can further search or explore hotels as per the requirement</h4>
 <img   style="width:100%" src="https://i.ibb.co/ck3JtGK/hotelcomparison1.png" width="400"/>
