@@ -99,6 +99,6 @@ After cloning the repository, just have to run these two commands on the outer m
 
 - [@Akshaykumar](https://github.com/Akshaykumar24)
 - [@Rahul](https://github.com/Rahul3105)
-- [@Omkarv Gavade](https://github.com/omkarvgavade)
+- [@Omkar Gavade](https://github.com/omkarvgavade)
 - [@Amarjeet Singh](https://github.com/ajkarnawal0001)
 
