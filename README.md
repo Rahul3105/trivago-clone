@@ -17,6 +17,8 @@ This is a clone of Hotel comparing website called Trivago.in where you can compa
   <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/css3-logo.png"  height="150"/> 
   <img src="https://i.pinimg.com/originals/50/a6/42/50a6428d99f98e808074cceaf4c755e7.png"  height="150"/>
   <img src="https://easybase.io/assets/images/posts_images/5-great-react-libraries-1.png" height="150"/>
+  <img src="https://img.icons8.com/color/50/000000/redux.png"/>
+  <img src="https://img.icons8.com/color/48/000000/material-ui.png"/>
 </p>
 
   
@@ -80,7 +82,7 @@ After cloning the repository, just have to run these two commands on the outer m
  <h4>If user clicked on the login button from the landing page he will be redirected to this page here we have given the option of login using google auth as well as normal email and password </h4>
 <img  style="width:100%" src="https://i.ibb.co/QC4XyP5/loginsignup.png" width="400"/>
 
-<h1>5.Booking Page>/h1>
+<h1>5.Booking Page</h1>
   <h4 > Actually trivago is not a hotel booking site it is just hotel comparison site which helps you to find the perfect hotel for user if he wants to book that hotel trivago redirect to different hotel booking sites, but we went one step ahead and built page for booking hotel.</h1>
   <img  style="width:100%" src="https://i.ibb.co/THghxHH/bookingpage.png" width="400"/>
   
